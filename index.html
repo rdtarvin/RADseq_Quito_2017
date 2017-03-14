@@ -29,6 +29,7 @@ title: {{ site.name }}
   <table>
             <tr>
                 <th>Day</th> 
+                <th>Time</th>
                 <th>Topic</th>
                 <th>Materials (Download Link)</th>
                 <th>Instructor(s)</th>
@@ -36,6 +37,7 @@ title: {{ site.name }}
     {% for post in site.posts %}
      <tr>
                  <td> {{ post.date | date: '%B %d, %Y' }} </t>
+                 <td> {{ post.time }} </t>
                  <td align="left"> <a href="{{ site.baseurl }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a> </td>
                  <td> <a href="{{ post.materials }}">Files</a></td> 
                  <td> {{ post.instructor }} </td> 
