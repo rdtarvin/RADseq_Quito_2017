@@ -1,11 +1,9 @@
-#theme: jekyll-theme-cayman
-#description: 
-
 # Setup
 title:        Welcome to the 2017 Quito RADseq workshop
 tagline:      sponsored by QCAZ @ PUCE and the Congreso Latinoamericano de Herpetologia <a href="www.latinherps.ec">www.latinherps.ec</a>
 baseurl:      "https://github.com/rdtarvin/RADseq_Quito_2017"
 paginate:     1
+theme: jekyll-theme-cayman
 
 # About/contact
 #author:
