@@ -16,13 +16,26 @@ title: {{ site.name }}
 
 	<h1>Installation and Setup Instructions</h1>
 	If you are using a <b>Mac</b>, you will need to install a text editor. Some excellent options are either <a href="http://www.barebones.com/products/textwrangler/">Text Wrangler</a>, <a href="http://www.sublimetext.com/2">Sublime Text</a>, or <a href="https://atom.io/">Atom</a>. Alternatively, you can download Apple's text editor, XCode, from the App Store. <br>
-	If you are using a <b>Windows/PC</b>, we recommend <a href="https://notepad-plus-plus.org/"Notepad++</a>
+	If you are using a <b>Windows/PC</b>, we recommend <a href="https://notepad-plus-plus.org/">Notepad++</a>
 </div>
 
 <div>
   <ul class="posts">
+  <table>
+            <tr>
+                <th>Day</th> 
+                <th>Topic</th>
+                <th>Materials (Download Link)</th>
+                <th>Instructor</th>
+            </tr>
     {% for post in site.posts %}
-      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+     <tr>
+                 <td> {{ post.date | date: '%B %d, %Y' }} </t>
+                 <td align="left"> <a href="{{ site.baseurl }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a> </td>
+                 <td> <a href="{{ post.materials }}">Files</a></td> 
+                 <td> {{ post.instructor }} </td> 
+              </tr>   
     {% endfor %}
+    </table>
   </ul>
 </div>
