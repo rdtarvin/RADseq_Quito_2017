@@ -1,7 +1,8 @@
 ---
 layout: default
 title:  "RADseq Methods Overview"
-date:   2017-07-31 17:50:00
+date:   2017-07-31 
+time:   "Afternoon"
 categories: main
 instructor: "Becca and Pati"
 ---

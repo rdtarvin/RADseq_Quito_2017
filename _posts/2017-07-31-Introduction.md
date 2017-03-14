@@ -1,7 +1,8 @@
 ---
 layout: default
 title:  "Introduction"
-date:   2017-07-31 17:50:00
+date:   2017-07-31 
+time:   "Morning"
 categories: main
 instructor: "Becca and Pati"
 ---
