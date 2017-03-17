@@ -5,6 +5,7 @@ date:   2017-07-31
 time:   "Session 1: Morning"
 categories: main
 instructor: "Becca and Pati"
+materials: files/fakefile.txt
 ---
 
 You'll find this post in your `_posts` directory - edit this post and re-build (or run with the `-w` switch) to see your changes!
