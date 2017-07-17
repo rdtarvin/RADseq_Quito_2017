@@ -1,17 +1,4 @@
 
-Comparative Population Genomics of Channel Island endemics
-======
-
-Datasets to be used
----
-
-1. Pseudacris regilla (Prse) - 3 islands
-2. Xantusia riversiana (Xari) - 3 islands
-3. Channel Island Song Sparrows (SOSP) - 3 islands
-4. Island Scrub Jays (ISSJ) - 1 island
-5. Island Foxes (URIL) - 6 islands
-
-
 First output from stacks *populations*
 -------
 Run populations on the mapped dataset using the following code: 
