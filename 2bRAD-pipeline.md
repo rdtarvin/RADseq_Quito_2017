@@ -2,9 +2,11 @@ WORKSHOP QUITO - DAY 3
 2bRAD
 ===
 
-Use native pipeline for filtering and trimming, then use iPyrad.
+Use native pipeline for filtering and trimming, then use iPyrad.<br>
 Download data
-	wget xxx
+```
+wget xxx
+```
 
 Step 1. Use native pipeline for filtering and trimming
 ---
