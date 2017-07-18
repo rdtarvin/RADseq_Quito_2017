@@ -1,7 +1,7 @@
 WORKSHOP QUITO - DAY 3
 ===
 
-1. Getting started with github and downloading your data
+1. Getting started with github and downloading data
 ---
 
 After a short lecture about why to work on git and what it is, we will get started on a quick unix/git exercise. 
@@ -62,6 +62,7 @@ Your files will likely be zipped and with the termination **.fq.gz** or **fastq.
 
 	gzless <<name of file>> #is this easy to see? 
 	zhead <<name of file>> iterations with diff Ncols etc 
+	## RDT: check whether zhead works.. it may not on all machines
 
 Let's unzip one of the raw data files to look a bit more into it:
 
@@ -71,7 +72,7 @@ Hmmm.... ok, now lets look at the full file:
 
 	cat <<filename.fq>>
 	
-Uh oh.... let's quit before the computer crashes.... it's too much to look at! MAc: Control C, PC:?? 
+Uh oh.... let's quit before the computer crashes.... it's too much to look at! Ctrl+C
 		
 
 how many reads do you have?
@@ -84,7 +85,17 @@ We can write really simple unix code to fetch the number of sequences per file. 
 
 3. Looking at your data in fastQC
 ----
->Becca, have you used FASTQC a lot? 
+
+download fastqc https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
+
+```
+wget https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.5.zip
+unzip fastqc_v0.11.5.zip
+fastqc -h
+fastqc Stef_3_ATCACG_L008_R1_001.fastq
+```
+
+fastqc quickly produces a nice .html file that can be viewed in any browser
 
 
 4. First big computing task: Demultiplexing in STACKS
@@ -92,9 +103,9 @@ We can write really simple unix code to fetch the number of sequences per file. 
 
 In order to know more about whether your library was successful, you need to demultiplex your individuals to know whether they were all sequenced and how much sequences you have for each, and it is always the first step in the pipeline. The files you need for this are: 
 
-- barcodes+sample names (.txt)
+- barcodes+sample names (tab-delimited .txt file)
 
-- process_radtags code (unix)
+- process_radtags code (shell program from stacks)
 
 We had a total of two libraries for this project, and they both used the same adapters but different illumina primers. I've made one of the barcodes files for you to work with, which can be found [here](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/STACKS/demultiplexing/barcodes-Stef-3.txt). 
 
@@ -126,10 +137,11 @@ We had a total of two libraries for this project, and they both used the same ad
 	Er_470
 	TNHC05833
 
+The index primer is xxxxx, and the sample names occur in the same order as the barcodes in the example file.
+
 **NOTE 1**: whenever editing text files, first, NEVER use what you exported from excel or word directly... always check in a simple text editor (TExt WRangler, BBEdit, etc) and using "view invisible characters" to avoid unnecesary headaches of hidden characters or extra spaces/tabs, etc! Biggest waste of time in anything computing... 
 
-
-**NOTE 2**: You need to have the appropriate barcode files within the appropriate library folders if demultiplexing libraries separately.
+**NOTE 2**: For stacks, you need to have the appropriate barcode files within the appropriate library folders if demultiplexing libraries separately.
 
 **NOTE 3**: Figure out how your barcodes are set up within your sequence file, in order to determine how to set up the process_radtags code (doing any of the commands we did earlier to look into the files).
 
@@ -137,7 +149,7 @@ Now that you know how your sequence file looks like (it will vary from one facil
 
 The general code we will use for process_radtags, running it from within the raw-data folder, is the following: 
 
-	module load stacks/1.35
+	module load stacks/1.35 ## this only applies to HPC... on local machines it will not be necessary
 
 	mkdir process_rads_1e2
 
