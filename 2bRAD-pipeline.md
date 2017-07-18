@@ -209,7 +209,7 @@ This is the expected topology
                  |      ___sp3
                  |_5my_|  
                        |  _sp4
-					   |_|	 
+                       |_|
                          |_sp5
                          
 ```
