@@ -18,7 +18,7 @@ my notes on the missing data program (before starting to work on the code):
 	#for .stru file format, organized similar to nexus phased haplotypes, the first two columns are data that need to be kept/printed (ind.names, pops), third row begins loci.
 
 
-
+RDT - can you provide an example file that would need to be filtered?
 
 
 
