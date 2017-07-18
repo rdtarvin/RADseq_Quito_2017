@@ -11,16 +11,20 @@ wget xxx
 Step 1. Use native pipeline for filtering and trimming
 ---
 
-Copy scripts to your computer via git
-	git clone https://github.com/z0on/2bRAD_denovo.git
+* Copy scripts to your computer via git
+```
+git clone https://github.com/z0on/2bRAD_denovo.git
+```
 
-Decompress data (only necessary for 2bRAD native, other pipelines can read .gz)
-	gunzip *.gz
+* Decompress data (only necessary for 2bRAD native, other pipelines can read .gz)
+```
+gunzip *.gz
+```
 
-Concatenate data that were run on multiple lanes, if necessary
-- T36R59_I93_S27_L006_R1_001.fastq and T36R59_I93_S27_L007_R1_001.fastq
-- pattern "T36R59_I93_S27_L00" is common to both read files; program concatenates into one file with (.+) saved as file name
-	/home/user1/2bRAD_denovo/ngs_concat.pl "(.+)_S27_L00"
+* Concatenate data that were run on multiple lanes, if necessary
+	- T36R59_I93_S27_L006_R1_001.fastq and T36R59_I93_S27_L007_R1_001.fastq
+	- pattern "T36R59_I93_S27_L00" is common to both read files; program concatenates into one file with (.+) saved as file name
+	```/home/user1/2bRAD_denovo/ngs_concat.pl "(.+)_S27_L00"```
 
 ```
 head T36R59_I93.fq
