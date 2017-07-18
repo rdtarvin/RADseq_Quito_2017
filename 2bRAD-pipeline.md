@@ -2,13 +2,16 @@ WORKSHOP QUITO - DAY 3
 2bRAD
 ===
 
-Use native pipeline for filtering and trimming, then use iPyrad.<br>
+These data are part of a pilot project comparing ddRAD and 2bRAD data (**do NOT distribute**).<br>
+There are twelve samples from three genera, with at least two individuals sampled per genus.<br>
+Use native pipeline for filtering and trimming, then use iPyrad.<br><br>
+
 Download data
 ```
 wget xxx
 ```
 
-Step 1. Filter reads by barcode, remove barcodes from dataset in ```2bRAD native pipeline```
+Step 1. Demultiplex in ```2bRAD native pipeline```
 ---
 
 * Copy scripts to your computer via git
@@ -50,7 +53,7 @@ ls
 ```
 output is 'tr0' format
 
-Step 2. Filter reads by quality with the ```fastx_toolkit```.
+Step 2. Filter reads by quality with the ```fastx_toolkit```
 ---
 
 ```
@@ -81,7 +84,7 @@ for i in *.trim; do gzip ${i}; done
 
 Now we have our 2bRAD reads separated by barcode and trimmed (steps 1 & 2)!
 
-Steps 34567. Complete pipeline in ```iPyrad```.
+Steps 34567. Complete pipeline in ```iPyrad```
 ---
 
 iPyrad is super easy, make sure you check out their extensive online documentation [here](http://ipyrad.readthedocs.io/index.html).
@@ -96,11 +99,11 @@ cat params-2brad-v1.txt
 	- parameter [4]: add the location of the sorted fastqs; you must end this parameter with *.gz
 	- parameter [7]: change rad to gbs; gbs can take into account revcomp reads
 	- parameter [8]: don't worry about this, it will be ignored since we are starting from sorted reads
-	- parameter [11] lower to 5; data have been deduplicated (ipyrad assumes it has not been deduplicated)
-	- parameter [12] lower to 2; data have been deduplicated (ipyrad assumes it has not been deduplicated)
-	- parameter [18] keep at 2 for diploid
-	- parameter [21] change to 3; lower number means more missing data but more loci recovered
-	- parameter [27] add ', u'; this will provide an output selecting single SNPs from each locus randomly
+	- parameter [11]: lower to 5; data have been deduplicated (ipyrad assumes it has not been deduplicated)
+	- parameter [12]: lower to 2; data have been deduplicated (ipyrad assumes it has not been deduplicated)
+	- parameter [18]: keep at 2 for diploid
+	- parameter [21]: change to 3; lower number means more missing data but more loci recovered
+	- parameter [27]: add ', u'; this will provide an output selecting single SNPs from each locus randomly
 
 ```
 atom params-2brad-v1.txt
@@ -145,10 +148,26 @@ p, s, v, u                        ## [27] [output_formats]: Output formats (see 
 ipyrad -p params-2brad-v1.txt -s 1234567
 ```
 
-Let's look at the intermediate and final files of ipyrad
+* To check on the results, you can open a new terminal window and type
+```
+ipyrad -p params-2brad-v1.txt -r
+```
 
+Let's look at the intermediate and final files created by iPyrad.
 
-Step 7 reiterations. Perhaps you want to create a number of output files to test the effect of missing data on your inferences
+Step 3. 
+---
+
+Step 4.
+---
+
+Step 5.
+---
+
+Step 6.
+---
+
+Step 7 reiterations to test the effect of missing data on your inferences
 ---
 
 ```bash
@@ -160,6 +179,8 @@ Downstream phylogenetic analyses
 ===
 
 Phylogenetics with iPyrad is easy!!
+
+
 
 ```
 ## raxml-concat
@@ -178,6 +199,21 @@ unzip raxml-ng_v0.4.0b_linux_x86_64.zip
 ```
 
 
+This is the expected topology
+
+```
+        ___________________sp1
+       |   
+-25my--|          _________sp2
+       |____15my_|
+                 |      ___sp3
+                 |_5my_|  
+                       |  _sp4
+					   |_|	 
+                         |_sp5
+                         
+```
+   
 
 
 
