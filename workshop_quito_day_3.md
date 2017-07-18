@@ -62,7 +62,6 @@ Your files will likely be zipped and with the termination **.fq.gz** or **fastq.
 
 	gzless <<name of file>> #is this easy to see? 
 	zhead <<name of file>> iterations with diff Ncols etc 
-	## RDT: check whether zhead works.. it may not on all machines
 
 Let's unzip one of the raw data files to look a bit more into it:
 
