@@ -50,10 +50,9 @@ ls
 ```
 output is 'tr0' format
 
-Step 2. Filter reads by quality.
+Step 2. Filter reads by quality with the ```fastx_toolkit```.
 ---
 
-* filter by quality using ```fastx_toolkit```
 ```
 fastq_quality_filter -h
 
@@ -82,25 +81,33 @@ for i in *.trim; do gzip ${i}; done
 
 Now we have our 2bRAD reads separated by barcode and trimmed (steps 1 & 2)!
 
-Step 3. Cluster within
+Steps 34567. Complete pipeline in ```iPyrad```.
 ---
 
-# we can import them into iPyrad
+iPyrad is super easy, make sure you check out their extensive online documentation [here](http://ipyrad.readthedocs.io/index.html).
 
+* First, initiate a new analysis.
+```
+ipyrad -n 2brad-v1
+cat params-2brad-v1.txt
+```
 
+* Make a few changes to the params file.
+	- parameter [4]: add the location of the sorted fastqs; you must end this parameter with *.gz
+	- parameter [7]: change rad to gbs; gbs can take into account revcomp reads
+	- parameter [8]: don't worry about this, it will be ignored since we are starting from sorted reads
+	- parameter [11] lower to 5; data have been deduplicated (ipyrad assumes it has not been deduplicated)
+	- parameter [12] lower to 2; data have been deduplicated (ipyrad assumes it has not been deduplicated)
+	- parameter [18] keep at 2 for diploid
+	- parameter [21] change to 3; lower number means more missing data but more loci recovered
+	- parameter [27] add ', u'; this will provide an output selecting single SNPs from each locus randomly
 
+```
+atom params-2brad-v1.txt
+```
 
-## a few changes should be made
-# [4] first, add the location of the sorted fastqs; you must end this parameter with *.gz
-# [7] change rad to gbs; gbs can take into account revcomp reads
-# [8] don't worry about this, it will be ignored since we are starting from sorted reads
-# [11] lower to 5; data have been deduplicated (ipyrad assumes it has not been deduplicated)
-# [12] lower to 2; data have been deduplicated (ipyrad assumes it has not been deduplicated)
-# [18] keep at 2 for diploid
-# [21] change to 3; lower number means more missing data but more loci recovered
-# [27] add ', u'; this will provide an output selecting single SNPs from each locus randomly
-
-
+Your final params file should look like this:
+```
 ------- ipyrad params file (v.0.7.1)--------------------------------------------
 2brad-v1		               ## [0] [assembly_name]: Assembly name. Used to name output directories for assembly steps
 ./                             ## [1] [project_dir]: Project dir (made in curdir if not present)
@@ -131,22 +138,28 @@ TGCAG,                         ## [8] [restriction_overhang]: Restriction overha
 0, 0, 0, 0                     ## [26] [trim_loci]: Trim locus edges (see docs) (R1>, <R1, R2>, <R2)
 p, s, v, u                        ## [27] [output_formats]: Output formats (see docs)
                                ## [28] [pop_assign_file]: Path to population assignment file
+```
 
-
-# okay, it's that easy
-
+* Okay, it's that easy!! To run the pipeline, type the following command:
 ```
 ipyrad -p params-2brad-v1.txt -s 1234567
 ```
 
-# perhaps you want to create a number of output files to test the effect of missing data on your inferences
+Let's look at the intermediate and final files of ipyrad
+
+
+Step 7 reiterations. Perhaps you want to create a number of output files to test the effect of missing data on your inferences
+---
 
 ```bash
 for i in 4 6 8 10 12; do ipyrad -p params-2brad-v1.txt -b 2brad-v2-${i}l; do sed -i s/".*\[21\].*"/"${i}$(printf '\t')$(printf '\t')$(printf '\t')$(printf '\t') \#\# \[21\] \[min_samples_locus\]: Min \# samples per locus for output"/ params-2brad-v2-${i}l.txt;  done
 for i in 4 6 8 10 12; do ipyrad -p params-2brad-v2-${i}l.txt -s 7 -f; done
 ```
 
-### phylogenetics via iPyrad is easy!!
+Downstream phylogenetic analyses
+===
+
+Phylogenetics with iPyrad is easy!!
 
 ```
 ## raxml-concat
@@ -166,7 +179,6 @@ unzip raxml-ng_v0.4.0b_linux_x86_64.zip
 
 
 
-###### let's look at the intermediate and final files of ipyrad
 
 
 
