@@ -39,6 +39,6 @@ If the installation worked, the text you saved to the file should print to the s
 Stacks, iPyrad, dDocent, R, cd-hit-est, fastx-toolkit, and fastqc are all installed in $HOME/Applications/BioBuilds and should be accessible via $PATH. AftrRAD is installed in $HOME/Applications/AftrRADv5.0. 
 
 
-===
+---
 If you have a mac computer, everything we are doing today you can install at a later date to your root system. Windows users will always require a linux VM to run these programs. We suggest [Text Wrangler](http://www.barebones.com/products/textwrangler/), [Sublime Text](http://www.sublimetext.com/2), or [Atom](https://atom.io/). If you do want to use a text editor outside of the ubuntu environment on Windows, we recommend [Notepad++](https://notepad-plus-plus.org/).
 
