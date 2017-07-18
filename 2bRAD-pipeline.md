@@ -11,7 +11,7 @@ Download data
 wget xxx
 ```
 
-Step 1. Demultiplex in ```2bRAD native pipeline```
+Step 1. Demultiplex by barcode in ```2bRAD native pipeline```
 ---
 
 * Copy scripts to your computer via git
