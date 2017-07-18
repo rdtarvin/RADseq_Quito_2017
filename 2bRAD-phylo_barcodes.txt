@@ -1,0 +1,12 @@
+sp5_ind1	TGGT
+sp5_ind2	AGAC
+sp4_ind1	ACCA
+sp4_ind2a	AGTG
+sp4_ind2b	CATC
+sp1_ind1a	GTGA
+sp1_ind1b	TCAG
+sp1_ind2	GCTT
+sp3_ind1	CTAC
+sp3_ind1	TGTC
+sp2_ind1	TCAC
+sp2_ind2	GACT
