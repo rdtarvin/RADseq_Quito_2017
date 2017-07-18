@@ -11,10 +11,6 @@ Please complete the following short courses on Bash BEFORE the workshop. <br>
 Installation and Setup Instructions
 ==
 
-If you are using a <b>Mac</b>, you will need to install a text editor. Some excellent options are either [Text Wrangler](http://www.barebones.com/products/textwrangler/), [Sublime Text](http://www.sublimetext.com/2), or [Atom](https://atom.io/). Alternatively, you can download Apple's text editor, XCode, from the App Store. <br>
-If you are using a <b>Windows/PC</b>, we recommend [Notepad++](https://notepad-plus-plus.org/)
-
-
 So we are all working in the same computing environment, please follow these instructions:
 1. Download and install [VirtualBox 5.1.24 and VirtualBox 5.1.24 Oracle VM VirtualBox Extension Pack](https://www.virtualbox.org/wiki/Downloads) for your operating system.
 2. Download the [virtual machine image](http://download.lab7.io/UT-BioComputing-RadSEQ.ova) with RADseq software. **This file is 4.7GB, so make sure you have space on your hard drive and a good internet connection before downloading.**
@@ -28,8 +24,21 @@ sudo add-apt-repository ppa:webupd8team/atom
 sudo apt update
 sudo apt install atom
 ```
+8. To test whether your installation worked, click on the black box in the upper left corner ("Terminal Emulator"). Once the program opens, copy the following commands.
+```
+touch testfile
+atom testfile
+```
+Add some text to the file, save it, and then exit atom. Go back to the Terminal and type
+```
+cat testfile
+```
+If the installation worked, the text you saved to the file should print to the screen.
+
+
 Stacks, iPyrad, dDocent, R, cd-hit-est, fastx-toolkit, and fastqc are all installed in $HOME/Applications/BioBuilds and should be accessible via $PATH. AftrRAD is installed in $HOME/Applications/AftrRADv5.0. 
 
-If you have a mac computer, everything we are doing today you can install at a later date to your root system. Windows users will always require a linux VM to run these programs.
 
+===
+If you have a mac computer, everything we are doing today you can install at a later date to your root system. Windows users will always require a linux VM to run these programs. We suggest [Text Wrangler](http://www.barebones.com/products/textwrangler/), [Sublime Text](http://www.sublimetext.com/2), or [Atom](https://atom.io/). If you do want to use a text editor outside of the ubuntu environment on Windows, we recommend [Notepad++](https://notepad-plus-plus.org/).
 
