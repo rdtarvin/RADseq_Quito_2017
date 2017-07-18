@@ -8,7 +8,7 @@ Download data
 wget xxx
 ```
 
-Step 1. Use native pipeline for filtering and trimming
+Step 1. Filter reads by barcode, remove barcodes from dataset in ```2bRAD native pipeline```
 ---
 
 * Copy scripts to your computer via git
@@ -24,9 +24,9 @@ gunzip *.gz
 * Concatenate data that were run on multiple lanes, if necessary
 	- T36R59_I93_S27_L006_R1_001.fastq and T36R59_I93_S27_L007_R1_001.fastq
 	- pattern "T36R59_I93_S27_L00" is common to both read files; program concatenates into one file with (.+) saved as file name
-	```/home/user1/2bRAD_denovo/ngs_concat.pl "(.+)_S27_L00"```
 
 ```
+/home/user1/2bRAD_denovo/ngs_concat.pl "(.+)_S27_L00"
 head T36R59_I93.fq
 
 @K00179:73:HJCTJBBXX:7:1101:28006:1209 1:N:0:TGTTAG
@@ -41,14 +41,20 @@ A#AFFJJJFJJFFJJJJJJJJFFJJJJJFJFJFJFJJJJJJJJJJJJJJF
 GNGTCCCAGTGATCCGGAGCAGCGACGTCGCTGCTATCCATAGTGAAGAT
 ```
 
-## separate reads by barcode
-# here we use dedup2 script, which is necessary for HiSeq4000 runs; otherwise use dedup
-# adaptor is the last 4 characters of the reads, here 'AGAT'
-	/home1/02576/rdtarvin/2bRAD_denovo/trim2bRAD_2barcodes_dedup2.pl input=T36R59_I93.fq adaptor=AGAT sampleID=1
+* separate reads by barcode
+	- here we use ```trim2bRAD_2barcodes_dedup2.pl``` script, which is necessary for HiSeq4000 runs; otherwise use ```trim2bRAD_2barcodes_dedup.pl```
+	- adaptor is the last 4 characters of the reads, here 'AGAT'
+```
+/home1/02576/rdtarvin/2bRAD_denovo/trim2bRAD_2barcodes_dedup2.pl input=T36R59_I93.fq adaptor=AGAT sampleID=1
+ls
+```
+output is 'tr0' format
 
+Step 2. Filter reads by quality.
+---
 
-## output is 'tr0' format
-# filter by quality using fastx_toolkit
+* filter by quality using ```fastx_toolkit```
+```
 fastq_quality_filter -h
 
 usage: fastq_quality_filter [-h] [-v] [-q N] [-p N] [-z] [-i INFILE] [-o OUTFILE]
@@ -72,10 +78,13 @@ for i in ls *.tr0; do fastq_quality_filter $i -q 20 -p 90 > ${i}_R1_.trim; done
 for i in *.trim; do gzip ${i}; done
 
 # a note: ipyrad expects '_R1_' in the file name, so I've added it to the file names
-
 ```
 
-# now we have our 2bRAD reads separated by barcode and trimmed (steps 1 & 2)
+Now we have our 2bRAD reads separated by barcode and trimmed (steps 1 & 2)!
+
+Step 3. Cluster within
+---
+
 # we can import them into iPyrad
 
 
@@ -91,7 +100,7 @@ for i in *.trim; do gzip ${i}; done
 # [21] change to 3; lower number means more missing data but more loci recovered
 # [27] add ', u'; this will provide an output selecting single SNPs from each locus randomly
 
-```
+
 ------- ipyrad params file (v.0.7.1)--------------------------------------------
 2brad-v1		               ## [0] [assembly_name]: Assembly name. Used to name output directories for assembly steps
 ./                             ## [1] [project_dir]: Project dir (made in curdir if not present)
@@ -122,7 +131,7 @@ TGCAG,                         ## [8] [restriction_overhang]: Restriction overha
 0, 0, 0, 0                     ## [26] [trim_loci]: Trim locus edges (see docs) (R1>, <R1, R2>, <R2)
 p, s, v, u                        ## [27] [output_formats]: Output formats (see docs)
                                ## [28] [pop_assign_file]: Path to population assignment file
-```
+
 
 # okay, it's that easy
 
