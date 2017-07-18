@@ -1,41 +1,44 @@
-##########################
-##########################
-## 2bRAD - native pipeline
+WORKSHOP QUITO - DAY 3 
+2bRAD
 
-# use for filtering and trimming
-# then use iPyrad
+===
 
-```bash
+Use native pipeline for filtering and trimming, then use iPyrad.
+Download data
+	wget xxx
 
-## copy scripts to your computer
-git clone https://github.com/z0on/2bRAD_denovo.git
+Step 1. Use native pipeline for filtering and trimming
+---
 
-## gunzip data (only necessary for 2bRAD native, other pipelines can read .gz)
-gunzip *.gz
+Copy scripts to your computer via git
+	git clone https://github.com/z0on/2bRAD_denovo.git
 
-## concatenate data that were run on multiple lanes, if necessary
-# T36R59_I93_S27_L006_R1_001.fastq and T36R59_I93_S27_L007_R1_001.fastq
-# pattern "T36R59_I93_S27_L00" is common to all read files; program concatenates into one file with (.+) saved as file name
-/home1/02576/rdtarvin/2bRAD_denovo/ngs_concat.pl "(.+)_S27_L00"
+Decompress data (only necessary for 2bRAD native, other pipelines can read .gz)
+	gunzip *.gz
 
-head T36R59_I93.fq
+Concatenate data that were run on multiple lanes, if necessary
+- T36R59_I93_S27_L006_R1_001.fastq and T36R59_I93_S27_L007_R1_001.fastq
+- pattern "T36R59_I93_S27_L00" is common to both read files; program concatenates into one file with (.+) saved as file name
+	/home/user1/2bRAD_denovo/ngs_concat.pl "(.+)_S27_L00"
 
-@K00179:73:HJCTJBBXX:7:1101:28006:1209 1:N:0:TGTTAG
-TNGTCCACAAGAGTGTGTCGAGCGTTGTGCCCCCCCGCATCTCTACAGAT
-+
-A#AAFAFJJJJJJJJJJJJJFJJJJJJFJJJJJJJJJJJFJFJJJJJAJ<
-@K00179:73:HJCTJBBXX:7:1101:28026:1209 1:N:0:TGTTAG
-CNAACCCGTTGTCACGTCGCAAATAAGTCGGTGCGCTGGCAATCACAGAT
-+
-A#AFFJJJFJJFFJJJJJJJJFFJJJJJFJFJFJFJJJJJJJJJJJJJJF
-@K00179:73:HJCTJBBXX:7:1101:28047:1209 1:N:0:TGTTAG
-GNGTCCCAGTGATCCGGAGCAGCGACGTCGCTGCTATCCATAGTGAAGAT
+	head T36R59_I93.fq
+
+	@K00179:73:HJCTJBBXX:7:1101:28006:1209 1:N:0:TGTTAG
+	TNGTCCACAAGAGTGTGTCGAGCGTTGTGCCCCCCCGCATCTCTACAGAT
+	+
+	A#AAFAFJJJJJJJJJJJJJFJJJJJJFJJJJJJJJJJJFJFJJJJJAJ<
+	@K00179:73:HJCTJBBXX:7:1101:28026:1209 1:N:0:TGTTAG
+	CNAACCCGTTGTCACGTCGCAAATAAGTCGGTGCGCTGGCAATCACAGAT
+	+
+	A#AFFJJJFJJFFJJJJJJJJFFJJJJJFJFJFJFJJJJJJJJJJJJJJF
+	@K00179:73:HJCTJBBXX:7:1101:28047:1209 1:N:0:TGTTAG
+	GNGTCCCAGTGATCCGGAGCAGCGACGTCGCTGCTATCCATAGTGAAGAT
 
 
 ## separate reads by barcode
 # here we use dedup2 script, which is necessary for HiSeq4000 runs; otherwise use dedup
 # adaptor is the last 4 characters of the reads, here 'AGAT'
-/home1/02576/rdtarvin/2bRAD_denovo/trim2bRAD_2barcodes_dedup2.pl input=T36R59_I93.fq adaptor=AGAT sampleID=1
+	/home1/02576/rdtarvin/2bRAD_denovo/trim2bRAD_2barcodes_dedup2.pl input=T36R59_I93.fq adaptor=AGAT sampleID=1
 
 
 ## output is 'tr0' format

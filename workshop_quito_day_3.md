@@ -1,4 +1,5 @@
-WORKSHOP QUITO - DAY 3
+WORKSHOP QUITO - DAY 3 
+STACKS WITH ddRAD
 ===
 
 1. Getting started with github and downloading data
