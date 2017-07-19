@@ -1,11 +1,12 @@
 ---
 layout: default
 order: 2
-title:  "<a href="https://docs.google.com/presentation/d/e/2PACX-1vSuzXz1p3ovM2qeZsR_PZwAgv3yFdMia1_G165WgipS_2mZbJr_sPbnptCd7abxQXSmhhHnnK0VJmCR">RADseq Methods Overview</a>"
+title:  "RADseq Methods Overview"
 date:   2017-07-31
 time:   "Day 2: Afternoon"
 categories: main
 instructor: "Becca and Pati"
+materials: "https://docs.google.com/presentation/d/e/2PACX-1vSuzXz1p3ovM2qeZsR_PZwAgv3yFdMia1_G165WgipS_2mZbJr_sPbnptCd7abxQXSmhhHnnK0VJmCR"
 ---
 
 You'll find this post in your `_posts` directory - edit this post and re-build (or run with the `-w` switch) to see your changes!
