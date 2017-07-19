@@ -1,7 +1,7 @@
 # Setup
 title:        2017 Quito RADseq workshop
 tagline:      sponsored by QCAZ @ PUCE and the Congreso Latinoamericano de Herpetologia <a href="www.latinherps.ec">www.latinherps.ec</a>
-baseurl:      "/RADseq_Quito_2017"
+baseurl:      /RADseq_Quito_2017
 url:          https://rdtarvin.github.io/
 paginate:     1
 theme: minima
