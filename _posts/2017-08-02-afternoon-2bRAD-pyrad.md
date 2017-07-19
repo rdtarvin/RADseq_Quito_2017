@@ -22,7 +22,7 @@ and then [iPyrad](http://ipyrad.readthedocs.io/index.html) for the rest of the a
 ![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/basic-assembly-steps.png?raw=true)
 
 Download data for this lesson
-```
+```bash
 wget xxx
 ```
 
@@ -30,19 +30,19 @@ wget xxx
 
 Your files will likely be zipped and with the file extension **.fq.gz** or **fastq.gz**. The first thing you want to do is look at the beginning of your files while they are still zipped with the following command: 
 
-```
+```bash
 gzless <<name of file>> #is this easy to see? 
 zhead <<name of file>> iterations with diff Ncols etc 
 ```
 
 Let's unzip one of the raw data files to look a bit more into it:
 
-```
+```bash
 gunzip <<filename.fq.gz>>
 ```	
 Hmmm.... ok, now lets look at the full file:
 
-```
+```bash
 cat <<filename.fq>>
 ```
 	
@@ -62,7 +62,7 @@ Step 0. Use fastqc to check read quality.
 
 download [fastqc](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
 
-```
+```bash
 wget https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.5.zip
 unzip fastqc_v0.11.5.zip
 fastqc -h
@@ -77,12 +77,12 @@ Step 1. Demultiplex by barcode in **2bRAD native pipeline**
 ---
 
 Copy scripts to your computer via git
-```
+```bash
 git clone https://github.com/z0on/2bRAD_denovo.git
 ```
 
 Decompress data (only necessary for 2bRAD native, other pipelines can read .gz).
-```
+```bash
 gunzip *.gz
 ```
 
@@ -90,7 +90,7 @@ Concatenate data that were run on multiple lanes, if necessary.
 - T36R59_I93_S27_L006_R1_001.fastq and T36R59_I93_S27_L007_R1_001.fastq
 - pattern "T36R59_I93_S27_L00" is common to both read files; program concatenates into one file with (.+) saved as file name
 
-```
+```bash
 /home/user1/2bRAD_denovo/ngs_concat.pl "(.+)_S27_L00"
 head T36R59_I93.fq
 
@@ -113,7 +113,7 @@ To understand how this works, let's take a look at the structure of a 2bRAD read
 
 
 From the 2bRAD native pipeline we will use ```trim2bRAD_2barcodes_dedup2.pl``` script to separate by barcode. If your data are not from HiSeq4000 you would use ```trim2bRAD_2barcodes_dedup.pl```.
-```
+```bash
 # adaptor is the last 4 characters of the reads, here 'AGAT'
 /home1/02576/rdtarvin/2bRAD_denovo/trim2bRAD_2barcodes_dedup2.pl input=T36R59_I93.fq adaptor=AGAT sampleID=1
 ls
@@ -123,7 +123,7 @@ output is 'tr0' format
 Step 2. Filter reads by quality with the **fastx_toolkit**
 ---
 
-```
+```bash
 fastq_quality_filter -h
 
 usage: fastq_quality_filter [-h] [-v] [-q N] [-p N] [-z] [-i INFILE] [-o OUTFILE]
@@ -165,7 +165,7 @@ Steps 34567. Complete pipeline in **iPyrad**
 iPyrad is super easy, make sure you check out their extensive online documentation [here](http://ipyrad.readthedocs.io/index.html).
 
 First, initiate a new analysis.
-```
+```bash
 ipyrad -n 2brad-v1
 cat params-2brad-v1.txt
 ```
@@ -182,13 +182,13 @@ Make a few changes to the params file.
 
 **TASK**.<br>
 Make these changes in the params file using the atom text editor.
-```
+```bash
 atom params-2brad-v1.txt
 ```
 
 Your final params file should look like this:
 
-```
+```bash
 ------- ipyrad params file (v.0.7.1)--------------------------------------------
 2brad-v1		               ## [0] [assembly_name]: Assembly name. Used to name output directories for assembly steps
 ./                             ## [1] [project_dir]: Project dir (made in curdir if not present)
@@ -223,12 +223,12 @@ p, s, v, u                        ## [27] [output_formats]: Output formats (see 
 
 
 Okay, it's that easy!! To run the pipeline, type the following command:
-```
+```bash
 ipyrad -p params-2brad-v1.txt -s 1234567
 ```
 
 To check on the results, you can open a new terminal window and type
-```
+```bash
 ipyrad -p params-2brad-v1.txt -r
 ```
 
@@ -259,7 +259,7 @@ Step 7.
 ### Phylogenetics with iPyrad is easy!!
 
 Estimate a RAxML tree with concatenated loci
-```
+```bash
 conda install raxml -c bioconda
 python
 ```
@@ -269,12 +269,12 @@ rax = ipa.raxml(data='2brad-epi-july17.phy',name='2brad-epi-july17',workdir='ana
 ```
 
 Estimate a quartets-based tree in ```tetrad```, an iPyrad version of [SVDquartets](http://evomics.org/learning/phylogenetics/svdquartets/)
-```
+```bash
 tetrad -s 2brad-epi-july17.snps.phy -l 2brad-epi-july17.snps.map -m all -n tetrad-test
 ```
 
 Estimate a tree based on a SNP matrix, using one SNP from each locus, in [RAxML-ng](raxml snps - https://github.com/amkozlov/raxml-ng).
-```
+```bash
 cd
 wget https://github.com/amkozlov/raxml-ng/releases/download/0.4.0/raxml-ng_v0.4.0b_linux_x86_64.zip
 unzip raxml-ng_v0.4.0b_linux_x86_64.zip
