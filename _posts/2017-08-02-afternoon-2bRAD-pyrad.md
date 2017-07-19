@@ -262,6 +262,8 @@ Estimate a RAxML tree with concatenated loci
 ```
 conda install raxml -c bioconda
 python
+```
+```python
 import ipyrad.analysis as ipa
 rax = ipa.raxml(data='2brad-epi-july17.phy',name='2brad-epi-july17',workdir='analysis-raxml')
 ```
