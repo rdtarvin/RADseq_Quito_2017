@@ -104,13 +104,15 @@ A#AFFJJJFJJFFJJJJJJJJFFJJJJJFJFJFJFJJJJJJJJJJJJJJF
 GNGTCCCAGTGATCCGGAGCAGCGACGTCGCTGCTATCCATAGTGAAGAT
 ```
 
-Separate reads by barcode. Let's take a look at the structure of a 2bRAD read.
+Now that our read files are concatenated, we need to separate our reads by barcode. 
+To understand how this works, let's take a look at the structure of a 2bRAD read.<br>
+
 ![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/2bRAD-read.png?raw=true)
 
 
-- here we use ```trim2bRAD_2barcodes_dedup2.pl``` script, which is necessary for HiSeq4000 runs; otherwise use ```trim2bRAD_2barcodes_dedup.pl```
-- adaptor is the last 4 characters of the reads, here 'AGAT'
+From the 2bRAD native pipeline we will use ```trim2bRAD_2barcodes_dedup2.pl``` script to separate by barcode. If your data are not from HiSeq4000 you would use ```trim2bRAD_2barcodes_dedup.pl```.
 ```
+# adaptor is the last 4 characters of the reads, here 'AGAT'
 /home1/02576/rdtarvin/2bRAD_denovo/trim2bRAD_2barcodes_dedup2.pl input=T36R59_I93.fq adaptor=AGAT sampleID=1
 ls
 ```
