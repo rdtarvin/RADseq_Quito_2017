@@ -1,9 +1,3 @@
----
-layout: default
-title: {{ site.name }}
----
-
-
 [https://rdtarvin.github.io/RADseq_Quito_2017/](https://rdtarvin.github.io/RADseq_Quito_2017/)
 
 Welcome!
