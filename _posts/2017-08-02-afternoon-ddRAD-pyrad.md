@@ -29,7 +29,7 @@ Open the .html files, what can you see?
 
 
 
-### Step 1. Demultiplex in ```ipyrad``` [done]
+### Step 1. Demultiplex in **iPyrad** [done]
 
 Data have been demultiplexed previously so that they can be subsampled evenly across samples. This step is rather easy in ipyrad, it just requires filling in options for parameters 1-3 rather than 4.
 

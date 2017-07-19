@@ -15,7 +15,9 @@ materials: files/fakefile.txt
 
 These data are part of a pilot project comparing ddRAD and 2bRAD data (**do NOT distribute**).<br>
 There are twelve samples from three genera, with at least two individuals sampled per genus.<br>
-In this pipeline, we will use the 2bRAD native pipeline for filtering and trimming, fastx-toolkit for quality control, and then iPyrad for the rest of the assembly.<br><br>
+In this pipeline, we will use the [2bRAD native pipeline](https://github.com/z0on/2bRAD_denovo) for filtering and trimming, 
+[fastx-toolkit](http://hannonlab.cshl.edu/fastx_toolkit/) for quality control, 
+and then [iPyrad](http://ipyrad.readthedocs.io/index.html) for the rest of the assembly.<br><br>
 
 Download data for this lesson
 ```
@@ -47,7 +49,7 @@ Uh oh.... let's quit before the computer crashes.... it's too much to look at! `
 **Challenge**
 <details> 
   <summary>How would you count the number of reads in your file? </summary>
-   <br>As you can see from the previous "head" command, each sequence line begins with @, so we can just count how many times the argument '@D3' appears, or in essence, how many "lines" of sequence data we have.<br> 
+   As you can see from the previous "head" command, each sequence line begins with @, so we can just count how many times the argument '@D3' appears, or in essence, how many "lines" of sequence data we have.<br> 
    <code>grep -c '@D3' Stef_3_ATCACG_L008_R1_001.fastq</code>
 </details> 
 
@@ -65,11 +67,11 @@ fastqc -h
 fastqc *.gz
 ```
 
-fastqc quickly produces a nice .html file that can be viewed in any browser
+fastqc quickly produces a nice .html file that can be viewed in any browser.<br>
 Open the .html files, what can you see?
 
 
-Step 1. Demultiplex by barcode in ```2bRAD native pipeline```
+Step 1. Demultiplex by barcode in **2bRAD native pipeline**
 ---
 
 Copy scripts to your computer via git
@@ -77,12 +79,12 @@ Copy scripts to your computer via git
 git clone https://github.com/z0on/2bRAD_denovo.git
 ```
 
-Decompress data (only necessary for 2bRAD native, other pipelines can read .gz)
+Decompress data (only necessary for 2bRAD native, other pipelines can read .gz).
 ```
 gunzip *.gz
 ```
 
-Concatenate data that were run on multiple lanes, if necessary
+Concatenate data that were run on multiple lanes, if necessary.
 - T36R59_I93_S27_L006_R1_001.fastq and T36R59_I93_S27_L007_R1_001.fastq
 - pattern "T36R59_I93_S27_L00" is common to both read files; program concatenates into one file with (.+) saved as file name
 
@@ -102,7 +104,10 @@ A#AFFJJJFJJFFJJJJJJJJFFJJJJJFJFJFJFJJJJJJJJJJJJJJF
 GNGTCCCAGTGATCCGGAGCAGCGACGTCGCTGCTATCCATAGTGAAGAT
 ```
 
-Separate reads by barcode
+Separate reads by barcode. Let's take a look at the structure of a 2bRAD read.
+![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/2bRAD-read.png?raw=true)
+
+
 - here we use ```trim2bRAD_2barcodes_dedup2.pl``` script, which is necessary for HiSeq4000 runs; otherwise use ```trim2bRAD_2barcodes_dedup.pl```
 - adaptor is the last 4 characters of the reads, here 'AGAT'
 ```
@@ -111,7 +116,7 @@ ls
 ```
 output is 'tr0' format
 
-Step 2. Filter reads by quality with the ```fastx_toolkit```
+Step 2. Filter reads by quality with the **fastx_toolkit**
 ---
 
 ```
@@ -140,9 +145,14 @@ for i in *.trim; do gzip ${i}; done
 # a note: ipyrad expects '_R1_' in the file name, so I've added it to the file names
 ```
 
-Now we have our 2bRAD reads separated by barcode and trimmed (steps 1 & 2)!
+Now we have our 2bRAD reads separated by barcode and trimmed (steps 1 & 2)!<br>
 
-Steps 34567. Complete pipeline in ```iPyrad```
+**TASK**.
+The files need to be renamed for each species, and the characters '_R1_' must be added prior to the file extension. <br>
+Using the barcode file and the command `mv`, rename all .fq files accordingly.<br>
+
+
+Steps 34567. Complete pipeline in **iPyrad**
 ---
 
 iPyrad is super easy, make sure you check out their extensive online documentation [here](http://ipyrad.readthedocs.io/index.html).
@@ -280,9 +290,9 @@ Do we see the correct tree in our results?
 
 
 iPyrad offers the option to branch your pipeline with option -b. This allows you to access results from previous steps and use them in different downstream analyses.
-**Remember, never edit file names or paths that are created by iPyrad. It needs them to keep track of analyses.**
 One of the most convenient uses of this function is testing the effect of missing data on your downstream analyses.
 So, let's execute some reiterations of Step 7, the step that generates the final SNP matrices.
+**Remember, never edit file names or paths that are created by iPyrad. It needs them to keep track of analyses.**
 
 ```bash
 for i in 4 6 8 10 12; do ipyrad -p params-2brad-v1.txt -b 2brad-v2-${i}l; do sed -i s/".*\[21\].*"/"${i}$(printf '\t')$(printf '\t')$(printf '\t')$(printf '\t') \#\# \[21\] \[min_samples_locus\]: Min \# samples per locus for output"/ params-2brad-v2-${i}l.txt;  done
