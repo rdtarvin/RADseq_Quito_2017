@@ -302,7 +302,7 @@ This is the expected topology and estimated divergence timing.
 Do we see the correct tree in our results?
 
 
-iPyrad offers the option to branch your pipeline with option -b. This allows you to access results from previous steps and use them in different downstream analyses.
+iPyrad offers the option to branch your pipeline with argument -b. This allows you to access results from previous steps and use them in different downstream analyses.
 One of the most convenient uses of this function is testing the effect of missing data on your downstream analyses.
 So, let's execute some reiterations of Step 7, the step that generates the final SNP matrices.
 **Remember, never edit file names or paths that are created by iPyrad. It needs them to keep track of analyses.**
@@ -310,12 +310,15 @@ So, let's execute some reiterations of Step 7, the step that generates the final
 ```bash
 for i in 4 6 8 10 12; do ipyrad -p params-2brad-v1.txt -b 2brad-v2-${i}l; do sed -i s/".*\[21\].*"/"${i}$(printf '\t')$(printf '\t')$(printf '\t')$(printf '\t') \#\# \[21\] \[min_samples_locus\]: Min \# samples per locus for output"/ params-2brad-v2-${i}l.txt;  done
 for i in 4 6 8 10 12; do ipyrad -p params-2brad-v2-${i}l.txt -s 7 -f; done
+
+## use the '-f' option when you have already run that step, to force it to rerun
+## provide simple alternative script
 ```
 
 **TASK**.<br>
 It's a good idea to run iPyrad using both a range of [21] missing data (as above)
-and of [14] clustering threshold. Choose one value lower and one value higher for parameter [21], create two new branches, and run these analyses using the -b option in iPyrad.
-Hint: how would you check when the clustering threshold was incorporated into the analysis?
+and of [14] clustering threshold. Choose one value lower and one value higher than 0.85 for parameter [21], create two new branches, and run these analyses using the -b option in iPyrad.
+**Hint**: First, be sure to check when the clustering threshold was incorporated into the analysis before deciding where to restart the pipeline.
 
 
 
