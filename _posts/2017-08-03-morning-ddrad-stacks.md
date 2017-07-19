@@ -1,3 +1,14 @@
+---
+layout: default
+order: 6
+title:  "ddRAD data in stacks"
+date:   2017-08-03
+time:   "Day 4: Morning"
+categories: main
+instructor: "Pati"
+materials: files/fakefile.txt
+---
+
 WORKSHOP QUITO - DAY 4 
 STACKS WITH ddRAD
 ===
