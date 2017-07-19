@@ -19,6 +19,8 @@ In this pipeline, we will use the [2bRAD native pipeline](https://github.com/z0o
 [fastx-toolkit](http://hannonlab.cshl.edu/fastx_toolkit/) for quality control, 
 and then [iPyrad](http://ipyrad.readthedocs.io/index.html) for the rest of the assembly.<br><br>
 
+![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/basic-assembly-steps.png?raw=true)
+
 Download data for this lesson
 ```
 wget xxx
@@ -144,13 +146,13 @@ for i in ls *.tr0; do fastq_quality_filter $i -q 20 -p 90 > ${i}_R1_.trim; done
 # zip the files to save space
 for i in *.trim; do gzip ${i}; done
 
-# a note: ipyrad expects '_R1_' in the file name, so I've added it to the file names
+# a note: ipyrad expects '_R1_' in the file name, so I've added it to the file names in the command above
 ```
 
 Now we have our 2bRAD reads separated by barcode and trimmed (steps 1 & 2)!<br>
 
 **TASK**.<br>
-The files need to be renamed for each species, and the characters `_R1_` must be added prior to the file extension.
+The files need to be renamed for each species. 
 Using the barcode file and the command `mv`, rename all .fq files accordingly.<br>
 
 
@@ -175,6 +177,8 @@ Make a few changes to the params file.
 - [21] [min_samples_locus]: change to 3; lower number means more missing data but more loci recovered
 - [27] [output_formats]: add ', u'; this will provide an output selecting single SNPs from each locus randomly
 
+**TASK**.<br>
+Make these changes in the atom text editor.
 ```
 atom params-2brad-v1.txt
 ```
