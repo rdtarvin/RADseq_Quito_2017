@@ -9,12 +9,15 @@ instructor: "Becca"
 materials: files/fakefile.txt
 ---
 
-WORKSHOP QUITO - DAY 3 <br>
-ddRAD data in ipyrad: from filtered data to phylogenies
-===
+## WORKSHOP QUITO - DAY 3 <br>
+### ddRAD data in ipyrad: from filtered data to phylogenies
 
 These data are part of a pilot project comparing ddRAD and 2bRAD data (**do NOT distribute**).<br>
-There are twelve samples from three genera, with at least two individuals sampled per genus, and two technical replicates.<br><br>
+There are twelve samples from three genera, with at least two individuals sampled per genus, and two technical replicates.<br>
+We will use [iPyrad](http://ipyrad.readthedocs.io/index.html) for all steps of this assembly.<br><br><br>
+
+![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/basic-assembly-steps.png?raw=true)
+
 
 Download data for this lesson
 ```
@@ -31,7 +34,9 @@ Open the .html files, what can you see?
 
 ### Step 1. Demultiplex in **iPyrad** [done]
 
-Data have been demultiplexed previously so that they can be subsampled evenly across samples. This step is rather easy in ipyrad, it just requires filling in options for parameters 1-3 rather than 4.
+Data have been demultiplexed previously so that they can be subsampled evenly across samples. 
+This step is rather easy in ipyrad, it just requires filling in options for parameters 1-3 rather than 4.
+Let's get you caught up - first make a new iPyrad params file and look at what's in it.
 
 ```
 ## initialize new ipyrad analysis
