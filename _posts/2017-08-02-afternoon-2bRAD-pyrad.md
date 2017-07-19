@@ -14,7 +14,7 @@ materials: files/fakefile.txt
 
 
 These data are part of a pilot project comparing ddRAD and 2bRAD data (**do NOT distribute**).<br>
-There are twelve samples from three genera, with at least two individuals sampled per genus.<br>
+There are twelve samples from three genera, with at least two individuals sampled per genus, and two technical replicates.<br>
 In this pipeline, we will use the [2bRAD native pipeline](https://github.com/z0on/2bRAD_denovo) for filtering and trimming, 
 [fastx-toolkit](http://hannonlab.cshl.edu/fastx_toolkit/) for quality control, 
 and then [iPyrad](http://ipyrad.readthedocs.io/index.html) for the rest of the assembly.<br><br>
@@ -306,6 +306,12 @@ iPyrad offers the option to branch your pipeline with argument -b. This allows y
 One of the most convenient uses of this function is testing the effect of missing data on your downstream analyses.
 So, let's execute some reiterations of Step 7, the step that generates the final SNP matrices.
 **Remember, never edit file names or paths that are created by iPyrad. It needs them to keep track of analyses.**
+
+First, check when the [21] missing data parameter is used in the analysis, to be sure that you don't need to rerun other steps in addition to 7.
+This information can be found in the iPyrad documents [parameters page](http://ipyrad.readthedocs.io/parameters.html#). Scroll down to [21], what does it say?
+
+```Affected steps = 7. Example entries to params.txt```
+Great, so we can just redo Step 7 with new values for [21].
 
 ```bash
 for i in 4 6 8 10 12; do ipyrad -p params-2brad-v1.txt -b 2brad-v2-${i}l; do sed -i s/".*\[21\].*"/"${i}$(printf '\t')$(printf '\t')$(printf '\t')$(printf '\t') \#\# \[21\] \[min_samples_locus\]: Min \# samples per locus for output"/ params-2brad-v2-${i}l.txt;  done
