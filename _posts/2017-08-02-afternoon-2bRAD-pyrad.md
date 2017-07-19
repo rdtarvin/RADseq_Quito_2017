@@ -273,11 +273,18 @@ Estimate a tree based on a SNP matrix, using one SNP from each locus, in [RAxML-
 cd
 wget https://github.com/amkozlov/raxml-ng/releases/download/0.4.0/raxml-ng_v0.4.0b_linux_x86_64.zip
 unzip raxml-ng_v0.4.0b_linux_x86_64.zip
+/home1/02576/rdtarvin/raxml-ng -h
+
+.
+.
+.
+
 /home1/02576/rdtarvin/raxml-ng --msa ../2brad-epi-july17.u.snps.phy --model GTR+G+ASC_LEWIS --search
 ```
+Note that there are three options for ascertainment bias correction. 
 
 
-This is the expected topology. 
+This is the expected topology and estimated divergence timing. 
 
 ```
         ___________________sp1
@@ -304,4 +311,15 @@ So, let's execute some reiterations of Step 7, the step that generates the final
 for i in 4 6 8 10 12; do ipyrad -p params-2brad-v1.txt -b 2brad-v2-${i}l; do sed -i s/".*\[21\].*"/"${i}$(printf '\t')$(printf '\t')$(printf '\t')$(printf '\t') \#\# \[21\] \[min_samples_locus\]: Min \# samples per locus for output"/ params-2brad-v2-${i}l.txt;  done
 for i in 4 6 8 10 12; do ipyrad -p params-2brad-v2-${i}l.txt -s 7 -f; done
 ```
+
+**TASK**.<br>
+It's a good idea to run iPyrad using both a range of [21] missing data (as above)
+and of [14] clustering threshold. Choose one value lower and one value higher for parameter [21], create two new branches, and run these analyses using the -b option in iPyrad.
+Hint: how would you check when the clustering threshold was incorporated into the analysis?
+
+
+
+
+
+
 

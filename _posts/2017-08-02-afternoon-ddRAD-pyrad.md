@@ -167,7 +167,7 @@ Now you can run the pipeline, starting from Step 3, clustering!
 ipyrad -p params-ddrad-v1.txt -s 34567
 ```
 
-Oops, what happened? Ipyrad requires that you run all steps, even if the data have been sorted. 
+Oops, what happened? iPyrad requires that you run all steps, even if the data have been sorted. 
 When reads are already demultiplexed, steps 1 and 2 read in the data.
 
 ```
@@ -175,10 +175,25 @@ ipyrad -p params-ddrad-v1.txt -s 1234567
 ```
 
 
+<br><br><br>
+Downstream phylogenetic analyses
+===
 
-############### run svdquartets, tetrad
 
+Estimate a RAxML tree with concatenated loci
+```
+# conda install raxml -c bioconda # already done
+python
+import ipyrad.analysis as ipa
+rax = ipa.raxml(data='ddrad-v1.phy',name='ddrad-v1',workdir='analysis-raxml')
 
+# Or run it straight from the command line
+/home1/02576/rdtarvin/raxml-ng --msa epi-dd-july14-subsample-lm15-s7_outfiles/epi-dd-july14-subsample-lm15-s7.u.snps.phy --model GTR+G+ASC_LEWIS --search
+```
+
+Estimate a quartets-based tree in ```tetrad```, an ipython version of SVDquartets
+
+```
 >>> import ipyrad.analysis as ipa
 >>> import ipyparallel as ipp
 >>> import toytree
@@ -189,35 +204,12 @@ max unlinked SNPs per quartet (nloci): 5183
 
 # from command line
 tetrad -n epi-dd-july14-subsample-trim15 -s epi-dd-july14-subsample-trim15.snps.phy -b 100 -l epi-dd-july14-subsample-trim15.snps.map -o analysis-tetrad -c 24
-
-
-########### run raxml-ng
-
-/home1/02576/rdtarvin/raxml-ng --msa epi-dd-july14-subsample-lm15-s7_outfiles/epi-dd-july14-subsample-lm15-s7.u.snps.phy --model GTR+G+ASC_LEWIS --search
-((((Ebou_R0153:0.000001,Ebou_R0156:0.000001):0.000005,(((Ahah_R0090:0.000001,Ahah_R0089a:0.000001):0.000001,Ahah_R0089b:0.000001):0.000001,(Snub_R0158:0.000001,Snub_R0159:0.000001):0.000001):0.000001):0.000005,((Eant_T6859a:0.000001,Eant_T6859b:0.000001):0.000001,Eant_T6857:0.000001):0.000012):0.000008,Etri_T6842:0.000001,Etri_T6836:0.000001):0.0;
-
-
-but there is a ton of missing data, especially in Ameerega
-install: https://github.com/amkozlov/raxml-ng
-manual ('wiki'): https://github.com/amkozlov/raxml-ng/wiki/Input-data#analysis-type
-
-
-# good copy of results
-epi-dd-july14-subsample-trim15_outfiles/
-
-# with .u.snps.phy file
-epi-dd-july14-subsample-lm15-s7_outfiles
+```
 
 
 
 
-
-### its a good idea to run on a range of [21] missing data and [14] clustering threshold. Graph results and then decide how to best move forward
-
-
-
-
-This is the expected topology and estimated divergence.
+This is the expected topology and estimated divergence timing.
 
 ```
         ___________________sp1
@@ -227,12 +219,18 @@ This is the expected topology and estimated divergence.
                  |      ___sp3
                  |_5my_|  
                        |  _sp4
-					   |_|	 
+                       |_|
                          |_sp5
                          
 ```
    
 
+Whats different between the expected tree and the tree we obtained? 
+
+Why do you think that is? 
+How can we fix it?
+
+but there is a ton of missing data, especially in sp1
 
 
 
