@@ -32,7 +32,7 @@ Your files will likely be zipped and with the file extension **.fq.gz** or **fas
 
 {% highlight bash %}
 gzless <<name of file>> #is this easy to see? 
-zhead <<name of file>> iterations with diff Ncols etc 
+zhead <<name of file>> #iterations with diff Ncols etc 
 {% endhighlight %}
 
 Let's unzip one of the raw data files to look a bit more into it:
