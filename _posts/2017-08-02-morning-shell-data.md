@@ -152,7 +152,7 @@ Then, let's copy ALL of our raw data files into our raw-data folder with one com
 
 ```bash
 mv Stef* raw-data
-``
+```
 The asterisk is a wildcard that autocompletes anything that follows that text. 
 
 
