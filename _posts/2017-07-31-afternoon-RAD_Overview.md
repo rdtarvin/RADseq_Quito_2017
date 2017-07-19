@@ -1,5 +1,6 @@
 ---
 layout: default
+lesson: 2
 title:  "RADseq Methods Overview"
 date:   2017-07-31
 time:   "Day 2: Afternoon"

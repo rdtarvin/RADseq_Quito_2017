@@ -1,5 +1,6 @@
 ---
 layout: default
+lesson: 1
 title:  "Introduction"
 date:   2017-07-31
 time:   "Day 1: Morning"
