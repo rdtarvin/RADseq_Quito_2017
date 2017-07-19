@@ -101,48 +101,48 @@ pipe (<code>&#124;</code>) | redirects stdout to become stdin for next command
 
 After a short lecture about why to work on git and what it is, we will get started on a quick unix/git exercise. 
 
-```bash
+{% highlight bash %}
 mkdir workshop
 cd workshop
 git clone <<url>>
 cd <<git-folder>>
 ls
 >>some other things.... 
-```
+{% endhighlight %}
 
 Names of files, folders, etc., when computing, can NEVER have spaces in them, and you should really limit characters. This will save you headaches down the line. If you will be computing a lot in your career, change your ways and have it as a default to NEVER use spaces in names. 
 
 Downloading your data through unix
 
-```bash
+{% highlight bash %}
 wget <<web-address>>	
 ls ##are all your files in there? 
-```
+{% endhighlight %}
 
 Alternatively, you can copy the files (or "secure" copy <scp> from a protected computer/cluster) into your working directory: 
 
-```bash
+{% highlight bash %}
 scp filename.gz . ##this is done directly from your working directory. 
-```
+{% endhighlight %}
 
 Copy and move commands are always done in the following way: 
 
-```bash
+{% highlight bash %}
 cp <THIS_FILE> <INTO_THIS_PLACE>
 mv <THIS_THING> <THERE>
-```
+{% endhighlight %}
 
 Move can also be used for a quick "renaming" of a single file. 
 
-```bash
+{% highlight bash %}
 mv filename newfilename
-```
+{% endhighlight %}
 
 Let's say we'd like to rename our downloaded data files to remove unnecesary info from the name. 
 
-```bash
+{% highlight bash %}
 mv <> <>
-```
+{% endhighlight %}
 
 This way we are keeping important info (pool number, barcode, read) and eliminating extra things (lane, something else... haha). 
 
@@ -150,9 +150,9 @@ We've decided that the way we organized our raw data is not appropriate for all 
 
 Then, let's copy ALL of our raw data files into our raw-data folder with one command: 
 
-```bash
+{% highlight bash %}
 mv Stef* raw-data
-```
+{% endhighlight %}
 The asterisk is a wildcard that autocompletes anything that follows that text. 
 
 <br><br>
