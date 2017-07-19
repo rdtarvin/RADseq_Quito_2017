@@ -5,7 +5,9 @@ Welcome!
 
 This is the official website for the RADseq workshop following the XI Congreso Latinoamericano de Herpetologia in Quito, Ecuador, sponsored by <a href="http://zoologia.puce.edu.ec/Vertebrados/">QCAZ @ PUCE</a>.  <br>
 The workshop will take place in room xx at PUCE (address) from July 31 until August 4. We will cover theory and experimental design of RADseq projects as well as laboratory methods and bioinformatic pipelines.      <br>
+
 Before the workshop, please complete the following three tasks, in this order:
+==
 1. **fill out this [survey](https://www.surveymonkey.com/r/H6NDCHG)** 
 2. **install the virtual machine as described below**
 3. **complete lessons 1-3 of this [software carpentry course](https://swcarpentry.github.io/shell-novice/) on bash/shell, unless you are certain that you feel comfortable in the shell environment** <br>
