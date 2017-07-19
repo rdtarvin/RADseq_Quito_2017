@@ -152,9 +152,9 @@ for i in *.trim; do gzip ${i}; done
 Now we have our 2bRAD reads separated by barcode and trimmed (steps 1 & 2)!<br>
 
 
-**TASK**.<br>
+<mark>**TASK**.<br>
 
-<mark>The files need to be renamed for each species. 
+The files need to be renamed for each species. 
 Using the barcode file and the command `mv`, rename all .fq files accordingly.</mark><br>
 
 
@@ -180,8 +180,8 @@ Make a few changes to the params file.
 - [21] [min_samples_locus]: change to 3; lower number means more missing data but more loci recovered
 - [27] [output_formats]: add ', u'; this will provide an output selecting single SNPs from each locus randomly
 
-**TASK**.<br>
-Make these changes in the params file using the atom text editor.
+<mark>**TASK**.<br>
+Make these changes in the params file using the atom text editor.</mark>
 ```bash
 atom params-2brad-v1.txt
 ```
@@ -332,12 +332,12 @@ for i in 4 6 8 10 12; do ipyrad -p params-2brad-v1.txt -b 2brad-v2-${i}l; do sed
 
 ## use the '-f' option when you have already run that step, to force it to rerun
 ```
-**TASK**.<br>
-Choose one params file that is different from your neighbor and run it so we can compare results as a class.
+<mark>**TASK**.<br>
+Choose one params file that is different from your neighbor and run it so we can compare results as a class.</mark>
 
-**TASK**.<br>
+<mark>**TASK**.<br>
 It's a good idea to run iPyrad using both a range of [21] missing data (as above)
-and of [14] clustering threshold. Choose one value lower and one value higher than 0.85 for parameter [21], create two new branches, and run these analyses using the -b option in iPyrad.
+and of [14] clustering threshold. Choose one value lower and one value higher than 0.85 for parameter [21], create two new branches, and run these analyses using the -b option in iPyrad.</mark><br>
 **Hint**: First, be sure to check when the clustering threshold was incorporated into the analysis before deciding where to restart the pipeline.
 
 
