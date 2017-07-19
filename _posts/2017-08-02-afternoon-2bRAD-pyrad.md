@@ -310,16 +310,23 @@ So, let's execute some reiterations of Step 7, the step that generates the final
 First, check when the [21] missing data parameter is used in the analysis, to be sure that you don't need to rerun other steps in addition to 7.
 This information can be found in the iPyrad documents [parameters page](http://ipyrad.readthedocs.io/parameters.html#). Scroll down to [21], what does it say?
 
-```Affected steps = 7. Example entries to params.txt```
-Great, so we can just redo Step 7 with new values for [21].
+```Affected steps = 7. Example entries to params.txt```<br>
+
+Great, so we can just redo Step 7 with new values for [21]. The basic command to use here is
+```
+# provide new, informative prefix
+ipyrad -p params-2brad-v1.txt -b 2brad-v2-6min
+```
+Then you would need to open the file and manually edit parameter [21]. Below I have included code to automate this task.
 
 ```bash
 for i in 4 6 8 10 12; do ipyrad -p params-2brad-v1.txt -b 2brad-v2-${i}l; do sed -i s/".*\[21\].*"/"${i}$(printf '\t')$(printf '\t')$(printf '\t')$(printf '\t') \#\# \[21\] \[min_samples_locus\]: Min \# samples per locus for output"/ params-2brad-v2-${i}l.txt;  done
-for i in 4 6 8 10 12; do ipyrad -p params-2brad-v2-${i}l.txt -s 7 -f; done
+# for i in 4 6 8 10 12; do ipyrad -p params-2brad-v2-${i}l.txt -s 7 -f; done
 
 ## use the '-f' option when you have already run that step, to force it to rerun
 ## provide simple alternative script
 ```
+Choose one to run that is different from your neighbor so we can compare results as a class.
 
 **TASK**.<br>
 It's a good idea to run iPyrad using both a range of [21] missing data (as above)
