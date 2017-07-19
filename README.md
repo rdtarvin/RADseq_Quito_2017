@@ -8,9 +8,9 @@ The workshop will take place in room xx at PUCE (address) from July 31 until Aug
 
 Before the workshop, please complete the following three tasks, in this order:
 ==
-1. **fill out this [survey](https://www.surveymonkey.com/r/H6NDCHG)** 
-2. **install the virtual machine as described below**
-3. **complete lessons 1-3 of this [software carpentry course](https://swcarpentry.github.io/shell-novice/) on bash/shell, unless you are certain that you feel comfortable in the shell environment** <br>
+1. **Fill out this [survey](https://www.surveymonkey.com/r/H6NDCHG).** 
+2. **Install the virtual machine as described below (may take a few hours).**
+3. **Complete lessons 1-3 of this [software carpentry course](https://swcarpentry.github.io/shell-novice/) on bash/shell, unless you are certain that you feel comfortable in the shell environment.** <br>
 
 
 Installation and Setup Instructions
