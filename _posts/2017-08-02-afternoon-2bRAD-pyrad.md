@@ -7,6 +7,7 @@ time:   "Day 3: Afternoon"
 categories: main
 instructor: "Becca"
 materials: files/fakefile.txt
+material-type: ""
 ---
 
 ## WORKSHOP QUITO - DAY 3 

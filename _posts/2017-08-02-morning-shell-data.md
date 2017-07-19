@@ -7,6 +7,7 @@ time:   "Day 3: Morning"
 categories: main
 instructor: "Becca and Pati"
 materials: files/fakefile.txt
+material-type: ""
 ---
 
 

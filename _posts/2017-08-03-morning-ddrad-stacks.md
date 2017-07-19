@@ -7,6 +7,7 @@ time:   "Day 4: Morning"
 categories: main
 instructor: "Pati"
 materials: files/fakefile.txt
+material-type: ""
 ---
 
 WORKSHOP QUITO - DAY 4 
