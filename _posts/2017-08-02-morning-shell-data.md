@@ -155,10 +155,10 @@ Then, let's copy ALL of our raw data files into our raw-data folder with one com
 The asterisk is a wildcard that autocompletes anything that follows that text. 
 
 
-[Home](https://rdtarvin.github.io/RADseq_Quito_2017/){: .btn} [Next Lesson](https://rdtarvin.github.io/RADseq_Quito_2017/main/2017/08/02/afternoon-2bRAD-pyrad.html){: .btn}
+#[Home](https://rdtarvin.github.io/RADseq_Quito_2017/){: .btn} [Next Lesson](https://rdtarvin.github.io/RADseq_Quito_2017/main/2017/08/02/afternoon-2bRAD-pyrad.html){: .btn}
 
 
-
+<button name="Home" onclick="https://rdtarvin.github.io/RADseq_Quito_2017/">Click me</button>
 
 
 
