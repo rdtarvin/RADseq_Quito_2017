@@ -1,6 +1,6 @@
 ---
 layout: default
-order: 5
+order: 4
 title:  "2bRAD data in ipyrad"
 date:   2017-08-02
 time:   "Day 3: Afternoon"
@@ -21,6 +21,22 @@ Download data
 ```
 wget xxx
 ```
+
+Step 0. Use fastqc to check read quality.
+---
+
+download fastqc [https://www.bioinformatics.babraham.ac.uk/projects/fastqc/](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
+
+```
+wget https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.5.zip
+unzip fastqc_v0.11.5.zip
+fastqc -h
+fastqc *.gz
+```
+
+fastqc quickly produces a nice .html file that can be viewed in any browser
+Open the .html files, what can you see?
+
 
 Step 1. Demultiplex by barcode in ```2bRAD native pipeline```
 ---
