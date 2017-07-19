@@ -73,7 +73,7 @@ fastqc quickly produces a nice .html file that can be viewed in any browser.<br>
 Open the .html files, what can you see?
 
 “Q” goes from 20 to 40
-values are log-scaled: 20 = 1/100 errors; 30 = 1/1000 errors 
+values are log-scaled: 20 = 1/100 errors; 30 = 1/1000 errors
 
 
 Step 1. Demultiplex by barcode in **2bRAD native pipeline**

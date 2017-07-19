@@ -157,7 +157,7 @@ The asterisk is a wildcard that autocompletes anything that follows that text.
 
 <br><br>
 
-<button type="button" onclick="https://rdtarvin.github.io/RADseq_Quito_2017/">Home</button>
-<button type="button" onclick="https://rdtarvin.github.io/RADseq_Quito_2017/main/2017/08/02/afternoon-2bRAD-pyrad.html">Next Lesson</button>
+<button type="submit" onclick="https://rdtarvin.github.io/RADseq_Quito_2017/">Home</button>
+<button type="submit" onclick="https://rdtarvin.github.io/RADseq_Quito_2017/main/2017/08/02/afternoon-2bRAD-pyrad.html">Next Lesson</button>
 
 
