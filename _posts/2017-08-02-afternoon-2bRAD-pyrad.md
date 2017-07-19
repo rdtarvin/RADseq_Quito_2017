@@ -171,14 +171,14 @@ cat params-2brad-v1.txt
 ```
 
 Make a few changes to the params file.
-- [4] [sorted_fastq_path]: add the location of the sorted fastqs; you must end this parameter with *.gz
-- [7] [datatype]: change rad to gbs; gbs can take into account revcomp reads
-- [8] [restriction_overhang]: don't worry about this, it will be ignored since we are starting from sorted reads
-- [11] [mindepth_statistical]: lower to 5; data have been deduplicated (ipyrad assumes it has not been deduplicated)
-- [12] [mindepth_majrule]: lower to 2; data have been deduplicated (ipyrad assumes it has not been deduplicated)
-- [18] [max_alleles_consens]: keep at 2 for diploid
-- [21] [min_samples_locus]: change to 3; lower number means more missing data but more loci recovered
-- [27] [output_formats]: add ', u'; this will provide an output selecting single SNPs from each locus randomly
+- `[4] [sorted_fastq_path]`: add the location of the sorted fastqs; you must end this parameter with *.gz
+- `[7] [datatype]`: change rad to gbs; gbs can take into account revcomp reads
+- `[8] [restriction_overhang]`: don't worry about this, it will be ignored since we are starting from sorted reads
+- `[11] [mindepth_statistical]`: lower to 5; data have been deduplicated (ipyrad assumes it has not been deduplicated)
+- `[12] [mindepth_majrule]`: lower to 2; data have been deduplicated (ipyrad assumes it has not been deduplicated)
+- `[18] [max_alleles_consens]`: keep at 2 for diploid
+- `[21] [min_samples_locus]`: change to 3; lower number means more missing data but more loci recovered
+- `[27] [output_formats]`: add ', u'; this will provide an output selecting single SNPs from each locus randomly
 
 **TASK**.<br>
 <mark>Make these changes in the params file using the atom text editor.</mark>
