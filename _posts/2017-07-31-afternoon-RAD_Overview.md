@@ -30,3 +30,8 @@ Check out the [Jekyll docs][jekyll] for more info on how to get the most out of 
 https://docs.google.com/presentation/d/e/2PACX-1vSuzXz1p3ovM2qeZsR_PZwAgv3yFdMia1_G165WgipS_2mZbJr_sPbnptCd7abxQXSmhhHnnK0VJmCR/pub?start=false&loop=false&delayms=60000
 <a href="https://docs.google.com/presentation/d/e/2PACX-1vSuzXz1p3ovM2qeZsR_PZwAgv3yFdMia1_G165WgipS_2mZbJr_sPbnptCd7abxQXSmhhHnnK0VJmCR/pub?start=false&loop=false&delayms=60000"><img src="https://docs.google.com/presentation/d/e/2PACX-1vSuzXz1p3ovM2qeZsR_PZwAgv3yFdMia1_G165WgipS_2mZbJr_sPbnptCd7abxQXSmhhHnnK0VJmCR/pub?start=false&loop=false&delayms=60000" style="width: 500px; max-width: 100%; height: auto" title="Click for the larger version." /></a>
 
+
+<a href="https://docs.google.com/presentation/d/12SPwUGKv5LpYGqcBItQnX4E3m-beZF2yZP1G51g0c7s/"><img src="https://docs.google.com/presentation/d/12SPwUGKv5LpYGqcBItQnX4E3m-beZF2yZP1G51g0c7s/" style="width: 500px; max-width: 100%; height: auto" title="Click for the larger version." /></a>
+
+
+<a href="https://docs.google.com/presentation/d/e/2PACX-1vSuzXz1p3ovM2qeZsR_PZwAgv3yFdMia1_G165WgipS_2mZbJr_sPbnptCd7abxQXSmhhHnnK0VJmCR"><img src="https://docs.google.com/presentation/d/e/2PACX-1vSuzXz1p3ovM2qeZsR_PZwAgv3yFdMia1_G165WgipS_2mZbJr_sPbnptCd7abxQXSmhhHnnK0VJmCR" style="width: 500px; max-width: 100%; height: auto" title="Click for the larger version." /></a>
