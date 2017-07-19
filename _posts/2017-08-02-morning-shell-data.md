@@ -10,9 +10,8 @@ materials: files/fakefile.txt
 ---
 
 
-WORKSHOP QUITO - DAY 3 
-Getting started in shell
-===
+## WORKSHOP QUITO - DAY 3: Getting started in shell  <br>
+
 
 1. Getting started with github and downloading data
 ---
