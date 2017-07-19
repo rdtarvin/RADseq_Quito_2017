@@ -85,7 +85,7 @@ Be sure to review the [beautiful documentation](http://ipyrad.readthedocs.io/out
 One particularly handy feature is that they list the different parameters which are used in each step. 
 For example, in step one, we use these [parameters](http://ipyrad.readthedocs.io/outline.html#demultiplexing-loading-fastq-files):
 
-![[iPyrad docs](http://ipyrad.readthedocs.io/outline.html#demultiplexing-loading-fastq-files)](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/ipyrad_step1-variables.png?raw=true)
+<a href="http://ipyrad.readthedocs.io/outline.html#demultiplexing-loading-fastq-files">![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/ipyrad_step1-variables.png?raw=true)</a>
 
 In step two, we use these [parameters](http://ipyrad.readthedocs.io/outline.html#filtering-editing-reads):
 
