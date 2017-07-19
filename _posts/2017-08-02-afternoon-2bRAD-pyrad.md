@@ -263,7 +263,7 @@ import ipyrad.analysis as ipa
 rax = ipa.raxml(data='2brad-epi-july17.phy',name='2brad-epi-july17',workdir='analysis-raxml')
 ```
 
-Estimate a quartets-based tree in ```tetrad```, an ipython version of SVDquartets
+Estimate a quartets-based tree in ```tetrad```, an iPyrad version of [SVDquartets](http://evomics.org/learning/phylogenetics/svdquartets/)
 ```
 tetrad -s 2brad-epi-july17.snps.phy -l 2brad-epi-july17.snps.map -m all -n tetrad-test
 ```
