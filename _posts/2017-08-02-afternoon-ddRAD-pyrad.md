@@ -85,7 +85,7 @@ Be sure to review the [beautiful documentation](http://ipyrad.readthedocs.io/out
 One particularly handy feature is that they list the different parameters which are used in each step. 
 For example, in step one, we use these parameters:
 
-![http://ipyrad.readthedocs.io/outline.html#demultiplexing-loading-fastq-files](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/ipyrad_step1-variables.png?raw=true)
+![<img src="http://ipyrad.readthedocs.io/outline.html#demultiplexing-loading-fastq-files">](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/ipyrad_step1-variables.png?raw=true)
 
 In step two, we use these parameters:
 
@@ -94,14 +94,14 @@ In step two, we use these parameters:
 So, you can predict which parameters I have already altered for our data
 
 ### Step 1:
-- [0] [*assembly_name]: default, created when ipython is initiated
-- [1] [*project_dir]: keep in working directory, './'
-- [2] [raw_fastq_path]: /path/to/raw/prefix*.gz
-- [3] [barcodes_path]: /path/to/ddRAD-barcodes.txt
-- [4] [sorted_fastq_path]: not changed if filtering in python; we will change in a moment
-- [7] [*datatype]: pairddrad
-- [8] [restriction_overhang]: changed to our restriction overhangs CATCG,AATT (see figure below)
-- [15] [max_barcode_mismatch]: kept as default (0)
+- `[0] [*assembly_name]`: default, created when ipython is initiated
+- `[1] [*project_dir]`: keep in working directory, './'
+- `[2] [raw_fastq_path]`: /path/to/raw/prefix*.gz
+- `[3] [barcodes_path]`: /path/to/ddRAD-barcodes.txt
+- `[4] [sorted_fastq_path]`: not changed if filtering in python; we will change in a moment
+- `[7] [*datatype]`: pairddrad
+- `[8] [restriction_overhang]`: changed to our restriction overhangs CATCG,AATT (see figure below)
+- `[15] [max_barcode_mismatch]`: kept as default (0)
 
 ![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/ddRAD-read.png?raw=true)
 
