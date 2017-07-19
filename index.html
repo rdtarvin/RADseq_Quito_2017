@@ -39,8 +39,9 @@ title: {{ site.name }}
                  	<td> <a href="{{ post.materials }}">{{ post.material-type }}</a></td>
                  {% else %}
                  	<td align="left"> <a href="{{ site.baseurl }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a> </td>
+                 {% endif %}
                  <td> {{ post.instructor }} </td> 
-              </tr>   
+     </tr>   
     {% endfor %}
     </table>
 </div>
