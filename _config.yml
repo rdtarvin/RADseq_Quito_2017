@@ -1,1 +1,21 @@
+# Setup
+title:        2017 Quito RADseq workshop
+tagline:      sponsored by QCAZ @ PUCE and the Congreso Latinoamericano de Herpetologia <a href="www.latinherps.ec">www.latinherps.ec</a>
+baseurl:      ""
+url:          https://rdtarvin.github.io/RADseq_Quito_2017/
+paginate:     1
+theme: jekyll-theme-cayman
+
+# About/contact
+author:
+ name:       Becca Tarvin
+ url:        http://www.rebeccatarvin.com
+
+# Gems
+gems:
+  - jekyll-paginate
+
+#Others
+site:
+ 
 
