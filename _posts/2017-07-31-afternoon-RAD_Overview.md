@@ -28,3 +28,5 @@ Check out the [Jekyll docs][jekyll] for more info on how to get the most out of 
 
 
 https://docs.google.com/presentation/d/e/2PACX-1vSuzXz1p3ovM2qeZsR_PZwAgv3yFdMia1_G165WgipS_2mZbJr_sPbnptCd7abxQXSmhhHnnK0VJmCR/pub?start=false&loop=false&delayms=60000
+<a href="https://docs.google.com/presentation/d/e/2PACX-1vSuzXz1p3ovM2qeZsR_PZwAgv3yFdMia1_G165WgipS_2mZbJr_sPbnptCd7abxQXSmhhHnnK0VJmCR/pub?start=false&loop=false&delayms=60000"><img src="https://docs.google.com/presentation/d/e/2PACX-1vSuzXz1p3ovM2qeZsR_PZwAgv3yFdMia1_G165WgipS_2mZbJr_sPbnptCd7abxQXSmhhHnnK0VJmCR/pub?start=false&loop=false&delayms=60000"></a>
+
