@@ -116,8 +116,7 @@ Downloading your data through unix
 
 {% highlight bash %}
 wget <<web-address>>	
-ls 
-# are all your files in there? 
+ls # are all your files in there? 
 {% endhighlight %}
 
 Alternatively, you can copy the files (or "secure" copy <scp> from a protected computer/cluster) into your working directory: 
