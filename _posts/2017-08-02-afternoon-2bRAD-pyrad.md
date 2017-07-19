@@ -22,29 +22,29 @@ and then [iPyrad](http://ipyrad.readthedocs.io/index.html) for the rest of the a
 ![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/basic-assembly-steps.png?raw=true)
 
 Download data for this lesson
-```bash
+{% highlight bash %}
 wget xxx
-```
+{% endhighlight %}
 
 ## Looking at your data in the linux environment
 
 Your files will likely be zipped and with the file extension **.fq.gz** or **fastq.gz**. The first thing you want to do is look at the beginning of your files while they are still zipped with the following command: 
 
-```bash
+{% highlight bash %}
 gzless <<name of file>> #is this easy to see? 
 zhead <<name of file>> iterations with diff Ncols etc 
-```
+{% endhighlight %}
 
 Let's unzip one of the raw data files to look a bit more into it:
 
-```bash
+{% highlight bash %}
 gunzip <<filename.fq.gz>>
-```	
+{% endhighlight %}	
 Hmmm.... ok, now lets look at the full file:
 
-```bash
+{% highlight bash %}
 cat <<filename.fq>>
-```
+{% endhighlight %}
 	
 Uh oh.... let's quit before the computer crashes.... it's too much to look at! `Ctrl+C`
 
@@ -62,12 +62,12 @@ Step 0. Use fastqc to check read quality.
 
 download [fastqc](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
 
-```bash
+{% highlight bash %}
 wget https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.5.zip
 unzip fastqc_v0.11.5.zip
 fastqc -h
 fastqc *.gz
-```
+{% endhighlight %}
 
 fastqc quickly produces a nice .html file that can be viewed in any browser.<br>
 Open the .html files, what can you see?
@@ -80,20 +80,20 @@ Step 1. Demultiplex by barcode in **2bRAD native pipeline**
 ---
 
 Copy scripts to your computer via git
-```bash
+{% highlight bash %}
 git clone https://github.com/z0on/2bRAD_denovo.git
-```
+{% endhighlight %}
 
 Decompress data (only necessary for 2bRAD native, other pipelines can read .gz).
-```bash
+{% highlight bash %}
 gunzip *.gz
-```
+{% endhighlight %}
 
 Concatenate data that were run on multiple lanes, if necessary.
 - T36R59_I93_S27_L006_R1_001.fastq and T36R59_I93_S27_L007_R1_001.fastq
 - pattern "T36R59_I93_S27_L00" is common to both read files; program concatenates into one file with (.+) saved as file name
 
-```bash
+{% highlight bash %}
 /home/user1/2bRAD_denovo/ngs_concat.pl "(.+)_S27_L00"
 head T36R59_I93.fq
 
@@ -107,7 +107,7 @@ CNAACCCGTTGTCACGTCGCAAATAAGTCGGTGCGCTGGCAATCACAGAT
 A#AFFJJJFJJFFJJJJJJJJFFJJJJJFJFJFJFJJJJJJJJJJJJJJF
 @K00179:73:HJCTJBBXX:7:1101:28047:1209 1:N:0:TGTTAG
 GNGTCCCAGTGATCCGGAGCAGCGACGTCGCTGCTATCCATAGTGAAGAT
-```
+{% endhighlight %}
 
 Now that our read files are concatenated, we need to separate our reads by barcode. 
 To understand how this works, let's take a look at the structure of a 2bRAD read.<br>
@@ -116,17 +116,17 @@ To understand how this works, let's take a look at the structure of a 2bRAD read
 
 
 From the 2bRAD native pipeline we will use ```trim2bRAD_2barcodes_dedup2.pl``` script to separate by barcode. If your data are not from HiSeq4000 you would use ```trim2bRAD_2barcodes_dedup.pl```.
-```bash
+{% highlight bash %}
 # adaptor is the last 4 characters of the reads, here 'AGAT'
 /home1/02576/rdtarvin/2bRAD_denovo/trim2bRAD_2barcodes_dedup2.pl input=T36R59_I93.fq adaptor=AGAT sampleID=1
 ls
-```
+{% endhighlight %}
 output is 'tr0' format
 
 Step 2. Filter reads by quality with the **fastx_toolkit**
 ---
 
-```bash
+{% highlight bash %}
 fastq_quality_filter -h
 
 usage: fastq_quality_filter [-h] [-v] [-q N] [-p N] [-z] [-i INFILE] [-o OUTFILE]
@@ -150,7 +150,7 @@ for i in ls *.tr0; do fastq_quality_filter $i -q 20 -p 90 > ${i}_R1_.trim; done
 for i in *.trim; do gzip ${i}; done
 
 # a note: ipyrad expects '_R1_' in the file name, so I've added it to the file names in the command above
-```
+{% endhighlight %}
 
 Now we have our 2bRAD reads separated by barcode and trimmed (steps 1 & 2)!<br>
 
@@ -168,10 +168,10 @@ Steps 34567. Complete pipeline in **iPyrad**
 iPyrad is super easy, make sure you check out their extensive online documentation [here](http://ipyrad.readthedocs.io/index.html).
 
 First, initiate a new analysis.
-```bash
+{% highlight bash %}
 ipyrad -n 2brad-v1
 cat params-2brad-v1.txt
-```
+{% endhighlight %}
 
 Make a few changes to the params file.
 - `[4] [sorted_fastq_path]`: add the location of the sorted fastqs; you must end this parameter with *.gz
@@ -185,13 +185,13 @@ Make a few changes to the params file.
 
 **TASK**.<br>
 <mark>Make these changes in the params file using the atom text editor.</mark>
-```bash
+{% highlight bash %}
 atom params-2brad-v1.txt
-```
+{% endhighlight %}
 
 Your final params file should look like this:
 
-```bash
+{% highlight bash %}
 ------- ipyrad params file (v.0.7.1)--------------------------------------------
 2brad-v1		               ## [0] [assembly_name]: Assembly name. Used to name output directories for assembly steps
 ./                             ## [1] [project_dir]: Project dir (made in curdir if not present)
@@ -222,18 +222,19 @@ TGCAG,                         ## [8] [restriction_overhang]: Restriction overha
 0, 0, 0, 0                     ## [26] [trim_loci]: Trim locus edges (see docs) (R1>, <R1, R2>, <R2)
 p, s, v, u                        ## [27] [output_formats]: Output formats (see docs)
                                ## [28] [pop_assign_file]: Path to population assignment file
-```
+
+{% endhighlight %}
 
 
 Okay, it's that easy!! To run the pipeline, type the following command:
-```bash
+{% highlight bash %}
 ipyrad -p params-2brad-v1.txt -s 1234567
-```
+{% endhighlight %}
 
 To check on the results, you can open a new terminal window and type
-```bash
+{% highlight bash %}
 ipyrad -p params-2brad-v1.txt -r
-```
+{% endhighlight %}
 
 Let's look at the intermediate and final files created by iPyrad.
 
@@ -262,22 +263,22 @@ Step 7.
 ### Phylogenetics with iPyrad is easy!!
 
 Estimate a **RAxML** tree with concatenated loci
-```bash
+{% highlight bash %}
 conda install raxml -c bioconda
 python # start python
-```
-```python
+{% endhighlight %}
+{% highlight python %}
 import ipyrad.analysis as ipa
 rax = ipa.raxml(data='2brad-epi-july17.phy',name='2brad-epi-july17',workdir='analysis-raxml')
-```
+{% endhighlight %}
 
 Estimate a quartets-based tree in **tetrad**, an iPyrad version of [SVDquartets](http://evomics.org/learning/phylogenetics/svdquartets/)
-```bash
+{% highlight bash %}
 tetrad -s 2brad-epi-july17.snps.phy -l 2brad-epi-july17.snps.map -m all -n tetrad-test
-```
+{% endhighlight %}
 
 Estimate a tree based on a SNP matrix, using one SNP from each locus, in **[RAxML-ng]**(raxml snps - https://github.com/amkozlov/raxml-ng).
-```bash
+{% highlight bash %}
 cd
 wget https://github.com/amkozlov/raxml-ng/releases/download/0.4.0/raxml-ng_v0.4.0b_linux_x86_64.zip
 unzip raxml-ng_v0.4.0b_linux_x86_64.zip
@@ -288,7 +289,7 @@ unzip raxml-ng_v0.4.0b_linux_x86_64.zip
 .
 
 /home1/02576/rdtarvin/raxml-ng --msa ../2brad-epi-july17.u.snps.phy --model GTR+G+ASC_LEWIS --search
-```
+{% endhighlight %}
 Note that there are three options for ascertainment bias correction. 
 
 
@@ -322,19 +323,19 @@ This information can be found in the iPyrad documents [parameters page](http://i
 
 Great, so we can just redo Step 7 with new values for [21]. The basic command to use here is
 
-```bash
+{% highlight bash %}
 ipyrad -p params-2brad-v1.txt -b 2brad-v2-6min
 ## provide new, informative prefix
-```
+{% endhighlight %}
 
 Then you would need to open the new params file (`params-2brad-v2-6min.txt`) and manually edit parameter [21]. Below I have included code to automate this task.
 
-```bash
+{% highlight bash %}
 for i in 4 6 8 10 12; do ipyrad -p params-2brad-v1.txt -b 2brad-v2-${i}l; do sed -i s/".*\[21\].*"/"${i}$(printf '\t')$(printf '\t')$(printf '\t')$(printf '\t') \#\# \[21\] \[min_samples_locus\]: Min \# samples per locus for output"/ params-2brad-v2-${i}l.txt;  done
 # for i in 4 6 8 10 12; do ipyrad -p params-2brad-v2-${i}l.txt -s 7 -f; done
 
 ## use the '-f' option when you have already run that step, to force it to rerun
-```
+{% endhighlight %}
 **TASK**.<br>
 <mark>Choose one params file that is different from your neighbor and run it so we can compare results as a class.</mark>
 
