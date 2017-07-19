@@ -313,11 +313,13 @@ This information can be found in the iPyrad documents [parameters page](http://i
 ```Affected steps = 7. Example entries to params.txt```<br>
 
 Great, so we can just redo Step 7 with new values for [21]. The basic command to use here is
+
 ```
 # provide new, informative prefix
 ipyrad -p params-2brad-v1.txt -b 2brad-v2-6min
 ```
-Then you would need to open the file and manually edit parameter [21]. Below I have included code to automate this task.
+
+Then you would need to open the new params file (`params-2brad-v2-6min.txt`) and manually edit parameter [21]. Below I have included code to automate this task.
 
 ```bash
 for i in 4 6 8 10 12; do ipyrad -p params-2brad-v1.txt -b 2brad-v2-${i}l; do sed -i s/".*\[21\].*"/"${i}$(printf '\t')$(printf '\t')$(printf '\t')$(printf '\t') \#\# \[21\] \[min_samples_locus\]: Min \# samples per locus for output"/ params-2brad-v2-${i}l.txt;  done
