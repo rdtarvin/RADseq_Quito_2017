@@ -40,5 +40,5 @@ Stacks, iPyrad, dDocent, R, cd-hit-est, fastx-toolkit, and fastqc are all instal
 
 
 ---
-If you have a mac computer, everything we are doing today you can install at a later date to your root system. Windows users will always require a linux VM to run these programs. For Mac text editors, we recommend [Text Wrangler](http://www.barebones.com/products/textwrangler/), [Sublime Text](http://www.sublimetext.com/2), or [Atom](https://atom.io/). If you do want to use a text editor on Windows outside of the ubuntu environment, we recommend [Notepad++](https://notepad-plus-plus.org/).
+If you have a Mac computer, everything we are doing in this workshop you can install at a later date to your root system (Mac OS). Windows users will always require a linux VM to run these programs. For Mac OS text editors, we recommend [Text Wrangler](http://www.barebones.com/products/textwrangler/), [Sublime Text](http://www.sublimetext.com/2), or [Atom](https://atom.io/). If you do want to use a text editor on Windows outside of the ubuntu environment, we recommend [Notepad++](https://notepad-plus-plus.org/).
 
