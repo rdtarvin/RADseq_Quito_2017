@@ -85,7 +85,7 @@ Be sure to review the [beautiful documentation](http://ipyrad.readthedocs.io/out
 One particularly handy feature is that they list the different parameters which are used in each step. 
 For example, in step one, we use these parameters:
 
-![<img src="http://ipyrad.readthedocs.io/outline.html#demultiplexing-loading-fastq-files">](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/ipyrad_step1-variables.png?raw=true)
+![[iPyrad docs](http://ipyrad.readthedocs.io/outline.html#demultiplexing-loading-fastq-files)](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/ipyrad_step1-variables.png?raw=true)
 
 In step two, we use these parameters:
 
@@ -105,17 +105,19 @@ So, you can predict which parameters I have already altered for our data
 
 ![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/ddRAD-read.png?raw=true)
 
+iPyrad has a very nice explanation of how to identify the restriction overhang [here](http://ipyrad.readthedocs.io/parameters.html#restriction-overhang).
+
 ### Step 2:
 
-- [0] [*assembly_name]: no change
-- [1] [*project_dir]: no change
-- [3] [barcodes_path]: no change
-- [7] [*datatype]: no change
-- [8] [restriction_overhang]: no change
-- [9] [max_low_qual_bases]: keep default
-- [16] [filter_adapters]: change to 2 (filters by quality and by sequencing error)
-- [17] [filter_min_trim_len]: keep default
-- [xx] [edit_cut_sites]: feature not available yet
+- `[0] [*assembly_name]`: no change
+- `[1] [*project_dir]`: no change
+- `[3] [barcodes_path]`: no change
+- `[7] [*datatype]`: no change
+- `[8] [restriction_overhang]`: no change
+- `[9] [max_low_qual_bases]`: keep default
+- `[16] [filter_adapters]`: change to 2 (filters by quality and by sequencing error)
+- `[17] [filter_min_trim_len]`: keep default
+- `[xx] [edit_cut_sites]`: feature not available yet
 
 
 The barcode file has a very simple layout. See the one I used [here]().
