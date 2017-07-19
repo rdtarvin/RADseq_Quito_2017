@@ -1,6 +1,6 @@
 ---
 layout: default
-lesson: 3
+order: 3
 title:  "Shell, Git, & NGS data"
 date:   2017-08-02
 time:   "Day 3: Morning"

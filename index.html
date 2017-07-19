@@ -24,16 +24,15 @@ title: {{ site.name }}
   <h1>Syllabus and Materials</h1>
   <table>
             <tr>
-                <th>Lesson</th>
                 <th>Day</th> 
                 <th>Time</th>
                 <th>Topic</th>
                 <th>Materials (Download Link)</th>
                 <th>Instructor(s)</th>
             </tr>
-    {% for post in site.posts %}
+	{% assign sorted_posts = site.posts | sort:"order" %}
+    {% for post in sorted_posts %}
      <tr>
-                 <td> {{ post.lesson }} </t>
                  <td> {{ post.date | date: '%B %d, %Y' }} </t>
                  <td> {{ post.time }} </t>
                  <td align="left"> <a href="{{ site.baseurl }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a> </td>
