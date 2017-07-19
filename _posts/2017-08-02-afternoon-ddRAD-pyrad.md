@@ -83,11 +83,11 @@ p, s, v                        ## [27] [output_formats]: Output formats (see doc
 Be sure to review the [beautiful documentation](http://ipyrad.readthedocs.io/outline.html) for ipyrad.
 
 One particularly handy feature is that they list the different parameters which are used in each step. 
-For example, in step one, we use these parameters:
+For example, in step one, we use these [parameters](http://ipyrad.readthedocs.io/outline.html#demultiplexing-loading-fastq-files):
 
 ![[iPyrad docs](http://ipyrad.readthedocs.io/outline.html#demultiplexing-loading-fastq-files)](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/ipyrad_step1-variables.png?raw=true)
 
-In step two, we use these parameters:
+In step two, we use these [parameters](http://ipyrad.readthedocs.io/outline.html#filtering-editing-reads):
 
 ![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/ipyrad_step2-variables.png?raw=true)
 
@@ -105,7 +105,7 @@ So, you can predict which parameters I have already altered for our data
 
 ![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/ddRAD-read.png?raw=true)
 
-iPyrad has a very nice explanation of how to identify the restriction overhang [here](http://ipyrad.readthedocs.io/parameters.html#restriction-overhang).
+iPyrad has a very nice explanation of how to identify the restriction overhang sequences [here](http://ipyrad.readthedocs.io/parameters.html#restriction-overhang).
 
 ### Step 2:
 
@@ -120,7 +120,7 @@ iPyrad has a very nice explanation of how to identify the restriction overhang [
 - `[xx] [edit_cut_sites]`: feature not available yet
 
 
-The barcode file has a very simple layout. See the one I used [here]().
+The barcode file has a very simple layout. See the one I used [here](/files/ddRAD-ipyrad_barcodes.txt).
 
 I subsampled my original dataset to provide 1000000 reads per sample for you. Let's take a look.
 ```
