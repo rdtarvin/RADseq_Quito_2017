@@ -258,22 +258,22 @@ Step 7.
 
 ### Phylogenetics with iPyrad is easy!!
 
-Estimate a RAxML tree with concatenated loci
+Estimate a **RAxML** tree with concatenated loci
 ```bash
 conda install raxml -c bioconda
-python
+python # start python
 ```
 ```python
 import ipyrad.analysis as ipa
 rax = ipa.raxml(data='2brad-epi-july17.phy',name='2brad-epi-july17',workdir='analysis-raxml')
 ```
 
-Estimate a quartets-based tree in ```tetrad```, an iPyrad version of [SVDquartets](http://evomics.org/learning/phylogenetics/svdquartets/)
+Estimate a quartets-based tree in **tetrad**, an iPyrad version of [SVDquartets](http://evomics.org/learning/phylogenetics/svdquartets/)
 ```bash
 tetrad -s 2brad-epi-july17.snps.phy -l 2brad-epi-july17.snps.map -m all -n tetrad-test
 ```
 
-Estimate a tree based on a SNP matrix, using one SNP from each locus, in [RAxML-ng](raxml snps - https://github.com/amkozlov/raxml-ng).
+Estimate a tree based on a SNP matrix, using one SNP from each locus, in **[RAxML-ng]**(raxml snps - https://github.com/amkozlov/raxml-ng).
 ```bash
 cd
 wget https://github.com/amkozlov/raxml-ng/releases/download/0.4.0/raxml-ng_v0.4.0b_linux_x86_64.zip
