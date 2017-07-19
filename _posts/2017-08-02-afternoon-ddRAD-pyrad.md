@@ -69,7 +69,7 @@ p, s, v                        ## [27] [output_formats]: Output formats (see doc
 	- parameter [8]: CATCG,AATT
 	- parameter [16]: 2 (this is a strict filter)
 
-![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/ddRAD-read.png)
+![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/ddRAD-read.png?raw=true)
 
 
 
