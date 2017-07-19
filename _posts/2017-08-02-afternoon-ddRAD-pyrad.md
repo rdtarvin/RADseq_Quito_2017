@@ -13,7 +13,7 @@ materials: files/fakefile.txt
 ### ddRAD data in ipyrad: from filtered data to phylogenies
 
 These data are part of a pilot project comparing ddRAD and 2bRAD data (**do NOT distribute**).<br>
-There are twelve samples from three genera, with at least two individuals sampled per genus, and two technical replicates.<br>
+There are twelve samples from three genera, with at least two individuals sampled per genus, and two technical replicates.
 We will use [iPyrad](http://ipyrad.readthedocs.io/index.html) for all steps of this assembly.<br><br><br>
 
 ![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/basic-assembly-steps.png?raw=true)
@@ -42,10 +42,10 @@ Let's get you caught up - first make a new iPyrad params file and look at what's
 <details> 
   <summary>How do you initiate a new ipyrad analysis with name 'ddrad-v1'? </summary>
    <code>ipyrad -n ddrad-v1</code>
-</details>
+</details><br>
 
 ```
-## initialize new ipyrad analysis
+## print file to screen
 cat params-ddrad-v1.txt
 
 ------- ipyrad params file (v.0.7.1)--------------------------------------------
@@ -85,7 +85,7 @@ Be sure to review the [beautiful documentation](http://ipyrad.readthedocs.io/out
 One particularly handy feature is that they list the different parameters which are used in each step. 
 For example, in step one, we use these parameters:
 
-![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/ipyrad_step1-variables.png?raw=true)
+![http://ipyrad.readthedocs.io/outline.html#demultiplexing-loading-fastq-files](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/ipyrad_step1-variables.png?raw=true)
 
 In step two, we use these parameters:
 
