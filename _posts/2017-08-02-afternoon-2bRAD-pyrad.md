@@ -153,10 +153,10 @@ Now we have our 2bRAD reads separated by barcode and trimmed (steps 1 & 2)!<br>
 
 
 **TASK**.<br>
-```diff
-+The files need to be renamed for each species. 
-+Using the barcode file and the command `mv`, rename all .fq files accordingly.<br>
-```
+
+<mark>The files need to be renamed for each species. 
+Using the barcode file and the command `mv`, rename all .fq files accordingly.</mark><br>
+
 
 
 Steps 34567. Complete pipeline in **iPyrad**
