@@ -14,28 +14,27 @@ materials: files/fakefile.txt
 
 
 ## 1. Getting started with github and downloading data
----
 
 After a short lecture about why to work on git and what it is, we will get started on a quick unix/git exercise. 
 
-	mkdir
-	git installing
-	git clone <<url>>
-	cd to folder
-	ls
-	>>some other things.... 
+```
+mkdir workshop
+cd workshop
+git clone <<url>>
+cd <<git-folder>>
+ls
+>>some other things.... 
+```
 
+Names of files, folders, etc., when computing, can NEVER have spaces in them, and you should really limit characters. This will save you headaches down the line. If you will be computing a lot in your career, change your ways and have it as a default to NEVER use spaces in names. 
 
 Downloading your data through unix
 
-	mkdir Quito-workshop
-	cd Quito-workshop
-	
-Names of files, folders, etc., when computing, can NEVER have spaces in them, and you should really limit characters. This will save you headaches down the line. If you will be computing a lot in your career, change your ways and have it as a default to NEVER use spaces in names. 
+```	
+wget <<web-address>>	
+ls ##are all your files in there? 
+```
 
-	wget <<web-address>>	
-	ls ##are all your files in there? 
-	
 Alternatively, you can copy the files (or "secure" copy <scp> from a protected computer/cluster) into your working directory: 
 
 	scp filename.gz . ##this is done directly from your working directory. 
@@ -64,8 +63,7 @@ Then, let's copy ALL of our raw data files into our raw-data folder with one com
 The asterisk is a wildcard that autocompletes anything that follows that text. 
 
 
-2. Looking at your data in unix
----
+## 2. Looking at your data in unix
 
 
 **2.a.What do your files look like?**
@@ -94,8 +92,7 @@ We can write really simple unix code to fetch the number of sequences per file. 
 
 >BECCA, can you add other things to this previous section??? 
 
-3. Looking at your data in fastQC
-----
+## 3. Looking at your data in fastQC
 
 download fastqc https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
 
@@ -107,3 +104,10 @@ fastqc Stef_3_ATCACG_L008_R1_001.fastq
 ```
 
 fastqc quickly produces a nice .html file that can be viewed in any browser
+
+
+
+
+
+
+

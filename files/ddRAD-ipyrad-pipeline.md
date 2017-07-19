@@ -51,7 +51,14 @@ p, s, v                        ## [27] [output_formats]: Output formats (see doc
 
 
 * Data have been demultiplexed previously so that they can be subsampled evenly across samples. This step is rather easy in ipyrad, it just requires filling in options for parameters 1-3 rather than 4.
+* The parameters used to demultiplex were the following:
+	- parameter [2]: /path/to/raw/prefix*.gz
+	- parameter [3]: /path/to/ddRAD-barcodes.txt
+	- parameter [7]: pairddrad
+	- parameter [8]: CATCG,AATT
+	- parameter [16]: 2 (this is a strict filter)
 
+![](images/ddRAD-read.png?raw=true)
 
 
 
