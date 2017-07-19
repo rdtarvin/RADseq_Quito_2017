@@ -1,6 +1,6 @@
 ---
 layout: default
-order: 3
+order: 4
 title:  "Shell, Git, & NGS data"
 date:   2017-08-02
 time:   "Day 3: Morning"

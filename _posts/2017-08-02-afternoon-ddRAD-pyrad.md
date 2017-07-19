@@ -1,6 +1,6 @@
 ---
 layout: default
-order: 5
+order: 6
 title:  "ddRAD data in ipyrad"
 date:   2017-08-02
 time:   "Day 3: Afternoon"

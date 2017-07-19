@@ -1,6 +1,6 @@
 ---
 layout: default
-order: 6
+order: 7
 title:  "ddRAD data in stacks"
 date:   2017-08-03
 time:   "Day 4: Morning"
