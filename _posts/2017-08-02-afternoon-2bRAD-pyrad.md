@@ -44,10 +44,11 @@ cat <<filename.fq>>
 	
 Uh oh.... let's quit before the computer crashes.... it's too much to look at! `Ctrl+C`
 
+**Challenge**
 <details> 
-  <summary>**Challenge**: How would you count the number of reads in your file? </summary>
-   A1: As you can see from the previous "head" command, each sequence line begins with @, so we can just count how many times the argument '@D3' appears, or in essence, how many "lines" of sequence data we have. 
-   ```grep -c '@D3' Stef_3_ATCACG_L008_R1_001.fastq```
+  <summary>How would you count the number of reads in your file? </summary>
+   A1: As you can see from the previous "head" command, each sequence line begins with @, so we can just count how many times the argument '@D3' appears, or in essence, how many "lines" of sequence data we have.<br> 
+   <code>grep -c '@D3' Stef_3_ATCACG_L008_R1_001.fastq</code>
 </details> 
 
 
