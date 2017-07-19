@@ -178,7 +178,7 @@ Make a few changes to the params file.
 - [27] [output_formats]: add ', u'; this will provide an output selecting single SNPs from each locus randomly
 
 **TASK**.<br>
-Make these changes in the atom text editor.
+Make these changes in the params file using the atom text editor.
 ```
 atom params-2brad-v1.txt
 ```
@@ -250,8 +250,8 @@ Step 7.
 
 
 <br><br><br>
-Downstream phylogenetic analyses
-===
+## Downstream phylogenetic analyses
+
 
 ### Phylogenetics with iPyrad is easy!!
 
