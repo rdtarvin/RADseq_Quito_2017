@@ -4,7 +4,7 @@ tagline:      sponsored by QCAZ @ PUCE and the Congreso Latinoamericano de Herpe
 baseurl:      "/RADseq_Quito_2017"
 url:          https://rdtarvin.github.io/
 paginate:     1
-theme: jekyll-theme-cayman
+theme: minima
 
 # About/contact
 author:
