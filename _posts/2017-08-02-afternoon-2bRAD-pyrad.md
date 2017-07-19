@@ -14,8 +14,8 @@ materials: files/fakefile.txt
 
 
 These data are part of a pilot project comparing ddRAD and 2bRAD data (**do NOT distribute**).<br>
-There are twelve samples from three genera, with at least two individuals sampled per genus, and two technical replicates.<br>
-In this pipeline, we will use the [2bRAD native pipeline](https://github.com/z0on/2bRAD_denovo) for filtering and trimming, 
+There are twelve samples from three genera, with at least two individuals sampled per genus, and two technical replicates. 
+In this workflow, we will use the [2bRAD native pipeline](https://github.com/z0on/2bRAD_denovo) for filtering and trimming, 
 [fastx-toolkit](http://hannonlab.cshl.edu/fastx_toolkit/) for quality control, 
 and then [iPyrad](http://ipyrad.readthedocs.io/index.html) for the rest of the assembly.<br><br>
 
@@ -26,9 +26,9 @@ Download data for this lesson
 wget xxx
 ```
 
-## Looking at your data in unix
+## Looking at your data in the linux environment
 
-Your files will likely be zipped and with the termination **.fq.gz** or **fastq.gz**. The first thing you want to do is look at the beginning of your files while they are still zipped with the following command: 
+Your files will likely be zipped and with the file extension **.fq.gz** or **fastq.gz**. The first thing you want to do is look at the beginning of your files while they are still zipped with the following command: 
 
 ```
 gzless <<name of file>> #is this easy to see? 
@@ -52,7 +52,7 @@ Uh oh.... let's quit before the computer crashes.... it's too much to look at! `
 <details> 
   <summary>How would you count the number of reads in your file? </summary>
    As you can see from the previous "head" command, each sequence line begins with @, so we can just count how many times the argument '@D3' appears, or in essence, how many "lines" of sequence data we have.<br> 
-   <code>grep -c '@D3' Stef_3_ATCACG_L008_R1_001.fastq</code>
+   <code>grep -c '@' Stef_3_ATCACG_L008_R1_001.fastq</code>
 </details> 
 
 
@@ -151,9 +151,12 @@ for i in *.trim; do gzip ${i}; done
 
 Now we have our 2bRAD reads separated by barcode and trimmed (steps 1 & 2)!<br>
 
+
 **TASK**.<br>
-The files need to be renamed for each species. 
-Using the barcode file and the command `mv`, rename all .fq files accordingly.<br>
+```diff
++The files need to be renamed for each species. 
++Using the barcode file and the command `mv`, rename all .fq files accordingly.<br>
+```
 
 
 Steps 34567. Complete pipeline in **iPyrad**
