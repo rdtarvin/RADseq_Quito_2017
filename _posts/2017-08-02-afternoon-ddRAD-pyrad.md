@@ -14,7 +14,7 @@ ddRAD on ipyrad
 ===
 
 These data are part of a pilot project comparing ddRAD and 2bRAD data (**do NOT distribute**).<br>
-There are twelve samples from three genera, with at least two individuals sampled per genus.<br><br>
+There are twelve samples from three genera, with at least two individuals sampled per genus, and two technical replicates.<br><br>
 
 Download data
 ```
@@ -23,6 +23,7 @@ wget xxx
 
 Step 1. Demultiplex in ```ipyrad``` [done]
 ---
+
 ```
 ## initialize new ipyrad analysis
 ipyrad -n ddrad-v1
@@ -60,6 +61,32 @@ p, s, v                        ## [27] [output_formats]: Output formats (see doc
                                ## [28] [pop_assign_file]: Path to population assignment file
 ```
 
+Be sure to review the [beautiful documentation](http://ipyrad.readthedocs.io/outline.html) for ipyrad.
+
+One particularly handy feature is that they list the different parameters which are used in each step. 
+For example, in step one, we use these parameters:
+
+![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/ipyrad_step1-variables.png?raw=true)
+
+In step two, we use these parameters:
+
+![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/ipyrad_step2-variables.png?raw=true)
+
+So, you can predict which parameters I have already altered for our data
+
+Step 1:
+- [0] [*assembly_name]: default, created when ipython is initiated
+- [1] [*project_dir]: keep in working directory, './'
+- [2] [raw_fastq_path]: /path/to/raw/prefix*.gz
+- [3] [barcodes_path]: /path/to/ddRAD-barcodes.txt
+- [4] [sorted_fastq_path]: not changed if filtering in python; we will change in a moment
+- [7] [*datatype]: pairddrad
+- [8] [restriction_overhang]: changed to our restriction overhangs CATCG,AATT (see figure below)
+- [15] [max_barcode_mismatch]: kept as default (0)
+
+![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/ddRAD-read.png?raw=true)
+
+
 
 * Data have been demultiplexed previously so that they can be subsampled evenly across samples. This step is rather easy in ipyrad, it just requires filling in options for parameters 1-3 rather than 4.
 * The parameters used to demultiplex were the following:
@@ -69,9 +96,8 @@ p, s, v                        ## [27] [output_formats]: Output formats (see doc
 	- parameter [8]: CATCG,AATT
 	- parameter [16]: 2 (this is a strict filter)
 
-![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/ddRAD-read.png?raw=true)
 
-
+- [5] [assembly_method]: denovo
 
 
 ```
