@@ -36,7 +36,7 @@ title: {{ site.name }}
                  {% if post.material-type == 'ppt' %}
                  	<td> <a href="{{ post.materials }}">{{ post.title }}</a></td>
                  {% else %}
-                 	<td align="left"> <a href="{{ site.baseurl }}{{ post.url }}" title="{{ post.title }}">Lesson</a> </td>
+                 	<td align="left"> <a href="{{ site.baseurl }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a> </td>
                  {% endif %}
                  <td> {{ post.instructor }} </td> 
      </tr>   

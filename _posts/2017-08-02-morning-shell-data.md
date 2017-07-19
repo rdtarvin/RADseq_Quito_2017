@@ -1,9 +1,9 @@
 ---
 layout: default
-order: 4
+order: 5
 title:  "Shell, Git, & NGS data"
 date:   2017-08-02
-time:   "Day 3: Morning"
+time:   "Morning"
 categories: main
 instructor: "Becca and Pati"
 materials: files/fakefile.txt

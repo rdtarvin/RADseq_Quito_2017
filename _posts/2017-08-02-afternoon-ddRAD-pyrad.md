@@ -1,9 +1,9 @@
 ---
 layout: default
-order: 6
+order: 7
 title:  "ddRAD data in ipyrad"
 date:   2017-08-02
-time:   "Day 3: Afternoon"
+time:   "Afternoon"
 categories: main
 instructor: "Becca"
 materials: files/fakefile.txt
