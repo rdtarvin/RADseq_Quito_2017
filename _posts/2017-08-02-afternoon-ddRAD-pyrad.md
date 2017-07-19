@@ -23,6 +23,7 @@ wget xxx
 
 Step 1. Demultiplex in ```ipyrad``` [done]
 ---
+ Data have been demultiplexed previously so that they can be subsampled evenly across samples. This step is rather easy in ipyrad, it just requires filling in options for parameters 1-3 rather than 4.
 
 ```
 ## initialize new ipyrad analysis
@@ -74,7 +75,7 @@ In step two, we use these parameters:
 
 So, you can predict which parameters I have already altered for our data
 
-Step 1:
+### Step 1:
 - [0] [*assembly_name]: default, created when ipython is initiated
 - [1] [*project_dir]: keep in working directory, './'
 - [2] [raw_fastq_path]: /path/to/raw/prefix*.gz
@@ -88,7 +89,7 @@ Step 1:
 
 
 
-* Data have been demultiplexed previously so that they can be subsampled evenly across samples. This step is rather easy in ipyrad, it just requires filling in options for parameters 1-3 rather than 4.
+*
 * The parameters used to demultiplex were the following:
 	- parameter [2]: /path/to/raw/prefix*.gz
 	- parameter [3]: /path/to/ddRAD-barcodes.txt
