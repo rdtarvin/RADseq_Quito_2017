@@ -10,7 +10,7 @@ materials: files/fakefile.txt
 ---
 
 WORKSHOP QUITO - DAY 3 <br>
-ddRAD data on ipyrad
+ddRAD data in ipyrad: from filtered data to phylogenies
 ===
 
 These data are part of a pilot project comparing ddRAD and 2bRAD data (**do NOT distribute**).<br>
@@ -121,33 +121,21 @@ Can you find the location of the restriction overhangs?
 
 ### Steps 34567. We will complete the remaining steps of the pipeline together.
 
+Aside from the changes I made to the params file previously, make the following changes
+- [11] [mindepth_statistical]: lower to 5 to obtain more loci
+- [21] [max_SNPs_locus]: change to 4; lower number means more missing data but more loci recovered
+- [25] [trim_reads]: # introduce before or after?
+- [27] [output_formats]: add ', u'; this will provide an output selecting single SNPs from each locus randomly
 
 
-## changes
-## a few changes should be made
-# [3] include location of barcodes (not necessary, but was necessary for step 2)
-# [4] add the location of the sorted fastqs; you must end this parameter with *.gz
-# [7] change rad to pairddrad
-# [8] change to specific overhangs for your enzymes, in the right order
-# [11] lower to 5 to obtain more loci
-# [16] change to 2 for strict filtering by sequencing quality and adaptor sequence
-# [18] keep at 2 for diploid
-# [21] change to 4; lower number means more missing data but more loci recovered
-# [27] add ', u'; this will provide an output selecting single SNPs from each locus randomly
-
-
-
-## gotta trim the crappy bases
-
-
-#### finalized params file
+#### finalized params file should look like this
 ```
 ------- ipyrad params file (v.0.7.1)--------------------------------------------
-epi-dd-july14-subsample-trim15        ## [0] [assembly_name]: Assembly name. Used to name output directories for assembly steps
+ddrad-v1        ## [0] [assembly_name]: Assembly name. Used to name output directories for assembly steps
 ./                             ## [1] [project_dir]: Project dir (made in curdir if not present)
                                ## [2] [raw_fastq_path]: Location of raw non-demultiplexed fastq files
-/work/02576/rdtarvin/lonestar/ddRAD_raw_2017-04-25/epi_ddRAD_barcodes.txt                               ## [3] [barcodes_path]: Location of barcodes file
-/work/02576/rdtarvin/lonestar/ddRAD_raw_2017-04-25/subsample_1000000/epi-sub/*.gz                               ## [4] [sorted_fastq_path]: Location of demultiplexed/sorted fastq files
+/path/to/ddRAD-ipyrad_barcodes.txt        ## [3] [barcodes_path]: Location of barcodes file
+/path/to/ddRAD/reads/*.gz                 ## [4] [sorted_fastq_path]: Location of demultiplexed/sorted fastq files
 denovo                         ## [5] [assembly_method]: Assembly method (denovo, reference, denovo+reference, denovo-reference)
                                ## [6] [reference_sequence]: Location of reference sequence file
 pairddrad                            ## [7] [datatype]: Datatype (see docs): rad, gbs, ddrad, etc.
@@ -173,6 +161,52 @@ CATCG,AATT                         ## [8] [restriction_overhang]: Restriction ov
 p, s, v, u                        ## [27] [output_formats]: Output formats (see docs)
                                ## [28] [pop_assign_file]: Path to population assignment file
 ```
+
+Now you can run the pipeline, starting from Step 3, clustering! 
+```
+ipyrad -p params-ddrad-v1.txt -s 34567
+```
+
+Oops, what happened? Ipyrad requires that you run all steps, even if the data have been sorted. 
+When reads are already demultiplexed, steps 1 and 2 read in the data.
+
+```
+ipyrad -p params-ddrad-v1.txt -s 1234567
+```
+
+
+
+############### run svdquartets, tetrad
+
+
+>>> import ipyrad.analysis as ipa
+>>> import ipyparallel as ipp
+>>> import toytree
+
+tet = ipa.tetrad(name='epi-dd-july15',seqfile='epi-dd-july14-trimloci.snps.phy',mapfile='epi-dd-july14-trimloci.snps.map',nboots=100)
+loading seq array [12 taxa x 77966 bp]
+max unlinked SNPs per quartet (nloci): 5183
+
+# from command line
+tetrad -n epi-dd-july14-subsample-trim15 -s epi-dd-july14-subsample-trim15.snps.phy -b 100 -l epi-dd-july14-subsample-trim15.snps.map -o analysis-tetrad -c 24
+
+
+########### run raxml-ng
+
+/home1/02576/rdtarvin/raxml-ng --msa epi-dd-july14-subsample-lm15-s7_outfiles/epi-dd-july14-subsample-lm15-s7.u.snps.phy --model GTR+G+ASC_LEWIS --search
+((((Ebou_R0153:0.000001,Ebou_R0156:0.000001):0.000005,(((Ahah_R0090:0.000001,Ahah_R0089a:0.000001):0.000001,Ahah_R0089b:0.000001):0.000001,(Snub_R0158:0.000001,Snub_R0159:0.000001):0.000001):0.000001):0.000005,((Eant_T6859a:0.000001,Eant_T6859b:0.000001):0.000001,Eant_T6857:0.000001):0.000012):0.000008,Etri_T6842:0.000001,Etri_T6836:0.000001):0.0;
+
+
+but there is a ton of missing data, especially in Ameerega
+install: https://github.com/amkozlov/raxml-ng
+manual ('wiki'): https://github.com/amkozlov/raxml-ng/wiki/Input-data#analysis-type
+
+
+# good copy of results
+epi-dd-july14-subsample-trim15_outfiles/
+
+# with .u.snps.phy file
+epi-dd-july14-subsample-lm15-s7_outfiles
 
 
 

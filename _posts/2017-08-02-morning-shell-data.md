@@ -12,6 +12,9 @@ materials: files/fakefile.txt
 
 # WORKSHOP QUITO - DAY 3: Getting started in shell  <br>
 
+## 0. The linux environment
+`pwd`, relative versus absolute paths
+see http://ccbbatut.github.io/Biocomputing_Spring2016/introduction_to_unix/
 
 ## 1. Getting started with github and downloading data
 

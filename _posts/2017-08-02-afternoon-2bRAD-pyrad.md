@@ -10,7 +10,7 @@ materials: files/fakefile.txt
 ---
 
 WORKSHOP QUITO - DAY 3 
-2bRAD
+2bRAD pipeline, with phylogenetic analyses
 ===
 
 These data are part of a pilot project comparing ddRAD and 2bRAD data (**do NOT distribute**).<br>
@@ -116,27 +116,28 @@ Steps 34567. Complete pipeline in ```iPyrad```
 
 iPyrad is super easy, make sure you check out their extensive online documentation [here](http://ipyrad.readthedocs.io/index.html).
 
-* First, initiate a new analysis.
+First, initiate a new analysis.
 ```
 ipyrad -n 2brad-v1
 cat params-2brad-v1.txt
 ```
 
-* Make a few changes to the params file.
-	- parameter [4]: add the location of the sorted fastqs; you must end this parameter with *.gz
-	- parameter [7]: change rad to gbs; gbs can take into account revcomp reads
-	- parameter [8]: don't worry about this, it will be ignored since we are starting from sorted reads
-	- parameter [11]: lower to 5; data have been deduplicated (ipyrad assumes it has not been deduplicated)
-	- parameter [12]: lower to 2; data have been deduplicated (ipyrad assumes it has not been deduplicated)
-	- parameter [18]: keep at 2 for diploid
-	- parameter [21]: change to 3; lower number means more missing data but more loci recovered
-	- parameter [27]: add ', u'; this will provide an output selecting single SNPs from each locus randomly
+Make a few changes to the params file.
+- [4] [sorted_fastq_path]: add the location of the sorted fastqs; you must end this parameter with *.gz
+- [7] [datatype]: change rad to gbs; gbs can take into account revcomp reads
+- [8] [restriction_overhang]: don't worry about this, it will be ignored since we are starting from sorted reads
+- [11] [mindepth_statistical]: lower to 5; data have been deduplicated (ipyrad assumes it has not been deduplicated)
+- [12] [mindepth_majrule]: lower to 2; data have been deduplicated (ipyrad assumes it has not been deduplicated)
+- [18] [max_alleles_consens]: keep at 2 for diploid
+- [21] [min_samples_locus]: change to 3; lower number means more missing data but more loci recovered
+- [27] [output_formats]: add ', u'; this will provide an output selecting single SNPs from each locus randomly
 
 ```
 atom params-2brad-v1.txt
 ```
 
 Your final params file should look like this:
+
 ```
 ------- ipyrad params file (v.0.7.1)--------------------------------------------
 2brad-v1		               ## [0] [assembly_name]: Assembly name. Used to name output directories for assembly steps
@@ -170,17 +171,19 @@ p, s, v, u                        ## [27] [output_formats]: Output formats (see 
                                ## [28] [pop_assign_file]: Path to population assignment file
 ```
 
-* Okay, it's that easy!! To run the pipeline, type the following command:
+
+Okay, it's that easy!! To run the pipeline, type the following command:
 ```
 ipyrad -p params-2brad-v1.txt -s 1234567
 ```
 
-* To check on the results, you can open a new terminal window and type
+To check on the results, you can open a new terminal window and type
 ```
 ipyrad -p params-2brad-v1.txt -r
 ```
 
 Let's look at the intermediate and final files created by iPyrad.
+
 
 Step 3. 
 ---
@@ -194,39 +197,40 @@ Step 5.
 Step 6.
 ---
 
-Step 7 reiterations to test the effect of missing data on your inferences
+Step 7.
 ---
 
-```bash
-for i in 4 6 8 10 12; do ipyrad -p params-2brad-v1.txt -b 2brad-v2-${i}l; do sed -i s/".*\[21\].*"/"${i}$(printf '\t')$(printf '\t')$(printf '\t')$(printf '\t') \#\# \[21\] \[min_samples_locus\]: Min \# samples per locus for output"/ params-2brad-v2-${i}l.txt;  done
-for i in 4 6 8 10 12; do ipyrad -p params-2brad-v2-${i}l.txt -s 7 -f; done
-```
+
+
 <br><br><br>
 Downstream phylogenetic analyses
 ===
 
-Phylogenetics with iPyrad is easy!!
+### Phylogenetics with iPyrad is easy!!
 
-
-
+Estimate a RAxML tree with concatenated loci
 ```
-## raxml-concat
 conda install raxml -c bioconda
 python
 import ipyrad.analysis as ipa
 rax = ipa.raxml(data='2brad-epi-july17.phy',name='2brad-epi-july17',workdir='analysis-raxml')
+```
 
-## tetrad
+Estimate a quartets-based tree in ```tetrad```, an ipython version of SVDquartets
+```
 tetrad -s 2brad-epi-july17.snps.phy -l 2brad-epi-july17.snps.map -m all -n tetrad-test
+```
 
-## raxml snps - https://github.com/amkozlov/raxml-ng
+Estimate a tree based on a SNP matrix, using one SNP from each locus, in [RAxML-ng](raxml snps - https://github.com/amkozlov/raxml-ng).
+```
+cd
 wget https://github.com/amkozlov/raxml-ng/releases/download/0.4.0/raxml-ng_v0.4.0b_linux_x86_64.zip
 unzip raxml-ng_v0.4.0b_linux_x86_64.zip
 /home1/02576/rdtarvin/raxml-ng --msa ../2brad-epi-july17.u.snps.phy --model GTR+G+ASC_LEWIS --search
 ```
 
 
-This is the expected topology
+This is the expected topology. 
 
 ```
         ___________________sp1
@@ -241,7 +245,16 @@ This is the expected topology
                          
 ```
    
+Do we see the correct tree in our results?
 
 
+iPyrad offers the option to branch your pipeline with option -b. This allows you to access results from previous steps and use them in different downstream analyses.
+**Remember, never edit file names or paths that are created by iPyrad. It needs them to keep track of analyses.**
+One of the most convenient uses of this function is testing the effect of missing data on your downstream analyses.
+So, let's execute some reiterations of Step 7, the step that generates the final SNP matrices.
 
+```bash
+for i in 4 6 8 10 12; do ipyrad -p params-2brad-v1.txt -b 2brad-v2-${i}l; do sed -i s/".*\[21\].*"/"${i}$(printf '\t')$(printf '\t')$(printf '\t')$(printf '\t') \#\# \[21\] \[min_samples_locus\]: Min \# samples per locus for output"/ params-2brad-v2-${i}l.txt;  done
+for i in 4 6 8 10 12; do ipyrad -p params-2brad-v2-${i}l.txt -s 7 -f; done
+```
 
