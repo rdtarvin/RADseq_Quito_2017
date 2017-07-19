@@ -7,6 +7,6 @@ time:   "Morning"
 categories: main
 instructor: "Becca and Pati"
 materials: ""
-material-type: ""
+material-type: "no-link"
 ---
 
