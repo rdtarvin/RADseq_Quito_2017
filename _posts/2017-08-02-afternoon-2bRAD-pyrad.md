@@ -315,8 +315,8 @@ This information can be found in the iPyrad documents [parameters page](http://i
 Great, so we can just redo Step 7 with new values for [21]. The basic command to use here is
 
 ```
-# provide new, informative prefix
 ipyrad -p params-2brad-v1.txt -b 2brad-v2-6min
+## provide new, informative prefix
 ```
 
 Then you would need to open the new params file (`params-2brad-v2-6min.txt`) and manually edit parameter [21]. Below I have included code to automate this task.
@@ -326,7 +326,6 @@ for i in 4 6 8 10 12; do ipyrad -p params-2brad-v1.txt -b 2brad-v2-${i}l; do sed
 # for i in 4 6 8 10 12; do ipyrad -p params-2brad-v2-${i}l.txt -s 7 -f; done
 
 ## use the '-f' option when you have already run that step, to force it to rerun
-## provide simple alternative script
 ```
 Choose one to run that is different from your neighbor so we can compare results as a class.
 
