@@ -38,9 +38,14 @@ Data have been demultiplexed previously so that they can be subsampled evenly ac
 This step is rather easy in ipyrad, it just requires filling in options for parameters 1-3 rather than 4.
 Let's get you caught up - first make a new iPyrad params file and look at what's in it.
 
+**Challenge**
+<details> 
+  <summary>How do you initiate a new ipyrad analysis with name 'ddrad-v1'? </summary>
+   <code>ipyrad -n ddrad-v1</code>
+</details>
+
 ```
 ## initialize new ipyrad analysis
-ipyrad -n ddrad-v1
 cat params-ddrad-v1.txt
 
 ------- ipyrad params file (v.0.7.1)--------------------------------------------

@@ -319,7 +319,7 @@ This information can be found in the iPyrad documents [parameters page](http://i
 
 Great, so we can just redo Step 7 with new values for [21]. The basic command to use here is
 
-```
+```bash
 ipyrad -p params-2brad-v1.txt -b 2brad-v2-6min
 ## provide new, informative prefix
 ```
