@@ -120,7 +120,7 @@ iPyrad has a very nice explanation of how to identify the restriction overhang s
 - `[xx] [edit_cut_sites]`: feature not available yet
 
 
-The barcode file has a very simple layout. See the one I used [here](/files/ddRAD-ipyrad_barcodes.txt).
+The barcode file has a very simple layout. See the one I used [here](RADseq_Quito_2017/files/ddRAD-ipyrad_barcodes.txt).
 
 I subsampled my original dataset to provide 1000000 reads per sample for you. Let's take a look.
 ```
