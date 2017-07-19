@@ -138,7 +138,7 @@ Move can also be used for a quick "renaming" of a single file.
 mv filename newfilename
 ```
 
-Let's say we'd like to rename our downloaded data files to reove unnecesary info from the name. 
+Let's say we'd like to rename our downloaded data files to remove unnecesary info from the name. 
 
 ```bash
 mv <> <>
@@ -157,11 +157,7 @@ The asterisk is a wildcard that autocompletes anything that follows that text.
 
 <br><br>
 
-<button name="home" onclick="https://rdtarvin.github.io/RADseq_Quito_2017/">Home</button>
-<button name="next" onclick="https://rdtarvin.github.io/RADseq_Quito_2017/main/2017/08/02/afternoon-2bRAD-pyrad.html">Next Lesson</button>
-
-{% include button.html url="https://rdtarvin.github.io/RADseq_Quito_2017/" %}
-
-
+<button type="button" onclick="https://rdtarvin.github.io/RADseq_Quito_2017/">Home</button>
+<button type="button" onclick="https://rdtarvin.github.io/RADseq_Quito_2017/main/2017/08/02/afternoon-2bRAD-pyrad.html">Next Lesson</button>
 
 
