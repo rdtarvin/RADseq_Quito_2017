@@ -160,7 +160,7 @@ The asterisk is a wildcard that autocompletes anything that follows that text.
 <button name="home" onclick="https://rdtarvin.github.io/RADseq_Quito_2017/">Home</button>
 <button name="next" onclick="https://rdtarvin.github.io/RADseq_Quito_2017/main/2017/08/02/afternoon-2bRAD-pyrad.html">Next Lesson</button>
 
-
+{% include button.html url="https://rdtarvin.github.io/RADseq_Quito_2017/" %}
 
 
 
