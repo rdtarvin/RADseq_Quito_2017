@@ -152,9 +152,9 @@ for i in *.trim; do gzip ${i}; done
 Now we have our 2bRAD reads separated by barcode and trimmed (steps 1 & 2)!<br>
 
 
-<mark>**TASK**.<br>
+**TASK**.<br>
 
-The files need to be renamed for each species. 
+<mark>The files need to be renamed for each species. 
 Using the barcode file and the command `mv`, rename all .fq files accordingly.</mark><br>
 
 
