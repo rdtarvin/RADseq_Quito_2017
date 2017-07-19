@@ -26,7 +26,6 @@ title: {{ site.name }}
                 <th>Day</th> 
                 <th>Time</th>
                 <th>Topic</th>
-                <th>Materials (ppt)</th>
                 <th>Instructor(s)</th>
             </tr>
 	{% assign sorted_posts = site.posts | sort:"order" %}
@@ -34,9 +33,8 @@ title: {{ site.name }}
      <tr>
                  <td> {{ post.date | date: '%B %d, %Y' }} </t>
                  <td> {{ post.time }} </t>
-                 <td> {{ post.title }}</t>
                  {% if post.material-type == 'ppt' %}
-                 	<td> <a href="{{ post.materials }}">Lesson</a></td>
+                 	<td> <a href="{{ post.materials }}">{{ post.title }}</a></td>
                  {% else %}
                  	<td align="left"> <a href="{{ site.baseurl }}{{ post.url }}" title="{{ post.title }}">Lesson</a> </td>
                  {% endif %}
