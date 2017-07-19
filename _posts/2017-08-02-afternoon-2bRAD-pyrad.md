@@ -327,7 +327,8 @@ for i in 4 6 8 10 12; do ipyrad -p params-2brad-v1.txt -b 2brad-v2-${i}l; do sed
 
 ## use the '-f' option when you have already run that step, to force it to rerun
 ```
-Choose one to run that is different from your neighbor so we can compare results as a class.
+**TASK**.<br>
+Choose one params file that is different from your neighbor and run it so we can compare results as a class.
 
 **TASK**.<br>
 It's a good idea to run iPyrad using both a range of [21] missing data (as above)

@@ -179,6 +179,29 @@ When reads are already demultiplexed, steps 1 and 2 read in the data.
 ipyrad -p params-ddrad-v1.txt -s 1234567
 ```
 
+To check on the results, you can open a new terminal window and type
+```
+ipyrad -p params-2brad-v1.txt -r
+```
+
+Let's look at the intermediate and final files created by iPyrad.
+
+
+Step 3. 
+---
+
+Step 4.
+---
+
+Step 5.
+---
+
+Step 6.
+---
+
+Step 7.
+---
+
 
 <br><br><br>
 Downstream phylogenetic analyses
