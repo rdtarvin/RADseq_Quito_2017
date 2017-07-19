@@ -83,13 +83,13 @@ p, s, v                        ## [27] [output_formats]: Output formats (see doc
 Be sure to review the [beautiful documentation](http://ipyrad.readthedocs.io/outline.html) for ipyrad.
 
 One particularly handy feature is that they list the different parameters which are used in each step. 
-For example, in step one, we use these [parameters](http://ipyrad.readthedocs.io/outline.html#demultiplexing-loading-fastq-files):
+For example, in step one, we use these parameters:
 
 <a href="http://ipyrad.readthedocs.io/outline.html#demultiplexing-loading-fastq-files">![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/ipyrad_step1-variables.png?raw=true)</a>
 
-In step two, we use these [parameters](http://ipyrad.readthedocs.io/outline.html#filtering-editing-reads):
+In step two, we use these parameters:
 
-![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/ipyrad_step2-variables.png?raw=true)
+<a href="http://ipyrad.readthedocs.io/outline.html#filtering-editing-reads">![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/ipyrad_step2-variables.png?raw=true)</a>
 
 So, you can predict which parameters I have already altered for our data
 
