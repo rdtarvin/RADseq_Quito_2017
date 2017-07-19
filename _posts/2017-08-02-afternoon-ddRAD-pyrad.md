@@ -134,10 +134,10 @@ Can you find the location of the restriction overhangs?
 ### Steps 34567. We will complete the remaining steps of the pipeline together.
 
 Aside from the changes I made to the params file previously, make the following changes
-- [11] [mindepth_statistical]: lower to 5 to obtain more loci
-- [21] [max_SNPs_locus]: change to 4; lower number means more missing data but more loci recovered
-- [25] [trim_reads]: # introduce before or after?
-- [27] [output_formats]: add ', u'; this will provide an output selecting single SNPs from each locus randomly
+- `[11] [mindepth_statistical]`: lower to 5 to obtain more loci
+- `[21] [max_SNPs_locus]`: change to 4; lower number means more missing data but more loci recovered
+- `[25] [trim_reads]`: # introduce before or after?
+- `[27] [output_formats]`: add ', u'; this will provide an output selecting single SNPs from each locus randomly
 
 
 #### finalized params file should look like this
