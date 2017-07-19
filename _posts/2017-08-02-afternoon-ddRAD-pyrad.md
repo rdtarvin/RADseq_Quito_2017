@@ -16,7 +16,7 @@ ddRAD data in ipyrad: from filtered data to phylogenies
 These data are part of a pilot project comparing ddRAD and 2bRAD data (**do NOT distribute**).<br>
 There are twelve samples from three genera, with at least two individuals sampled per genus, and two technical replicates.<br><br>
 
-Download data
+Download data for this lesson
 ```
 wget xxx
 ```

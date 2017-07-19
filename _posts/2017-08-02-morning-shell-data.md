@@ -66,47 +66,6 @@ Then, let's copy ALL of our raw data files into our raw-data folder with one com
 The asterisk is a wildcard that autocompletes anything that follows that text. 
 
 
-## 2. Looking at your data in unix
-
-
-**2.a.What do your files look like?**
-
-Your files will likely be zipped and with the termination **.fq.gz** or **fastq.gz**. The first thing you want to do is look at the beginning of your files while they are still zipped with the following command: 
-
-	gzless <<name of file>> #is this easy to see? 
-	zhead <<name of file>> iterations with diff Ncols etc 
-
-Let's unzip one of the raw data files to look a bit more into it:
-
-	gunzip <<filename.fq.gz>>
-	
-Hmmm.... ok, now lets look at the full file:
-
-	cat <<filename.fq>>
-	
-Uh oh.... let's quit before the computer crashes.... it's too much to look at! Ctrl+C
-		
-
-how many reads do you have?
-
-We can write really simple unix code to fetch the number of sequences per file. As you can see from the previous "head" command, each sequence line begins with @, so we can just count how many times the argument '@D3' appears, or in essence, how many "lines" of sequence data we have. 
-
-	grep -c '@D3' Stef_3_ATCACG_L008_R1_001.fastq
-
->BECCA, can you add other things to this previous section??? 
-
-## 3. Looking at your data in fastQC
-
-download fastqc https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
-
-```
-wget https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.5.zip
-unzip fastqc_v0.11.5.zip
-fastqc -h
-fastqc Stef_3_ATCACG_L008_R1_001.fastq
-```
-
-fastqc quickly produces a nice .html file that can be viewed in any browser
 
 
 
