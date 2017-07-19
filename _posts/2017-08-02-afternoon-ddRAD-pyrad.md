@@ -120,7 +120,7 @@ iPyrad has a very nice explanation of how to identify the restriction overhang s
 - `[xx] [edit_cut_sites]`: feature not available yet
 
 
-The barcode file has a very simple layout. See the one I used [here](<a href="{{ site.baseurl }}/ddRAD-ipyrad_barcodes.txt">).
+The barcode file has a very simple layout. See the one I used [here](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/files/ddRAD-ipyrad_barcodes.txt).
 
 I subsampled my original dataset to provide 1000000 reads per sample for you. Let's take a look.
 ```
@@ -211,11 +211,11 @@ Step 7.
 
 
 <br><br><br>
-Downstream phylogenetic analyses
-===
+## Downstream phylogenetic analyses
 
 
-Estimate a RAxML tree with concatenated loci
+
+Estimate a **RAxML** tree with concatenated loci
 ```
 # conda install raxml -c bioconda # already done
 python
@@ -226,7 +226,7 @@ rax = ipa.raxml(data='ddrad-v1.phy',name='ddrad-v1',workdir='analysis-raxml')
 /home1/02576/rdtarvin/raxml-ng --msa epi-dd-july14-subsample-lm15-s7_outfiles/epi-dd-july14-subsample-lm15-s7.u.snps.phy --model GTR+G+ASC_LEWIS --search
 ```
 
-Estimate a quartets-based tree in ```tetrad```, an ipython version of SVDquartets
+Estimate a quartets-based tree in **tetrad**, an ipython version of [SVDquartets](http://evomics.org/learning/phylogenetics/svdquartets/)
 
 ```
 >>> import ipyrad.analysis as ipa
