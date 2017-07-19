@@ -10,10 +10,10 @@ materials: files/fakefile.txt
 ---
 
 
-## WORKSHOP QUITO - DAY 3: Getting started in shell  <br>
+# WORKSHOP QUITO - DAY 3: Getting started in shell  <br>
 
 
-1. Getting started with github and downloading data
+## 1. Getting started with github and downloading data
 ---
 
 After a short lecture about why to work on git and what it is, we will get started on a quick unix/git exercise. 
