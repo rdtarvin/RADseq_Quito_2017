@@ -158,11 +158,4 @@ The asterisk is a wildcard that autocompletes anything that follows that text.
 <br><br>
 
 <a href="https://rdtarvin.github.io/RADseq_Quito_2017/"><button>Home</button></a>
-<a href="https://rdtarvin.github.io/RADseq_Quito_2017/main/2017/08/02/afternoon-2bRAD-pyrad.html"><button type="submit" onclick="https://rdtarvin.github.io/RADseq_Quito_2017/main/2017/08/02/afternoon-2bRAD-pyrad.html">Next Lesson</button>
-
-<form method="get" action="https://rdtarvin.github.io/RADseq_Quito_2017/">
-    <button type="submit">Home</button>
-</form>
-<form method="get" action="https://rdtarvin.github.io/RADseq_Quito_2017/main/2017/08/02/afternoon-2bRAD-pyrad.html">
-    <button type="submit">Next Lesson</button>
-</form>
+<a href="https://rdtarvin.github.io/RADseq_Quito_2017/main/2017/08/02/afternoon-2bRAD-pyrad.html"><button type="submit" onclick="https://rdtarvin.github.io/RADseq_Quito_2017/main/2017/08/02/afternoon-2bRAD-pyrad.html">Next Lesson</button></a>
