@@ -275,6 +275,7 @@ but there is a ton of missing data, especially in sp1
 
 
 
+<a href="https://rdtarvin.github.io/RADseq_Quito_2017/"><button>Home</button></a>    <a href="https://rdtarvin.github.io/RADseq_Quito_2017/main/2017/08/03/morning-ddrad-stacks.html"><button>Next Lesson</button></a>
 
 
 

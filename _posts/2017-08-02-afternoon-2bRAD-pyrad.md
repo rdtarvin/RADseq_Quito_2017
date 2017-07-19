@@ -350,4 +350,5 @@ and of [14] clustering threshold. Choose one value lower and one value higher th
 
 
 
+<a href="https://rdtarvin.github.io/RADseq_Quito_2017/"><button>Home</button></a>    <a href="https://rdtarvin.github.io/RADseq_Quito_2017/main/2017/08/02/afternoon-ddRAD-pyrad.html"><button>Next Lesson</button></a>
 
