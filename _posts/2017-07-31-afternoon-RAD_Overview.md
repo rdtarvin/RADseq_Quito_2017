@@ -1,6 +1,6 @@
 ---
 layout: default
-order: 2
+order: 3
 title:  "RADseq Wetlab Overview"
 date:   2017-07-31
 time:   "Afternoon"

@@ -1,6 +1,6 @@
 ---
 layout: default
-order: 6
+order: 8
 title:  "2bRAD data in ipyrad"
 date:   2017-08-02
 time:   "Afternoon"
