@@ -5,7 +5,7 @@ title: {{ site.name }}
 
 
 
-Virtual Box Installation and Setup Instructions
+Virtual Machine Installation and Setup Instructions
 ==
 
 So we are all working in the same computing environment, please follow these instructions:
