@@ -21,7 +21,7 @@ So we are all working in the same computing environment, please follow these ins
 4. When Virtual Machine program opens, select "UT Biocomputing RadSEQ" and click Import. (This takes >1hr). The login user and password are "user1" and "password", respectively.
 5. Click Settings, then Shared Folders. Click on the New Folder symbol, click "Auto-mount" and add a path to your Applications/Programs folder and then to your Documents (and to anything else you may want to access from the VM).
 6. Start the VM by clicking the green arrow. Once the machine loads, click the blue deer in the upper left corner, then click the light switch icon ("All Settings"). Scroll down and click Users and Groups, then Manage Groups. Scroll down and select vboxsf and then click Properties. Make sure the box for "Biocomputing User 1" is checked. Click OK, enter your password ("password"), and then shut down the machine and restart it.
-7. click on the black box in the upper left corner ("Terminal Emulator"). Once the program opens, install the Atom text editor by copying the following text into the terminal.
+7. Click on the black box in the upper left corner ("Terminal Emulator"). Once the program opens, install the Atom text editor by copying the following text into the terminal.
 ```
 sudo add-apt-repository ppa:webupd8team/atom
 sudo apt update
