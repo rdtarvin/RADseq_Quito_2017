@@ -22,7 +22,8 @@ We will use [iPyrad](http://ipyrad.readthedocs.io/index.html) for all steps of t
 
 Download data for this lesson
 ```
-wget -O ddRAD.zip 'https://www.dropbox.com/sh/sxejsfx7pbt2hsc/AAAgm7eoAHqK3ABVrREu5ZIsa?dl=1'
+wget -O ddRAD.zip 'https://www.dropbox.com/sh/wk1wy5priedykw0/AACSeOXIWvliNvQ2HbC-RUF9a?dl=1'
+
 ```
 
 ### Step 0. Use fastqc to check read quality.
