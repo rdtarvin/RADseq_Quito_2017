@@ -98,63 +98,6 @@ pipe (<code>&#124;</code>) | redirects stdout to become stdin for next command
 
 <br>
 
-## 1. Getting started with github and downloading data
-
-After a short lecture about why to work on git and what it is, we will get started on a quick unix/git exercise. 
-
-```bash
-mkdir workshop
-cd workshop
-git clone <<url>>
-cd <<git-folder>>
-ls
->>some other things.... 
-```
-
-Names of files, folders, etc., when computing, can NEVER have spaces in them, and you should really limit characters. This will save you headaches down the line. If you will be computing a lot in your career, change your ways and have it as a default to NEVER use spaces in names. 
-
-Downloading your data through unix
-
-```bash
-wget <<web-address>>	
-ls # are all your files in there? 
-```
-
-Alternatively, you can copy the files (or "secure" copy <scp> from a protected computer/cluster) into your working directory: 
-
-```bash
-scp filename.gz . ##this is done directly from your working directory. 
-```
-
-Copy and move commands are always done in the following way: 
-
-```bash
-cp <THIS_FILE> <INTO_THIS_PLACE>
-mv <THIS_THING> <THERE>
-```
-
-Move can also be used for a quick "renaming" of a single file. 
-
-```bash
-mv filename newfilename
-```
-
-Let's say we'd like to rename our downloaded data files to remove unnecesary info from the name. 
-
-```bash
-mv <> <>
-```
-
-This way we are keeping important info (pool number, barcode, read) and eliminating extra things (lane, something else... haha). 
-
-We've decided that the way we organized our raw data is not appropriate for all we'll do. So first, let's make some folders: one for raw data, one for stacks, one for ipyrad, and one for (**?? whichever the other program is**). Remember we hate spaces!! 
-
-Then, let's copy ALL of our raw data files into our raw-data folder with one command: 
-
-```bash
-mv Stef* raw-data
-```
-The asterisk is a wildcard that autocompletes anything that follows that text. 
 
 <br><br>
 

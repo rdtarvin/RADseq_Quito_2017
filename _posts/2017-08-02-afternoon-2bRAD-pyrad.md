@@ -24,21 +24,26 @@ and then [iPyrad](http://ipyrad.readthedocs.io/index.html) for the rest of the a
 
 Download data for this lesson
 ```bash
+cd # go to root of file system
+mkdir workshop 
+cd workshop
 wget -O 2bRAD.zip 'https://www.dropbox.com/sh/z2l0w2dq89oo55i/AAD_29lBe0MvLYLdxDB4Vm-2a?dl=1'
 # wget is a way to transfer files using a url from the command line
 # -O option makes sure the download doesn't have a wonky name like AAD_29lBe0MvLYLdxDB4Vm-2a
 # scp (secure copy) is a way to transfer between linux clusters
 ```
 
-
 ## Looking at your data in the linux environment
 
 Your files will likely be zipped and with the file extension **.fq.gz** or **fastq.gz**. The first thing you want to do is look at the beginning of your files while they are still zipped with the following command: 
 
 ```bash
+ls # list all files in current directory
+ls .. # list all files in one directory above
 unzip 2bRAD.zip
-gzless <<name of file>> #is this easy to see? 
-zhead <<name of file>> #iterations with diff Ncols etc 
+rm 2bRAD.zip # IMPORTANT: removing files from the command line is permanent!!!! There is no trash
+zless T36R59_I93_S27_L006_R1_sub12M.fastq.gz #is this easy to see? 
+zcat T36R59_I93_S27_L006_R1_sub12M.fastq.gz | head #iterations with diff Ncols etc 
 ```
 
 Let's unzip one of the raw data files to look a bit more into it:
@@ -46,6 +51,8 @@ Let's unzip one of the raw data files to look a bit more into it:
 ```bash
 gunzip <<filename.fq.gz>>
 ```	
+
+
 Hmmm.... ok, now lets look at the full file:
 
 ```bash
