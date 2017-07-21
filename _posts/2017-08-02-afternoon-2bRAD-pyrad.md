@@ -74,8 +74,8 @@ Ok, now lets look at the full file:
 cat T36R59_I93_S27_L006_R1_sub12M.fastq
 ```
 
-Uh oh.... let's quit before the computer crashes.... it's too much to look at! `Ctrl+C`<br>
-Here are some alternative ways to view parts of a file
+Uh oh.... let's quit before the computer crashes.... it's too much to look at! `Ctrl+C`<br><br>
+Here are some alternative ways to view parts of a file.
 
 ```bash
 # print the first 10 lines of a file
@@ -115,6 +115,13 @@ grep 'TTTTT' T36R59_I93_S27_L006_R1_sub12M.fastq >> AAAAA
 # print lines with aaaaa in them
 grep 'aaaaa' T36R59_I93_S27_L006_R1_sub12M.fastq 
 # why doesn't this produce any output?
+
+# count number of uniq sequences in file with pattern 'AGAT'
+grep 'AGAT' T36R59_I93_S27_L006_R1_sub12M.fastq | sort | uniq | wc -l
+
+# print only the second field of the sequencer 
+head T36R59_I93_S27_L006_R1_sub12M.fastq | grep '@' | awk -F':' '{ print $2 }' 
+# awk is a very useful program for parsing files; here ':' is the delimiter, $2 is the column location
 ```
 
 
