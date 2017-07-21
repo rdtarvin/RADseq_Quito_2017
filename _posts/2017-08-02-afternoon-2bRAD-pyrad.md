@@ -16,11 +16,6 @@ material-type: ""
 
 These data are part of a pilot project comparing ddRAD and 2bRAD data (**do NOT distribute**).<br>
 There are twelve samples from three genera, with at least two individuals sampled per genus, and two technical replicates. 
-In this workflow, we will use the [2bRAD native pipeline](https://github.com/z0on/2bRAD_denovo) for filtering and trimming, 
-[fastx-toolkit](http://hannonlab.cshl.edu/fastx_toolkit/) for quality control, 
-and then [iPyrad](http://ipyrad.readthedocs.io/index.html) for the rest of the assembly.<br><br>
-
-![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/basic-assembly-steps.png?raw=true)
 
 ### Download data for this lesson
 ```bash
@@ -132,7 +127,14 @@ grep 'aaaaa' T36R59_I93_S27_L006_R1_sub12M.fastq
 
 
 
-### Assembling 2bRAD data using iPyrad
+# Assembling 2bRAD data using iPyrad
+
+![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/basic-assembly-steps.png?raw=true)<br>
+
+In this workflow, we will use the [2bRAD native pipeline](https://github.com/z0on/2bRAD_denovo) for filtering and trimming, 
+[fastx-toolkit](http://hannonlab.cshl.edu/fastx_toolkit/) for quality control, 
+and then [iPyrad](http://ipyrad.readthedocs.io/index.html) for the rest of the assembly.<br><br>
+
 
 Step 0. Use fastqc to check read quality.
 ---
