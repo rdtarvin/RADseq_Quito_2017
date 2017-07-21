@@ -62,11 +62,15 @@ head T36R59_I93_S27_L006_R1_sub12M.fastq
 This is the fastq format, which has four lines. 
 
 ```bash
-@K00179:73:HJCTJBBXX:6:1101:25905:1226 1:N:0:TGTTAG # name of sequencer:run ID:flowcell ID:flowcell lane:tile number in flow cell:x-coordinate of the cluster within the tile : y-coordinate
-TNGACCAACTGTGGTGTCGCACTCACTTCGCTGCTCCTCAGGAGACAGAT # DNA sequence
-+ # separator, can also sometimes (not often) hold extra information about the read
-A!AFFJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ # quality score for each base
+@K00179:73:HJCTJBBXX:6:1101:25905:1226 1:N:0:TGTTAG 
+TNGACCAACTGTGGTGTCGCACTCACTTCGCTGCTCCTCAGGAGACAGAT 
++ 
+A!AFFJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ 
 
+# sequencer name:run ID:flowcell ID:flowcell lane:tile number in flow cell:x-coordinate of cluster :y-coordinate pair member:filtered?:control data:index sequence
+# DNA sequence
+# separator, can also sometimes (not often) hold extra information about the read
+# quality score for each base
 ```
 
 Ok, now lets look at the full file:
@@ -75,7 +79,7 @@ Ok, now lets look at the full file:
 cat T36R59_I93_S27_L006_R1_sub12M.fastq
 ```
 
-Uh oh.... let's quit before the computer crashes.... it's too much to look at! `Ctrl+C`
+Uh oh.... let's quit before the computer crashes.... it's too much to look at! `Ctrl+C`<br>
 Here are some alternative ways to view parts of a file
 
 ```bash
