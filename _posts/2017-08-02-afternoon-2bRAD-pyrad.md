@@ -83,20 +83,43 @@ Uh oh.... let's quit before the computer crashes.... it's too much to look at! `
 Here are some alternative ways to view parts of a file
 
 ```bash
-head T36R59_I93_S27_L006_R1_sub12M.fastq # prints the first 10 lines of a file
-head -20 T36R59_I93_S27_L006_R1_sub12M.fastq # prints the first 20 lines of a file
-# '-20' is an argument for the 'head' program
-# bash is essentially a bunch of small programs that can run in the shell environment
+# print the first 10 lines of a file
+head T36R59_I93_S27_L006_R1_sub12M.fastq 
+
+# print the first 20 lines of a file
+head -20 T36R59_I93_S27_L006_R1_sub12M.fastq # '-20' is an argument for the 'head' program
+
+# print lines 190-200 of a file
 head -200 T36R59_I93_S27_L006_R1_sub12M.fastq | tail # 'pipes' the first 200 lines to a program called tail, which prints the last 10 lines
+
+# view the file interactively
 less T36R59_I93_S27_L006_R1_sub12M.fastq # can scroll through file with cursor, page with spacebar; quit with 'q'
-# here we can use less because the file is not in gzipped (remember that required the 'zless' command)
-man less # open up manual for less program; press q to quit
-head -200 T36R59_I93_S27_L006_R1_sub12M.fastq | cut -c -30 # prints only the first 10 lines and only the first 30 characters of each line
-wc -l T36R59_I93_S27_L006_R1_sub12M.fastq # counts the number of lines in the file (this takes a moment because the file is large)
-grep 'AAAAA' T36R59_I93_S27_L006_R1_sub12M.fastq # prints all lines with pattern
-# ctrl+c to exit
-grep -c 'AAAAA' T36R59_I93_S27_L006_R1_sub12M.fastq # counts all lines with pattern
-grep 'aaaaa' T36R59_I93_S27_L006_R1_sub12M.fastq # why doesn't this produce any output?
+# NOTE: here we can use less because the file is not in gzipped (remember that required the 'zless' command)
+
+# open up manual for less program
+man less # press q to quit
+
+# print only the first 10 lines and only the first 30 characters of each line
+head -200 T36R59_I93_S27_L006_R1_sub12M.fastq | cut -c -30 
+
+# count the number of lines in the file
+wc -l T36R59_I93_S27_L006_R1_sub12M.fastq # (this takes a moment because the file is large)
+
+# print lines with AAAAA in them
+grep 'AAAAA' T36R59_I93_S27_L006_R1_sub12M.fastq # ctrl+c to exit
+
+# count lines with AAAAA in them
+grep -c 'AAAAA' T36R59_I93_S27_L006_R1_sub12M.fastq 
+
+# save lines with AAAAA in them as a separate file
+grep 'AAAAA' T36R59_I93_S27_L006_R1_sub12M.fastq > AAAAA # no file extensions necessary!!
+
+# add lines with TTTTT to the AAAAA file: '>' writes or overwrites file; '>>' writes or appends to file
+grep 'TTTTT' T36R59_I93_S27_L006_R1_sub12M.fastq >> AAAAA 
+
+# print lines with aaaaa in them
+grep 'aaaaa' T36R59_I93_S27_L006_R1_sub12M.fastq 
+# why doesn't this produce any output?
 ```
 
 
