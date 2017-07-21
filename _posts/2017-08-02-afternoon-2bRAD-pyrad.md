@@ -27,11 +27,11 @@ and then [iPyrad](http://ipyrad.readthedocs.io/index.html) for the rest of the a
 cd # go to root of file system
 mkdir workshop 
 cd workshop
-wget -O 2bRAD.zip 'https://www.dropbox.com/sh/z2l0w2dq89oo55i/AAD_29lBe0MvLYLdxDB4Vm-2a?dl=1'
 # use ctrl+shift+v to paste within the VM
+wget -O 2bRAD.zip 'https://www.dropbox.com/sh/z2l0w2dq89oo55i/AAD_29lBe0MvLYLdxDB4Vm-2a?dl=1'
 # wget is a way to transfer files using a url from the command line
 # -O option makes sure the download doesn't have a wonky name like AAD_29lBe0MvLYLdxDB4Vm-2a
-# scp (secure copy) is a way to transfer between linux clusters
+# scp (secure copy), which you will probably use to transfer data from a cluster, is a way to transfer between linux clusters
 ```
 
 ### Looking at your raw data in the linux environment
@@ -49,6 +49,7 @@ zless T36R59_I93_S27_L006_R1_sub12M.fastq.gz # press 'q' to exit
 Let's gunzip ('unzip' for .gz files) our raw data files to look a bit more into them:
 
 ```bash
+# '*' is a wildcard caracter
 gunzip *.fastq.gz # takes ~10 min
 ```
 
@@ -56,12 +57,11 @@ This will take a few minutes but we can go ahead and open a new terminal window 
 
 ```bash
 head T36R59_I93_S27_L006_R1_sub12M.fastq
-
 ```
 
 This is the fastq format, which has four lines. 
 
-```
+```bash
 @K00179:73:HJCTJBBXX:6:1101:25905:1226 1:N:0:TGTTAG # name of sequencer:run ID:flowcell ID:flowcell lane:tile number in flow cell:x-coordinate of the cluster within the tile : y-coordinate
 TNGACCAACTGTGGTGTCGCACTCACTTCGCTGCTCCTCAGGAGACAGAT # DNA sequence
 + # separator, can also sometimes (not often) hold extra information about the read
