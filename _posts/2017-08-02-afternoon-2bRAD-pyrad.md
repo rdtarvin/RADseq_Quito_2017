@@ -214,40 +214,30 @@ GNGTCCCAGTGATCCGGAGCAGCGACGTCGCTGCTATCCATAGTGAAGAT
 ```
 
 Now that our read files are concatenated, we need to separate our reads by barcode. 
-To understand how this works, let's take a look at the structure of a 2bRAD read.<br>
+Let's take a look again at the structure of a 2bRAD read.<br>
 
 ![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/2bRAD-read.png?raw=true)
 
 
-From the 2bRAD native pipeline we will use ```trim2bRAD_2barcodes_dedup2.pl``` script to separate by barcode. If your data are not from HiSeq4000 you would use ```trim2bRAD_2barcodes_dedup.pl```.
+From the 2bRAD native pipeline we will use ```trim2bRAD_2barcodes_dedup2.pl``` script to separate by barcode. 
+If your data are not from HiSeq4000 you would use ```trim2bRAD_2barcodes_dedup.pl```. This takes <10 min
 ```bash
 # adaptor is the last 4 characters of the reads, here 'AGAT'
-/home1/02576/rdtarvin/2bRAD_denovo/trim2bRAD_2barcodes_dedup2.pl input=T36R59_I93.fq adaptor=AGAT sampleID=1
+perl ~/Applications//2bRAD_denovo/trim2bRAD_2barcodes_dedup2.pl input=T36R59_I93.fq adaptor=AGAT sampleID=1
 ls
 ```
-output is 'tr0' format
 
-Step 2. Filter reads by quality with the **fastx_toolkit**
+Now you can see that the demultiplexed and deduplicated files are listed by barcode and have the file extension **.tr0**.
+
+
+Step 2. Filter reads by quality with a program from the **fastx_toolkit**
 ---
 
 ```bash
 fastq_quality_filter -h
 
-usage: fastq_quality_filter [-h] [-v] [-q N] [-p N] [-z] [-i INFILE] [-o OUTFILE]
-Part of FASTX Toolkit 0.0.14 by A. Gordon (assafgordon@gmail.com)
-
-   [-h]         = This helpful help screen.
-   [-q N]       = Minimum quality score to keep.
-   [-p N]       = Minimum percent of bases that must have [-q] quality.
-   [-z]         = Compress output with GZIP.
-   [-i INFILE]  = FASTA/Q input file. default is STDIN.
-   [-o OUTFILE] = FASTA/Q output file. default is STDOUT.
-   [-v]         = Verbose - report number of sequences.
-                  If [-o] is specified,  report will be printed to STDOUT.
-                  If [-o] is not specified (and output goes to STDOUT),
-                  report will be printed to STDERR.
-                  
-# 20 is typical number for q filter
+# Use typical filter values, i.e., 90% of bases in a read should have a q-value aboce 20
+# This is a for loop, which allows you to execute the same command with arguments across multiple files
 for i in ls *.tr0; do fastq_quality_filter $i -q 20 -p 90 > ${i}_R1_.trim; done
 
 # zip the files to save space
