@@ -26,7 +26,6 @@ cd workshop
 wget -O 2bRAD.zip 'https://www.dropbox.com/sh/z2l0w2dq89oo55i/AAD_29lBe0MvLYLdxDB4Vm-2a?dl=1'
 # wget is a way to transfer files using a url from the command line
 # -O option makes sure the download doesn't have a wonky name like AAD_29lBe0MvLYLdxDB4Vm-2a
-# scp (secure copy), which you will probably use to transfer data from a cluster, is a way to transfer between linux clusters
 ```
 
 ### Looking at your raw data in the linux environment
@@ -119,7 +118,7 @@ grep 'aaaaa' T36R59_I93_S27_L006_R1_sub12M.fastq
 # count number of uniq sequences in file with pattern 'AGAT'
 grep 'AGAT' T36R59_I93_S27_L006_R1_sub12M.fastq | sort | uniq | wc -l
 
-# print only the second field of the sequencer 
+# print only the second field of the sequence information line
 head T36R59_I93_S27_L006_R1_sub12M.fastq | grep '@' | awk -F':' '{ print $2 }' 
 # awk is a very useful program for parsing files; here ':' is the delimiter, $2 is the column location
 ```
@@ -128,7 +127,7 @@ head T36R59_I93_S27_L006_R1_sub12M.fastq | grep '@' | awk -F':' '{ print $2 }'
 **Challenge**
 <details> 
   <summary>How would you count the number of reads in your file? </summary>
-   In the fastq format, the character '@' occurs once per sequence, so we can just count how many lines contain '@'.<br> 
+   There are lots of answers for this one. One example: in the fastq format, the character '@' occurs once per sequence, so we can just count how many lines contain '@'.<br> 
    <code>grep -c '@' T36R59_I93_S27_L006_R1_sub12M.fastq</code>
 </details> 
 
@@ -142,45 +141,64 @@ In this workflow, we will use the [2bRAD native pipeline](https://github.com/z0o
 [fastx-toolkit](http://hannonlab.cshl.edu/fastx_toolkit/) for quality control, 
 and then [iPyrad](http://ipyrad.readthedocs.io/index.html) for the rest of the assembly.<br><br>
 
-
 Step 0. Use fastqc to check read quality.
 ---
 
-download [fastqc](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
-
 ```bash
-wget https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.5.zip
-unzip fastqc_v0.11.5.zip
+# fastqc is already installed, but if you wanted to download it, this is how: 
+# wget https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.5.zip
+# unzip fastqc_v0.11.5.zip
+
+# let's take a look at fastqc options
 fastqc -h
-fastqc *.gz
+fastqc *.fastq
 ```
 
-fastqc quickly produces a nice .html file that can be viewed in any browser.<br>
-Open the .html files, what can you see?
+When the program is finished, take a look at what files are in the directory using `ls`.
+fastqc produces a nice .html file that can be viewed in any browser. 
+Since we are trying to get comfortable with the command line, let's open the file directly.
 
-“Q” goes from 20 to 40
-values are log-scaled: 20 = 1/100 errors; 30 = 1/1000 errors
+```bash
+sensible-browser T36R59_I93_S27_L006_R1_sub12M.fastq
+```
 
+Sequencing quality scores, "Q", run from 20 to 40. In the fastq file, these are seen as ASCII characters. 
+The values are log-scaled: 20 = 1/100 errors; 30 = 1/1000 errors. Anything below 20 is garbage and anything between 20 and 30 should be reviewed.
+There appear to be errors in the kmer content, but really these are just showing where the barcodes and restriction enzyme sites are. 
+Let's take a look at what 2bRAD reads look like:
+
+![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/2bRAD-read.png?raw=true)
+
+Ok, we can see that overall our data are of high quality (high Q scores, no weird tile patterns, no adaptor contamination). Time to move on to the assembly!!
 
 Step 1. Demultiplex by barcode in **2bRAD native pipeline**
 ---
 
-Copy scripts to your computer via git
+Copy scripts to your virtual machine Applications folder via git
 ```bash
+cd Applications/
 git clone https://github.com/z0on/2bRAD_denovo.git
+ls
+cd ../workshop 
 ```
-
-Decompress data (only necessary for 2bRAD native, other pipelines can read .gz).
+Git is an important programming tool that allows developers to trace changes made in code. Let's take a look online.
 ```bash
-gunzip *.gz
+sensible-browser https://github.com/z0on/2bRAD_denovo
 ```
 
-Concatenate data that were run on multiple lanes, if necessary.
-- T36R59_I93_S27_L006_R1_001.fastq and T36R59_I93_S27_L007_R1_001.fastq
+Okay, before we start the pipeine let's move our fastqc files to their own directory
+```bash
+mkdir 2bRAD_fastqc
+mv *fastqc* 2bRAD_fastqc # shows error stating that the folder couldn't be moved into the folder
+ls # check that everything was moved
+```
+
+First we need to concatenate data that were run on multiple lanes.
+- T36R59_I93_S27_L00**6**_R1_001.fastq and T36R59_I93_S27_L00**7**_R1_001.fastq
 - pattern "T36R59_I93_S27_L00" is common to both read files; program concatenates into one file with (.+) saved as file name
 
 ```bash
-/home/user1/2bRAD_denovo/ngs_concat.pl "(.+)_S27_L00"
+~/Applications/2bRAD_denovo/ngs_concat.pl fastq "(.+)_S27_L00" # this takes a few minutes so let's take a quick break while it does its thing.
 head T36R59_I93.fq
 
 @K00179:73:HJCTJBBXX:7:1101:28006:1209 1:N:0:TGTTAG
