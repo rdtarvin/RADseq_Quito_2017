@@ -24,14 +24,19 @@ and then [iPyrad](http://ipyrad.readthedocs.io/index.html) for the rest of the a
 
 Download data for this lesson
 ```bash
-wget xxx
+wget -O 2bRAD.zip 'https://www.dropbox.com/sh/z2l0w2dq89oo55i/AAD_29lBe0MvLYLdxDB4Vm-2a?dl=1'
+# wget is a way to transfer files using a url from the command line
+# -O option makes sure the download doesn't have a wonky name like AAD_29lBe0MvLYLdxDB4Vm-2a
+# scp (secure copy) is a way to transfer between linux clusters
 ```
+
 
 ## Looking at your data in the linux environment
 
 Your files will likely be zipped and with the file extension **.fq.gz** or **fastq.gz**. The first thing you want to do is look at the beginning of your files while they are still zipped with the following command: 
 
 ```bash
+unzip 2bRAD.zip
 gzless <<name of file>> #is this easy to see? 
 zhead <<name of file>> #iterations with diff Ncols etc 
 ```
