@@ -32,6 +32,7 @@ cat testfile
 ```
 If the installation worked, the text you saved to the file should print to the screen.
 
+One note - on the VM, copy is Ctrl+Shift+C and paste is Ctrl+Shift+V
 
 Stacks, iPyrad, dDocent, R, cd-hit-est, fastx-toolkit, and fastqc are all installed in $HOME/Applications/BioBuilds and should be accessible via $PATH. AftrRAD is installed in $HOME/Applications/AftrRADv5.0. 
 
