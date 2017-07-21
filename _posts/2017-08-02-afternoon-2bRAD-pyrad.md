@@ -22,7 +22,7 @@ and then [iPyrad](http://ipyrad.readthedocs.io/index.html) for the rest of the a
 
 ![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/basic-assembly-steps.png?raw=true)
 
-Download data for this lesson
+### Download data for this lesson
 ```bash
 cd # go to root of file system
 mkdir workshop 
@@ -34,7 +34,7 @@ wget -O 2bRAD.zip 'https://www.dropbox.com/sh/z2l0w2dq89oo55i/AAD_29lBe0MvLYLdxD
 # scp (secure copy) is a way to transfer between linux clusters
 ```
 
-## Looking at your data in the linux environment
+### Looking at your raw data in the linux environment
 
 Your files will likely be gzipped and with the file extension **.fq.gz** or **fastq.gz**. The first thing you want to do is look at the beginning of your files while they are still gzipped.
 
@@ -46,13 +46,13 @@ rm 2bRAD.zip # IMPORTANT: removing files from the command line is permanent!!!! 
 zless T36R59_I93_S27_L006_R1_sub12M.fastq.gz # press 'q' to exit
 ```
 
-Let's gunzip ('unzip' for .gz files) one of the raw data files to look a bit more into it:
+Let's gunzip ('unzip' for .gz files) our raw data files to look a bit more into them:
 
 ```bash
-gunzip T36R59_I93_S27_L006_R1_sub12M.fastq.gz # takes ~5 min
-```	
+gunzip *.fastq.gz # takes ~10 min
+```
 
-This will take a few minutes but we can go ahead and open a new terminal window to take a look at the one in progress.
+This will take a few minutes but we can go ahead and open a new terminal window to take a look at the files in progress.
 
 ```bash
 head T36R59_I93_S27_L006_R1_sub12M.fastq
@@ -69,24 +69,43 @@ A!AFFJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ # quality score for each base
 
 ```
 
-
 Ok, now lets look at the full file:
 
 ```bash
-zcat T36R59_I93_S27_L006_R1_sub12M.fastq.gz 
-cat T36R59_I93_S27_L006_R1_sub12M.fastq.gz
+cat T36R59_I93_S27_L006_R1_sub12M.fastq
 ```
-	
+
 Uh oh.... let's quit before the computer crashes.... it's too much to look at! `Ctrl+C`
+Here are some alternative ways to view parts of a file
+
+```bash
+head T36R59_I93_S27_L006_R1_sub12M.fastq # prints the first 10 lines of a file
+head -20 T36R59_I93_S27_L006_R1_sub12M.fastq # prints the first 20 lines of a file
+# '-20' is an argument for the 'head' program
+# bash is essentially a bunch of small programs that can run in the shell environment
+head -200 T36R59_I93_S27_L006_R1_sub12M.fastq | tail # 'pipes' the first 200 lines to a program called tail, which prints the last 10 lines
+less T36R59_I93_S27_L006_R1_sub12M.fastq # can scroll through file with cursor, page with spacebar; quit with 'q'
+# here we can use less because the file is not in gzipped (remember that required the 'zless' command)
+man less # open up manual for less program; press q to quit
+head -200 T36R59_I93_S27_L006_R1_sub12M.fastq | cut -c -30 # prints only the first 10 lines and only the first 30 characters of each line
+wc -l T36R59_I93_S27_L006_R1_sub12M.fastq # counts the number of lines in the file (this takes a moment because the file is large)
+grep 'AAAAA' T36R59_I93_S27_L006_R1_sub12M.fastq # prints all lines with pattern
+# ctrl+c to exit
+grep -c 'AAAAA' T36R59_I93_S27_L006_R1_sub12M.fastq # counts all lines with pattern
+grep 'aaaaa' T36R59_I93_S27_L006_R1_sub12M.fastq # why doesn't this produce any output?
+```
+
 
 **Challenge**
 <details> 
   <summary>How would you count the number of reads in your file? </summary>
-   As you can see from the previous "head" command, each sequence line begins with @, so we can just count how many times the argument '@D3' appears, or in essence, how many "lines" of sequence data we have.<br> 
-   <code>grep -c '@' Stef_3_ATCACG_L008_R1_001.fastq</code>
+   In the fastq format, the character '@' occurs once per sequence, so we can just count how many lines contain '@'.<br> 
+   <code>grep -c '@' T36R59_I93_S27_L006_R1_sub12M.fastq</code>
 </details> 
 
 
+
+### Assembling 2bRAD data using iPyrad
 
 Step 0. Use fastqc to check read quality.
 ---
