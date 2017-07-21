@@ -28,6 +28,7 @@ cd # go to root of file system
 mkdir workshop 
 cd workshop
 wget -O 2bRAD.zip 'https://www.dropbox.com/sh/z2l0w2dq89oo55i/AAD_29lBe0MvLYLdxDB4Vm-2a?dl=1'
+# use ctrl+shift+v to paste within the VM
 # wget is a way to transfer files using a url from the command line
 # -O option makes sure the download doesn't have a wonky name like AAD_29lBe0MvLYLdxDB4Vm-2a
 # scp (secure copy) is a way to transfer between linux clusters
@@ -35,28 +36,45 @@ wget -O 2bRAD.zip 'https://www.dropbox.com/sh/z2l0w2dq89oo55i/AAD_29lBe0MvLYLdxD
 
 ## Looking at your data in the linux environment
 
-Your files will likely be zipped and with the file extension **.fq.gz** or **fastq.gz**. The first thing you want to do is look at the beginning of your files while they are still zipped with the following command: 
+Your files will likely be gzipped and with the file extension **.fq.gz** or **fastq.gz**. The first thing you want to do is look at the beginning of your files while they are still gzipped.
 
 ```bash
 ls # list all files in current directory
 ls .. # list all files in one directory above
 unzip 2bRAD.zip
 rm 2bRAD.zip # IMPORTANT: removing files from the command line is permanent!!!! There is no trash
-zless T36R59_I93_S27_L006_R1_sub12M.fastq.gz #is this easy to see? 
-zcat T36R59_I93_S27_L006_R1_sub12M.fastq.gz | head #iterations with diff Ncols etc 
+zless T36R59_I93_S27_L006_R1_sub12M.fastq.gz # press 'q' to exit
 ```
 
-Let's unzip one of the raw data files to look a bit more into it:
+Let's gunzip ('unzip' for .gz files) one of the raw data files to look a bit more into it:
 
 ```bash
-gunzip <<filename.fq.gz>>
+gunzip T36R59_I93_S27_L006_R1_sub12M.fastq.gz # takes ~5 min
 ```	
 
-
-Hmmm.... ok, now lets look at the full file:
+This will take a few minutes but we can go ahead and open a new terminal window to take a look at the one in progress.
 
 ```bash
-cat <<filename.fq>>
+head T36R59_I93_S27_L006_R1_sub12M.fastq
+
+```
+
+This is the fastq format, which has four lines. 
+
+```
+@K00179:73:HJCTJBBXX:6:1101:25905:1226 1:N:0:TGTTAG # name of sequencer:run ID:flowcell ID:flowcell lane:tile number in flow cell:x-coordinate of the cluster within the tile : y-coordinate
+TNGACCAACTGTGGTGTCGCACTCACTTCGCTGCTCCTCAGGAGACAGAT # DNA sequence
++ # separator, can also sometimes (not often) hold extra information about the read
+A!AFFJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ # quality score for each base
+
+```
+
+
+Ok, now lets look at the full file:
+
+```bash
+zcat T36R59_I93_S27_L006_R1_sub12M.fastq.gz 
+cat T36R59_I93_S27_L006_R1_sub12M.fastq.gz
 ```
 	
 Uh oh.... let's quit before the computer crashes.... it's too much to look at! `Ctrl+C`
