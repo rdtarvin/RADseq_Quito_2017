@@ -13,12 +13,12 @@ material-type: ""
 WORKSHOP QUITO - DAY 4 
 STACKS WITH ddRAD
 ===
+The first thing to know about stacks is that the online manual is very useful but not completely straighforward to navigate, so let's get familiar with their [manual](http://catchenlab.life.illinois.edu/stacks/) first and the program in general. 
 
-
-1. Demultiplexing in STACKS
+1. Demultiplexing in STACKS (process_radtags)
 ----
 
-In order to know more about whether your library was successful, you need to demultiplex your individuals to know whether they were all sequenced and how much sequences you have for each, and it is always the first step in the pipeline. The files you need for this are: 
+Demultiplexing your sequencing pools is always the first step in any pipeline. In stacks, the files you need for this are: 
 
 - barcodes+sample names (tab-delimited .txt file)
 
@@ -74,7 +74,7 @@ The general code we will use for process_radtags, running it from within the raw
 
 
 
-2. denovo_map
+2. Genotyping in stacks
 ----
 
 In most cases, having a reference genome is a bad thing. However, stacks is designed for non-model organisms, so in fact their [denovo_map](http://catchenlab.life.illinois.edu/stacks/comp/denovo_map.php) algorithm is superior and more self-contained than their [ref_map](http://catchenlab.life.illinois.edu/stacks/comp/ref_map.php). 
@@ -84,4 +84,22 @@ In **ref_map.pl** you need to use [another alignment tool](https://github.com/lh
 	process_radtags
 	bwa
 	ref_mal.pl
+
+*"The ref_map.pl program takes as input aligned reads. It does not provide the assembly parameters that denovo_map.pl does and this is because the job of assembling the loci is being taken over by your aligner program (e.g. BWA or GSnap). You must take care that you have good alignmnets -- discarding reads with multiple alignments, making sure that you do not allow too many gaps in your sequences (otherwise loci with repeat elements can easily be collapsed during alignments), and take care not to allow soft-masking in the alignments. This occurs when an aligner can not make a full alignment and instead soft-masks the portion of the read that could not be aligned (pretending that this part of the read does not exist). **These factors, if not cared for, can cause spurious SNP calls and problems in the downstream analysis."***
+
+
+Genotyping with denovo_map.pl
+--
+
+First, let's grab some other sequences that we had demultiplexed from another sequencing pool, like this: 
+
+	wget <<add url here>>
+
+We should have five more individuals for the third population that we only had one before. 
+
+Let's make a list of the filenames that have sequences in them:
+
+	ls WRITE CODE FOR THIS
+
+This list of filenames will be a part of the input for running denovo_map.pl, since you have to list all of the equence files that will be used for input, rather than a directory. 
 
