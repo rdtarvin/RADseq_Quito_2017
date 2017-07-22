@@ -13,7 +13,10 @@ material-type: ""
 WORKSHOP QUITO - DAY 4 
 STACKS WITH ddRAD
 ===
+
+
 The first thing to know about stacks is that the online manual is very useful but not completely straighforward to navigate, so let's get familiar with their [manual](http://catchenlab.life.illinois.edu/stacks/) first and the program in general. 
+
 
 1. Demultiplexing in STACKS (process_radtags)
 ----
@@ -88,7 +91,7 @@ In **ref_map.pl** you need to use [another alignment tool](https://github.com/lh
 *"The ref_map.pl program takes as input aligned reads. It does not provide the assembly parameters that denovo_map.pl does and this is because the job of assembling the loci is being taken over by your aligner program (e.g. BWA or GSnap). You must take care that you have good alignmnets -- discarding reads with multiple alignments, making sure that you do not allow too many gaps in your sequences (otherwise loci with repeat elements can easily be collapsed during alignments), and take care not to allow soft-masking in the alignments. This occurs when an aligner can not make a full alignment and instead soft-masks the portion of the read that could not be aligned (pretending that this part of the read does not exist). **These factors, if not cared for, can cause spurious SNP calls and problems in the downstream analysis."***
 
 
-Genotyping with denovo_map.pl
+3. Genotyping with denovo_map.pl
 --
 
 First, let's grab some other sequences that we had demultiplexed from another sequencing pool, like this: 
