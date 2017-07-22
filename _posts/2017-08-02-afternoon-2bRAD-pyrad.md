@@ -440,3 +440,32 @@ and of [14] clustering threshold. Choose one value lower and one value higher th
 
 <a href="https://rdtarvin.github.io/RADseq_Quito_2017/"><button>Home</button></a>    <a href="https://rdtarvin.github.io/RADseq_Quito_2017/main/2017/08/02/afternoon-ddRAD-pyrad.html"><button>Next Lesson</button></a>
 
+
+
+Appendix.
+---
+
+If you get "Segmentation Errors"
+
+
+```bash
+# in OSX (for Windows the commands will be slightly different)
+cd /Users/<user name>/VirtualBox\ VMs/UT\ Biocomputing/
+# Clone the .vmdk image to a .vdi.
+vboxmanage clonehd "virtualdisk.vmdk" "new-virtualdisk.vdi" --format vdi
+# Resize the new .vdi image (30720 == 30 GB).
+vboxmanage modifyhd "new-virtualdisk.vdi" --resize 30720
+# Optional; switch back to a .vmdk.
+VBoxManage clonehd "cloned.vdi" "resized.vmdk" --format vmdk
+```
+
+
+
+
+
+
+
+
+
+
+
