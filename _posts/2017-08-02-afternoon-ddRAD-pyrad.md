@@ -22,19 +22,31 @@ We will use [iPyrad](http://ipyrad.readthedocs.io/index.html) for all steps of t
 
 Download data for this lesson
 ```
-wget -O ddRAD.zip 'https://www.dropbox.com/sh/wk1wy5priedykw0/AACSeOXIWvliNvQ2HbC-RUF9a?dl=1'
-
+wget -O ddRAD-ipyrad.zip 'https://www.dropbox.com/s/9vd1eb3kkt0i0jk/ddRAD-ipyrad.zip?dl=1'
+unzip ddRAD-ipyrad.zip
+cd ddRAD-ipyrad
+ls
 ```
 
 ### Step 0. Use fastqc to check read quality.
 ```
 fastqc *.gz
+sensible-browser <>.html
 ```
-Open the .html files, what can you see?
 
-
+You might notice here that the reads in R2 files have pretty low quality for the last ~10 bases. This is pretty common for Illumina reads, and we will want to trim these before clustering loci.
+<br>
+When you're done looking at these files, move them to a new folder so they are out of the way.
 
 ### Step 1. Demultiplex in **iPyrad** [done]
+
+First, use conda to install iPyrad and its dependencies
+
+```bash
+conda install ipyrad -c ipyrad
+# type 'y' when it asks to install dependencies
+cp ~/Applications/miniconda2/bin/ipyrad ~/Applications/BioBuilds/bin/
+```
 
 Data have been demultiplexed previously so that they can be subsampled evenly across samples. 
 This step is rather easy in ipyrad, it just requires filling in options for parameters 1-3 rather than 4.

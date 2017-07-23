@@ -36,6 +36,7 @@ Your files will likely be gzipped and with the file extension **.fq.gz** or **fa
 ls # list all files in current directory
 ls .. # list all files in one directory above
 unzip 2bRAD.zip
+ls -lht # view all files with details and in order by when they were modified, with human-readable file sizes
 rm 2bRAD.zip # IMPORTANT: removing files from the command line is permanent!!!! There is no trash
 zless T36R59_I93_S27_L006_R1_sub12M.fastq.gz # press 'q' to exit
 ```
@@ -445,21 +446,30 @@ and of [14] clustering threshold. Choose one value lower and one value higher th
 Appendix.
 ---
 
-If you get "Segmentation Errors"
+If you get "Segmentation Errors", exit Virtual Box and close the program. Then run the following commands through the native OSX Terminal program. [Source](https://www.jeffgeerling.com/blogs/jeff-geerling/resizing-virtualbox-disk-image)
 
-
+Step 1. Allocate more space to the drive
 ```bash
 # in OSX (for Windows the commands will be slightly different)
 cd /Users/<user name>/VirtualBox\ VMs/UT\ Biocomputing/
 # Clone the .vmdk image to a .vdi.
-vboxmanage clonehd "virtualdisk.vmdk" "new-virtualdisk.vdi" --format vdi
-# Resize the new .vdi image (30720 == 30 GB).
-vboxmanage modifyhd "new-virtualdisk.vdi" --resize 30720
-# Optional; switch back to a .vmdk.
-VBoxManage clonehd "cloned.vdi" "resized.vmdk" --format vmdk
+vboxmanage clonehd 'UT Biocomputing-disk001.vmdk' 'new_UT Biocomputing-disk001.vdi' --format vdi
+# Resize the new .vdi image (20480 == 20 GB).
+vboxmanage modifyhd "new_UT Biocomputing-disk001.vdi" --resize 51200 
 ```
 
+Step 2. Tell the VM how to access that space. [Source]([here](https://www.howtoforge.com/partitioning_with_gparted)). If your cursor gets stuck, press the Command key.
 
+1. Open the Virtual Box program and go to Settings, then Storage, and click on SATA. Click on the option to add a new hard disk, select the 'new' disk that you created and press OK. 
+2. Download [gparted](http://gparted.org/download.php)
+3. In Virtual Box, click Settings, then Storage, then click on Controller: IDE and select ... Click the box that says 'Live CD/DVD'
+4. Now go to Storage and unclick the box that says Hard Disk.
+5. Start the VM and click enter through the language settings, selecting those that are appropriate for you.
+6. On the upper right hand corner, make sure the new disk is selected (you'll see one bar with linux-swap, another called extended, and an open grey box with dashed outline)
+7. Click 'New', allow 1MB to remain unallocated, and press OK. Then press Apply.
+8. Turn off the VM. Go to Settings, Storage, right click on the GParted disk and click Remove. 
+9. Click on System, click Hard Disk, and make sure it is on the top of the list, using the arrows. Make sure there is a Hard Drive assigned to Port 1.
+10. Start the VM again!
 
 
 
