@@ -172,7 +172,7 @@ Aside from the changes I made to the params file previously, make the following 
 
 The finalized params file should look like this: <br>
 You may need to right click in order to paste
-```
+```bash
 ------- ipyrad params file (v.0.7.1)--------------------------------------------
 ddrad-v1        ## [0] [assembly_name]: Assembly name. Used to name output directories for assembly steps
 ./                             ## [1] [project_dir]: Project dir (made in curdir if not present)
@@ -207,23 +207,80 @@ p, s, v, u                        ## [27] [output_formats]: Output formats (see 
 
 Save with `ctrl+S`, and exit Atom.
 Now you can run the pipeline, starting from Step 3, clustering! 
-```
+```bash
 ipyrad -p params-ddrad-v1.txt -s 34567
 ```
 
 Oops, what happened? iPyrad requires that you run all steps, even if the data have been sorted. 
 When reads are already demultiplexed, steps 1 and 2 read in the data.
 
-```
+```bash
 ipyrad -p params-ddrad-v1.txt -s 1234567
 ```
 
-To check on the results, you can open a new terminal window and type
-```
+This might take a little while. To check on the results, you can open a new terminal window and type
+```bash
 ipyrad -p params-2brad-v1.txt -r
+
+Summary stats of Assembly ddrad-v1
+------------------------------------------------
+           state  reads_raw
+sp1_ind1a      1    1000000
+sp1_ind1b      1    1000000
+sp1_ind2       1    1000000
+sp2_ind1       1    1000000
+sp2_ind2       1    1000000
+sp3_ind1       1    1000000
+sp3_ind2       1    1000000
+sp4_ind1       1    1000000
+sp4_ind2a      1    1000000
+sp4_ind2b      1    1000000
+sp5_ind1       1    1000000
+sp5_ind2       1    1000000
+
+
+Full stats files
+------------------------------------------------
+step 1: ./ddrad-v1_s1_demultiplex_stats.txt
+step 2: None
+step 3: None
+step 4: None
+step 5: None
+step 6: None
+step 7: None
 ```
 
+You'll notice that the program has finished the first step, which was simply to read in the reads. You can see there are 1000000 per sample.
+Once step 3 starts, you can run the same command, and you'll see that there is another column now from Step 2 and that
+we can find more stats for Step 2 in the file `./ddrad-v1_edits/s2_rawedit_stats.txt`. Let's take a look.
+
+```bash
+# use -S option to avoid text wrapping
+less -S ./ddrad-v1_edits/s2_rawedit_stats.txt 
+
+reads_raw  trim_adapter_bp_read1  trim_adapter_bp_read2  trim_quality_bp_read1  trim_quality_bp_read2  reads_filtered_by_Ns  reads_filtered_by_minlen  reads_passed_filter
+sp1_ind1a    1000000                  21164                  27297                1047173                2749515                    19                      5130               994851
+sp1_ind1b    1000000                  20981                  27563                1011094                2718923                    28                      5142               994830
+sp1_ind2     1000000                  21292                  27309                1019379                2757645                    23                      5202               994775
+sp2_ind1     1000000                  29241                  21441                1119683                2611745                    24                      4785               995191
+sp2_ind2     1000000                  28364                  21249                1162015                2638046                    25                      4572               995403
+sp3_ind1     1000000                  25737                  20268                 640502                2526122                    26                      4513               995461
+sp3_ind2     1000000                  26722                  20481                 670498                2451657                    21                      4309               995670
+sp4_ind1     1000000                  27431                  28673                 689969                2525972                    28                      4505               995467
+sp4_ind2a    1000000                  28315                  28325                 665626                2427105                    20                      4281               995699
+sp4_ind2b    1000000                  28130                  28646                 698904                2467419                    23                      4186               995791
+sp5_ind1     1000000                  25260                  24428                 644703                2393125                    14                      4330               995656
+sp5_ind2     1000000                  25906                  24379                 667064                2410386                    31                      4422               995547
+```
+
+Let's take a 30-min break while the next few steps run and then come back and check on the run.
+
+**Note**: If you need to rerun a step of iPyrad, you need to add the force flag to your command, as such: `ipyard -p params-ddrad-v1.txt -s 1 -f`
+<br>
+[][][][][][] (activity of some kind?)
+
 Let's look at the intermediate and final files created by iPyrad.
+22:22
 
 
 Step 3. 
