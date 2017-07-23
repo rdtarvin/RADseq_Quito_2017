@@ -260,9 +260,18 @@ Steps 34567. Complete pipeline in **iPyrad**
 
 iPyrad is super easy, make sure you check out their extensive online documentation [here](http://ipyrad.readthedocs.io/index.html).
 
-First, initiate a new analysis.
+Install iPyrad by following these commands:
+```bash
+conda install ipyrad -c ipyrad
+# type 'y' when it asks to install dependencies
+cp ~/Applications/miniconda2/bin/* ~/Applications/BioBuilds/bin/
+```
+
+Now we can initiate a new analysis.
 ```bash
 ipyrad -n 2brad-v1
+
+# Let's take a look at the file.
 cat params-2brad-v1.txt
 ```
 

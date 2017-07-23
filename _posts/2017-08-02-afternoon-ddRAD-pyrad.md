@@ -42,10 +42,11 @@ When you're done looking at these files, move them to a new folder so they are o
 
 First, use conda to install iPyrad and its dependencies
 
+If you haven't followed the previous lesson, install ipyrad as below; otherwise, skip this step
 ```bash
 conda install ipyrad -c ipyrad
 # type 'y' when it asks to install dependencies
-cp ~/Applications/miniconda2/bin/ipyrad ~/Applications/BioBuilds/bin/
+cp ~/Applications/miniconda2/bin/* ~/Applications/BioBuilds/bin/
 ```
 
 Data have been demultiplexed previously so that they can be subsampled evenly across samples. 
@@ -139,12 +140,25 @@ The barcode file has a very simple layout. See the one I used [here](https://raw
 **TASK**: Copy this file (directly via wget or create a new file and insert the text). Save it as ddRAD-ipyrad_barcodes.txt
 
 I subsampled my original dataset to provide 1000000 reads per sample for you. Let's take a look.
+
+
+```bash
+# use the -S option to prevent soft text wrap
+zless -S sp1_ind1a_R1_.fastq.gz 
+
+# try searching for a specific pattern in the file by typing
+/AATT
+
+# press the space bar to find the next instance of your search
+# type 'q' to quit
 ```
-cd 
-ls
-gzless xx | head
-```
-Can you find the location of the restriction overhangs?
+
+**Challenge**
+<details> 
+  <summary>Can you find the location of the restriction overhangs? </summary>
+   Recall what the sequence for the overhangs are (see picture above). Where should they be? **Hint**: 
+   You should notice them even without knowing the sequence because they appear in every line and have the same sequence!
+</details> 
 
 
 ### Steps 34567. We will complete the remaining steps of the pipeline together.
@@ -163,8 +177,8 @@ You may need to right click in order to paste
 ddrad-v1        ## [0] [assembly_name]: Assembly name. Used to name output directories for assembly steps
 ./                             ## [1] [project_dir]: Project dir (made in curdir if not present)
                                ## [2] [raw_fastq_path]: Location of raw non-demultiplexed fastq files
-/path/to/ddRAD-ipyrad_barcodes.txt        ## [3] [barcodes_path]: Location of barcodes file
-/path/to/ddRAD/reads/*.gz                 ## [4] [sorted_fastq_path]: Location of demultiplexed/sorted fastq files
+./ddRAD-ipyrad_barcodes.txt        ## [3] [barcodes_path]: Location of barcodes file
+./*.gz                 ## [4] [sorted_fastq_path]: Location of demultiplexed/sorted fastq files
 denovo                         ## [5] [assembly_method]: Assembly method (denovo, reference, denovo+reference, denovo-reference)
                                ## [6] [reference_sequence]: Location of reference sequence file
 pairddrad                            ## [7] [datatype]: Datatype (see docs): rad, gbs, ddrad, etc.
