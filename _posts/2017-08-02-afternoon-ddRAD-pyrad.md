@@ -110,12 +110,12 @@ So, you can predict which parameters I have already altered for our data
 ### Step 1:
 - `[0] [*assembly_name]`: default, created when ipython is initiated
 - `[1] [*project_dir]`: keep in working directory, './'
-- `[2] [raw_fastq_path]`: /path/to/raw/prefix*.gz
+- `[2] [raw_fastq_path]`: /path/to/raw/prefix*.gz (the *.gz must be included!!)
 - `[3] [barcodes_path]`: /path/to/ddRAD-barcodes.txt
 - `[4] [sorted_fastq_path]`: not changed if filtering in python; we will change in a moment
 - `[7] [*datatype]`: pairddrad
 - `[8] [restriction_overhang]`: changed to our restriction overhangs CATCG,AATT (see figure below)
-- `[15] [max_barcode_mismatch]`: kept as default (0)
+- `[15] [max_barcode_mismatch]`: change to 1, as many barcodes have an 'N' at the second position
 
 ![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/ddRAD-read.png?raw=true)
 
@@ -134,7 +134,9 @@ iPyrad has a very nice explanation of how to identify the restriction overhang s
 - `[xx] [edit_cut_sites]`: feature not available yet
 
 
-The barcode file has a very simple layout. See the one I used [here](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/files/ddRAD-ipyrad_barcodes.txt).
+The barcode file has a very simple layout. See the one I used [here](https://raw.githubusercontent.com/rdtarvin/RADseq_Quito_2017/master/files/ddRAD-ipyrad_barcodes.txt).
+<br>
+**TASK**: Copy this file (directly via wget or create a new file and insert the text). Save it as ddRAD-ipyrad_barcodes.txt
 
 I subsampled my original dataset to provide 1000000 reads per sample for you. Let's take a look.
 ```
@@ -150,11 +152,12 @@ Can you find the location of the restriction overhangs?
 Aside from the changes I made to the params file previously, make the following changes
 - `[11] [mindepth_statistical]`: lower to 5 to obtain more loci
 - `[21] [max_SNPs_locus]`: change to 4; lower number means more missing data but more loci recovered
-- `[25] [trim_reads]`: # introduce before or after?
+- `[25] [trim_reads]`: let's go ahead and trim the first 10 bases of R2, as they have pretty poor quality
 - `[27] [output_formats]`: add ', u'; this will provide an output selecting single SNPs from each locus randomly
 
 
-#### finalized params file should look like this
+The finalized params file should look like this: <br>
+You may need to right click in order to paste
 ```
 ------- ipyrad params file (v.0.7.1)--------------------------------------------
 ddrad-v1        ## [0] [assembly_name]: Assembly name. Used to name output directories for assembly steps
@@ -172,7 +175,7 @@ CATCG,AATT                         ## [8] [restriction_overhang]: Restriction ov
 5                              ## [12] [mindepth_majrule]: Min depth for majority-rule base calling
 10000                          ## [13] [maxdepth]: Max cluster depth within samples
 0.85                           ## [14] [clust_threshold]: Clustering threshold for de novo assembly
-0                              ## [15] [max_barcode_mismatch]: Max number of allowable mismatches in barcodes
+1                              ## [15] [max_barcode_mismatch]: Max number of allowable mismatches in barcodes
 2                              ## [16] [filter_adapters]: Filter for adapters/primers (1 or 2=stricter)
 35                             ## [17] [filter_min_trim_len]: Min length of reads after adapter trim
 2                              ## [18] [max_alleles_consens]: Max alleles per site in consensus sequences
@@ -182,12 +185,13 @@ CATCG,AATT                         ## [8] [restriction_overhang]: Restriction ov
 20, 20                         ## [22] [max_SNPs_locus]: Max # SNPs per locus (R1, R2)
 8, 8                           ## [23] [max_Indels_locus]: Max # of indels per locus (R1, R2)
 0.5                            ## [24] [max_shared_Hs_locus]: Max # heterozygous sites per locus (R1, R2)
-0, 0, 15, 0                     ## [25] [trim_reads]: Trim raw read edges (R1>, <R1, R2>, <R2) (see docs)
+0, 0, 10, 0                     ## [25] [trim_reads]: Trim raw read edges (R1>, <R1, R2>, <R2) (see docs)
 0, 0, 0, 0                     ## [26] [trim_loci]: Trim locus edges (see docs) (R1>, <R1, R2>, <R2)
 p, s, v, u                        ## [27] [output_formats]: Output formats (see docs)
                                ## [28] [pop_assign_file]: Path to population assignment file
 ```
 
+Save with `ctrl+S`, and exit Atom.
 Now you can run the pipeline, starting from Step 3, clustering! 
 ```
 ipyrad -p params-ddrad-v1.txt -s 34567
