@@ -1,7 +1,7 @@
 ---
 layout: default
 order: 7
-title:  "Shell, Git, & NGS data"
+title:  "Getting started in shell"
 date:   2017-08-02
 time:   "Morning"
 categories: main
@@ -11,9 +11,12 @@ material-type: ""
 ---
 
 
-# WORKSHOP QUITO - DAY 3: Getting started in shell  <br>
+## WORKSHOP QUITO - DAY 3
+### Getting started in shell  
+<br>
 
-## 0. The linux environment
+
+## The linux environment
 
 ### File systems
 - your computer contains a nested hierarchy of directories
@@ -28,7 +31,7 @@ material-type: ""
 - **path**: the *address* to a directory or file on your computer. There are, generally, two types of paths:
 	- **absolute/full path** represents the path of a given directory or file beginning at the root directory
     - **relative path** represents the path of a given directory/file relative to the working/current directory
-- for example, say you have a file "my\_favorite\_file.txt" located in the directory `/Users/myname/Desktop/my_directory`.
+- for example, say you have a file "my_favorite_file.txt" located in the directory `/Users/myname/Desktop/my_directory`.
 	- the **full path** to this file  is `/Users/myname/Desktop/my_directory/my_favorite_file.txt`
     - the **relative path** to this file depends on where you are on the computer
 	- if you are calling this file from Desktop, the relative path would be `my_directory/my_favorite_file.txt`
@@ -95,8 +98,6 @@ Up Arrow | call last command
 `>` | redirects stdout to a file, *overwriting* file if it already exists
 `>>` | redirects stdout to a file, *appending* to the end of file if it already exists
 pipe (<code>&#124;</code>) | redirects stdout to become stdin for next command
-
-<br>
 
 
 <br><br>

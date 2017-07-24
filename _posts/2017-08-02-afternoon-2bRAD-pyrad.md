@@ -1,7 +1,7 @@
 ---
 layout: default
 order: 8
-title:  "2bRAD data in ipyrad"
+title:  "2bRAD data pipeline"
 date:   2017-08-02
 time:   "Afternoon"
 categories: main
@@ -11,7 +11,7 @@ material-type: ""
 ---
 
 ## WORKSHOP QUITO - DAY 3 
-### 2bRAD pipeline, with phylogenetic analyses
+### 2bRAD data mixed pipeline: from raw reads to phylogenies
 
 
 These data are part of a pilot project comparing ddRAD and 2bRAD data (**do NOT distribute**).<br>
@@ -74,8 +74,9 @@ Ok, now lets look at the full file:
 cat T36R59_I93_S27_L006_R1_sub12M.fastq
 ```
 
-Uh oh.... let's quit before the computer crashes.... it's too much to look at! `Ctrl+C`<br><br>
-Here are some alternative ways to view parts of a file.
+Uh oh... let's quit before the computer crashes... it's too much to look at! `Ctrl+C`<br><br>
+This is the essential computational problem with NGS data that is so hard to get over. You can't
+open a file in its entirety! Here are some alternative ways to view parts of a file at a time.
 
 ```bash
 # print the first 10 lines of a file
@@ -258,7 +259,7 @@ Using the barcode file and the command `mv`, rename all .fq files accordingly.</
 Steps 34567. Complete pipeline in **iPyrad**
 ---
 
-iPyrad is super easy, make sure you check out their extensive online documentation [here](http://ipyrad.readthedocs.io/index.html).
+iPyrad is relatively easy when it comes to command line programs. Make sure you check out their extensive online documentation [here](http://ipyrad.readthedocs.io/index.html).
 
 Install iPyrad by following these commands:
 ```bash
@@ -455,15 +456,17 @@ and of [14] clustering threshold. Choose one value lower and one value higher th
 Appendix.
 ---
 
-If you get "Segmentation Errors", exit Virtual Box and close the program. Then run the following commands through the native OSX Terminal program. [Source](https://www.jeffgeerling.com/blogs/jeff-geerling/resizing-virtualbox-disk-image)
+If you get "Segmentation Errors", exit Virtual Box and close the program. You may need to allocate more memory to the system.
 
-Step 1. Allocate more space to the drive
+
+Step 1. Allocate more space to the drive.<br>
+Run the following commands through the native OSX Terminal program. [Source](https://www.jeffgeerling.com/blogs/jeff-geerling/resizing-virtualbox-disk-image)
 ```bash
 # in OSX (for Windows the commands will be slightly different)
-cd /Users/<user name>/VirtualBox\ VMs/UT\ Biocomputing/
+cd /Users/<your user name>/VirtualBox\ VMs/UT\ Biocomputing/
 # Clone the .vmdk image to a .vdi.
 vboxmanage clonehd 'UT Biocomputing-disk001.vmdk' 'new_UT Biocomputing-disk001.vdi' --format vdi
-# Resize the new .vdi image (20480 == 20 GB).
+# Resize the new .vdi image (51200 == 50 GB).
 vboxmanage modifyhd "new_UT Biocomputing-disk001.vdi" --resize 51200 
 ```
 

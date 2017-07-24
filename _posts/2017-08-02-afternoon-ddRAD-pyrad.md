@@ -275,7 +275,7 @@ sp5_ind2     1000000                  25906                  24379              
 
 Let's take a 30-min break while the next few steps run and then come back and check on the run.
 
-**Note**: If you need to rerun a step of iPyrad, you need to add the force flag to your command, as such: `ipyard -p params-ddrad-v1.txt -s 1 -f`
+**Note**: If you need to rerun a step of iPyrad, you will have to add the force flag to your command, as such: `ipyard -p params-ddrad-v1.txt -s 1 -f`
 <br>
 [][][][][][] (activity of some kind?)
 
@@ -301,7 +301,6 @@ Step 7.
 
 <br><br><br>
 ## Downstream phylogenetic analyses
-
 
 
 Estimate a **RAxML** tree with concatenated loci
