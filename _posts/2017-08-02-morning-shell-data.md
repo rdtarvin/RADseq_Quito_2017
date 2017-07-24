@@ -15,6 +15,13 @@ material-type: ""
 ### Getting started in shell  
 <br>
 
+Let's get started with the Virtual Machine!
+
+If you downloaded the VM before July 23, please type the following command.
+```bash
+conda update -p "$HOME/Applications/BioBuilds" -y fastx-toolkit libgd
+conda install -p "$HOME/Applications/BioBuilds" -y -c ipyrad ipyrad
+```
 
 ## The linux environment
 
