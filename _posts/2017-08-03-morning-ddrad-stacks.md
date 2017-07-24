@@ -29,36 +29,9 @@ Demultiplexing your sequencing pools is always the first step in any pipeline. I
 
 We had a total of two libraries for this project, and they both used the same adapters but different illumina primers. Let's take a look at the Stacks Manual for [process_radtags](http://catchenlab.life.illinois.edu/stacks/comp/process_radtags.php) to see how to set up our barcodes file. 
 
-KEEPING? I've made one of the barcodes files for you to work with, which can be found [here](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/STACKS/demultiplexing/barcodes-Stef-3.txt). 
+So, let's build the barcodes file for demultiplexing, where the first column will be the unique adapter sequence using this [text file](), the second column is the index primer sequence (in this case, ATCACG), and the third column is the individual sample names, found [here]().The sample names occur in the same order as the barcodes in the example file.
 
-<<You now have to build the second barcode file, using the SAME barcodes as the other library, the same format, the **different** index primer and sample names. Here are the sample names: 
-
-	pop1_413
-	pop1_414
-	pop1_416
-	pop1_418
-	pop1_419
-	pop1_420
-	pop1_422
-	pop1_423
-	pop1_424
-	pop1_425
-	pop1_426
-	pop1_427
-	pop1_428
-	pop1_429
-	pop1_431
-	pop1_432
-	pop1_433
-	pop1_434
-	pop1_435
-	pop1_436
-	pop1_467
-	pop1_468
-	pop1_469
-	pop1_470
-
-The index primer is xxxxx, and the sample names occur in the same order as the barcodes in the example file.
+**There are MANY ways to build this file.... how do you want to do it?**
 
 **NOTE 1**: whenever editing text files, first, NEVER use what you exported from excel or word directly... always check in a simple text editor (Text Wrangler, BBEdit, etc) and using "view invisible characters" to avoid unnecesary headaches of hidden characters or extra spaces/tabs, etc! Biggest waste of time in anything computing... 
 
@@ -94,7 +67,7 @@ In **ref_map.pl** you need to use [another alignment tool](https://github.com/lh
 Genotyping with denovo_map.pl
 ---
 
-First, let's grab some other sequences that we had demultiplexed from another sequencing pool, like this: 
+First, let's grab five additional  sequences that we had demultiplexed from another sequencing pool; they had the same barcodes, but different Illumina index primers so were demultiplexed separately. Let's fetch the sequences with *wget* from your demultiplexed directory: 
 
 	wget <<add url here>>
 
@@ -102,7 +75,7 @@ We should have five more individuals for the third population that we only had o
 
 Let's make a list of the filenames that have sequences in them:
 
-	ls WRITE CODE FOR THIS
+	ls | awk '/fq/' > sequence_files.txt
 
 This list of filenames will be a part of the input for running denovo_map.pl, since you have to list all of the equence files that will be used for input, rather than a directory. 
 
