@@ -22,6 +22,9 @@ If you downloaded the VM before July 23, please type the following command.
 conda update -p "$HOME/Applications/BioBuilds" -y fastx-toolkit libgd
 conda install -p "$HOME/Applications/BioBuilds" -y -c ipyrad ipyrad=0.7.1
 ```
+You also should reconfigure the sleep options. Click the blue mouse icon inside the virtual machine,
+go to Settings, then Power Manager, then Display. Set sleep to "Never" by scrolling the bars all the way to the left.
+<br>
 
 ## The linux environment
 
