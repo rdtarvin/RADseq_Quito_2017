@@ -218,8 +218,28 @@ If your data are not from HiSeq4000 you would use ```trim2bRAD_2barcodes_dedup.p
 ```bash
 # adaptor is the last 4 characters of the reads, here 'AGAT'
 perl ~/Applications/2bRAD_denovo/trim2bRAD_2barcodes_dedup2.pl input=T36R59_I93.fq adaptor=AGAT sampleID=1
-ls
+.
+.
+.
+T36R59_ACCA: goods: 295784 ; dups: 1178405
+T36R59_AGAC: goods: 260575 ; dups: 987301
+T36R59_AGTG: goods: 325595 ; dups: 956574
+T36R59_CATC: goods: 432507 ; dups: 1732082
+T36R59_CTAC: goods: 311897 ; dups: 1837423
+T36R59_GACT: goods: 322958 ; dups: 1877945
+T36R59_GCTT: goods: 266101 ; dups: 1040723
+T36R59_GTGA: goods: 483664 ; dups: 1871167
+T36R59_GTGT: goods: 328948 ; dups: 1298015
+T36R59_TCAC: goods: 274208 ; dups: 1494727
+T36R59_TCAG: goods: 309572 ; dups: 1109505
+T36R59_TGTC: goods: 310155 ; dups: 1800440
+
+T36R59: total goods : 3921964 ; total dups : 17184307
+
 ```
+
+You can see that there are a ton of duplicate reads in these files. This is OK and means that you have high 
+coverage across loci. Don't confuse these duplicates with PCR duplicates, which may be a source of error (more on this later).
 
 Now you can see that the demultiplexed and deduplicated files are listed by barcode and have the file extension **.tr0**.
 
@@ -232,6 +252,7 @@ fastq_quality_filter -h
 
 # Use typical filter values, i.e., 90% of bases in a read should have a q-value aboce 20
 # This is a for loop, which allows you to execute the same command with arguments across multiple files
+# The 'i' variable is a place holder 
 for i in ls *.tr0; do fastq_quality_filter $i -q 20 -p 90 > ${i}_R1_.trim; done
 
 # zip the files to save space
