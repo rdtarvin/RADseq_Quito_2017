@@ -280,7 +280,7 @@ Let's take a 30-min break while the next few steps run and then come back and ch
 [][][][][][] (activity of some kind?)
 
 Let's look at the intermediate and final files created by iPyrad.
-22:22
+23:28
 
 
 Step 3. 

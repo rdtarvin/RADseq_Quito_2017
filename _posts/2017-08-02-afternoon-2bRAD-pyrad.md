@@ -261,11 +261,10 @@ Steps 34567. Complete pipeline in **iPyrad**
 
 iPyrad is relatively easy when it comes to command line programs. Make sure you check out their extensive online documentation [here](http://ipyrad.readthedocs.io/index.html).
 
-Install iPyrad by following these commands:
+We need to update our virtual machines before running iPyrad.
 ```bash
-conda install ipyrad -c ipyrad
-# type 'y' when it asks to install dependencies
-cp ~/Applications/miniconda2/bin/* ~/Applications/BioBuilds/bin/
+conda update -p "$HOME/Applications/BioBuilds" -y fastx-toolkit libgd
+conda install -p "$HOME/Applications/BioBuilds" -y -c ipyrad ipyrad=0.7.1
 ```
 
 Now we can initiate a new analysis.
