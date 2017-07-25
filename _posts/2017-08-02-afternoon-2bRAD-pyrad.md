@@ -36,19 +36,11 @@ Your files will likely be gzipped and with the file extension **.fq.gz** or **fa
 ls # list all files in current directory
 ls .. # list all files in one directory above
 unzip 2bRAD.zip
+cd 2bRAD
 ls -lht # view all files with details and in order by when they were modified, with human-readable file sizes
 rm 2bRAD.zip # IMPORTANT: removing files from the command line is permanent!!!! There is no trash
 zless T36R59_I93_S27_L006_R1_sub12M.fastq.gz # press 'q' to exit
 ```
-
-Let's gunzip ('unzip' for .gz files) our raw data files to look a bit more into them:
-
-```bash
-# '*' is a wildcard caracter
-gunzip *.fastq.gz # takes ~10 min
-```
-
-This will take a few minutes but we can go ahead and open a new terminal window to take a look at the files in progress.
 
 ```bash
 head T36R59_I93_S27_L006_R1_sub12M.fastq
@@ -178,10 +170,10 @@ Step 1. Demultiplex by barcode in **2bRAD native pipeline**
 
 Copy scripts to your virtual machine Applications folder via git
 ```bash
-cd Applications/
+cd ~/Applications
 git clone https://github.com/z0on/2bRAD_denovo.git
 ls
-cd ../workshop 
+cd ../workshop/2bRAD/
 ```
 Git is an important programming tool that allows developers to trace changes made in code. Let's take a look online.
 ```bash
@@ -225,7 +217,7 @@ From the 2bRAD native pipeline we will use ```trim2bRAD_2barcodes_dedup2.pl``` s
 If your data are not from HiSeq4000 you would use ```trim2bRAD_2barcodes_dedup.pl```. This takes <10 min
 ```bash
 # adaptor is the last 4 characters of the reads, here 'AGAT'
-perl ~/Applications//2bRAD_denovo/trim2bRAD_2barcodes_dedup2.pl input=T36R59_I93.fq adaptor=AGAT sampleID=1
+perl ~/Applications/2bRAD_denovo/trim2bRAD_2barcodes_dedup2.pl input=T36R59_I93.fq adaptor=AGAT sampleID=1
 ls
 ```
 

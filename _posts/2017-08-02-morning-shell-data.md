@@ -15,7 +15,10 @@ material-type: ""
 ### Getting started in shell  
 <br>
 
-Let's get started with the Virtual Machine!
+Let's get started with the Virtual Machine!<br><br>
+First, let's increase the amount of memory allocated to the machine so that it can run a bit faster.
+On the Virtual Box, click Settings, then System. On the Motherboard tab, drag the pointer to be halfway 
+between the total number of memory available (for me this is 4GB or 4096).<br>
 
 If you downloaded the VM before July 23, please type the following command.
 ```bash
