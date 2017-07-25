@@ -20,7 +20,7 @@ Let's get started with the Virtual Machine!
 If you downloaded the VM before July 23, please type the following command.
 ```bash
 conda update -p "$HOME/Applications/BioBuilds" -y fastx-toolkit libgd
-conda install -p "$HOME/Applications/BioBuilds" -y -c ipyrad ipyrad
+conda install -p "$HOME/Applications/BioBuilds" -y -c ipyrad ipyrad=0.7.1
 ```
 
 ## The linux environment
@@ -105,6 +105,12 @@ Up Arrow | call last command
 `>` | redirects stdout to a file, *overwriting* file if it already exists
 `>>` | redirects stdout to a file, *appending* to the end of file if it already exists
 pipe (<code>&#124;</code>) | redirects stdout to become stdin for next command
+
+
+Keep in mind:
+Good judgment comes from experience
+experience comes from bad judgment
+go make mistakes
 
 
 <br><br>

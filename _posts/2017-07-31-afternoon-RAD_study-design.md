@@ -1,6 +1,6 @@
 ---
 layout: default
-order: 4
+order: 3
 title:  "RADseq Study Design"
 date:   2017-07-31
 time:   "Afternoon"
