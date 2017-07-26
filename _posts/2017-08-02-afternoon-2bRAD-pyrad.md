@@ -241,6 +241,10 @@ T36R59: total goods : 3921964 ; total dups : 17184307
 You can see that there are a ton of duplicate reads in these files. This is OK and means that you have high 
 coverage across loci. Don't confuse these duplicates with PCR duplicates, which may be a source of error (more on this later).
 
+```bash
+ls
+```
+
 Now you can see that the demultiplexed and deduplicated files are listed by barcode and have the file extension **.tr0**.
 
 
@@ -253,7 +257,7 @@ fastq_quality_filter -h
 # Use typical filter values, i.e., 90% of bases in a read should have a q-value aboce 20
 # This is a for loop, which allows you to execute the same command with arguments across multiple files
 # The 'i' variable is a place holder 
-for i in ls *.tr0; do fastq_quality_filter $i -q 20 -p 90 > ${i}_R1_.trim; done
+for i in ls *.tr0; do fastq_quality_filter -i $i -q 20 -p 90 > ${i}_R1_.trim; done
 
 # zip the files to save space
 for i in *.trim; do gzip ${i}; done
@@ -265,7 +269,7 @@ Now we have our 2bRAD reads separated by barcode and trimmed (steps 1 & 2)!<br>
 
 
 **TASK**: <mark>The files need to be renamed for each species. 
-Using the barcode file and the command `mv`, rename all .fq files accordingly.</mark><br>
+Using the barcode file [here](https://raw.githubusercontent.com/rdtarvin/RADseq_Quito_2017/master/files/2bRAD-ipyrad_barcodes.txt) and the command `mv`, rename all .gz files accordingly.</mark><br>
 
 
 
