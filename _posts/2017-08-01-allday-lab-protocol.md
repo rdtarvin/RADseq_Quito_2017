@@ -7,6 +7,6 @@ time:   "All day"
 categories: main
 instructor: "Pati"
 materials: "https://docs.google.com/document/d/1pGltZIpuPgRUwpr-hUynISLXanJJY1Y0Ar62QhYRxWw/pub"
-material-type: "docx"
+material-type: "ppt"
 ---
 
