@@ -257,19 +257,18 @@ fastq_quality_filter -h
 # Use typical filter values, i.e., 90% of bases in a read should have a q-value aboce 20
 # This is a for loop, which allows you to execute the same command with arguments across multiple files
 # The 'i' variable is a place holder 
-for i in ls *.tr0; do fastq_quality_filter -i $i -q 20 -p 90 > ${i}_R1_.trim; done
+for i in *.tr0; do fastq_quality_filter -i $i -q 20 -p 90 > ${i}.trim; done
 
 # zip the files to save space
 for i in *.trim; do gzip ${i}; done
-
-# a note: ipyrad expects '_R1_' in the file name, so I've added it to the file names in the command above
 ```
 
 Now we have our 2bRAD reads separated by barcode and trimmed (steps 1 & 2)!<br>
 
 
 **TASK**: <mark>The files need to be renamed for each species. 
-Using the barcode file [here](https://raw.githubusercontent.com/rdtarvin/RADseq_Quito_2017/master/files/2bRAD-ipyrad_barcodes.txt) and the command `mv`, rename all .gz files accordingly.</mark><br>
+Using the barcode file [here](https://raw.githubusercontent.com/rdtarvin/RADseq_Quito_2017/master/files/2bRAD-ipyrad_barcodes.txt) and the command `mv`, 
+rename all .gz files to have the format `genX_spX-X_R1_.fastq.gz`.</mark><br>
 
 
 
@@ -279,10 +278,6 @@ Steps 34567. Complete pipeline in **iPyrad**
 iPyrad is relatively easy when it comes to command line programs. Make sure you check out their extensive online documentation [here](http://ipyrad.readthedocs.io/index.html).
 
 We need to update our virtual machines before running iPyrad.
-```bash
-conda update -p "$HOME/Applications/BioBuilds" -y fastx-toolkit libgd
-conda install -p "$HOME/Applications/BioBuilds" -y -c ipyrad ipyrad=0.7.1
-```
 
 Now we can initiate a new analysis.
 ```bash
@@ -298,6 +293,7 @@ Make a few changes to the params file.
 - `[8] [restriction_overhang]`: don't worry about this, it will be ignored since we are starting from sorted reads
 - `[11] [mindepth_statistical]`: lower to 5; data have been deduplicated (ipyrad assumes it has not been deduplicated)
 - `[12] [mindepth_majrule]`: lower to 2; data have been deduplicated (ipyrad assumes it has not been deduplicated)
+- `[17] [filter_min_trim_len]`: change to 20; loci are small
 - `[18] [max_alleles_consens]`: keep at 2 for diploid
 - `[21] [min_samples_locus]`: change to 3; lower number means more missing data but more loci recovered
 - `[27] [output_formats]`: add ', u'; this will provide an output selecting single SNPs from each locus randomly
