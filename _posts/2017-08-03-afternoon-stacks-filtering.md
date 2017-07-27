@@ -1,12 +1,14 @@
 ---
 layout: default
-order: 3
-title:  "RADseq Study Design"
-date:   2017-07-31
+order: 11
+title:  "Stacks, filtering, and missing data"
+date:   2017-08-03
 time:   "Afternoon"
 categories: main
-instructor: "Becca"
-materials: "https://docs.google.com/presentation/d/e/2PACX-1vQ2rtNrsQq9MinAkfJiEBPiwFYAH-ILb7eERvtKv9mSHkTvutCjRQ1w0h-PRLXDm3Am3-ChhKUDapsu/pub?start=false&loop=false&delayms=60000"
+instructor: "Pati"
+materials: "https://drive.google.com/open?id=0B3C6Ihb2H11nRUZYNXhDeG44bkk"
 material-type: "ppt"
 ---
+
+
 
