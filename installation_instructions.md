@@ -30,8 +30,8 @@ sudo apt install atom
 ```
 8. To test whether your installation worked, type:
 ```bash
-touch testfile
-atom testfile
+touch testfile # creates an empty file in the directory where you are
+atom testfile # opens the file in atom
 ```
 Add some text to the file, save it, and then exit atom. Go back to the Terminal and type
 ```bash
@@ -39,9 +39,9 @@ cat testfile
 ```
 If the installation worked, the text you saved to the file should print to the screen.
 
-One note - on the VM, copy is Ctrl+Shift+C and paste is Ctrl+Shift+V
+One note - on the VM, copy is Ctrl+Shift+C and paste is Ctrl+Shift+V<br>
 
-**TROUBLESHOOTING**
+**TROUBLESHOOTING**<br>
 If when starting your VM, you get a black box with an underscore and the machine doesn't ever start, you may need to enable hardware virtualization technology (VT-x).
 This is probably the case if you have a 64-bit Windows operating system. To make this change, follow these steps:
 1. Start BIOS at boot up by holding F10 during start-up (the specific F key may be different for your computer).
