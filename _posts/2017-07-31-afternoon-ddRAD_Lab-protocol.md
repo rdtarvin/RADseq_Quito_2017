@@ -1,6 +1,6 @@
 ---
 layout: default
-order: 4
+order: 5
 title:  "ddRAD Wetlab Protocol"
 date:   2017-07-31
 time:   "Afternoon"

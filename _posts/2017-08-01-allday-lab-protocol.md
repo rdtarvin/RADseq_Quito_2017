@@ -1,6 +1,6 @@
 ---
 layout: default
-order: 5
+order: 6
 title:  "Lab protocol design"
 date:   2017-08-01
 time:   "All day"

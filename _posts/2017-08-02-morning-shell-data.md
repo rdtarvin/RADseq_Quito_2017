@@ -1,7 +1,7 @@
 ---
 layout: default
 order: 8
-title:  "Getting started in shell"
+title:  "Cleaning data and shell"
 date:   2017-08-02
 time:   "Morning"
 categories: main
