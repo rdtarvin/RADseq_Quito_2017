@@ -83,7 +83,7 @@ First, let's grab five additional  sequences that we had demultiplexed from anot
 
 	wget <<add url here>>
 
-We should have five more individuals for the third population that we only had one before. Also, notice how these individuals had a different Illumina index primer... 
+We should have five more individuals for the third population for which we only had one before. Also, notice how these individuals had a different Illumina index primer... 
 
 Let's make a list of the filenames that have sequences in them:
 
@@ -101,9 +101,18 @@ One thing that is very important in stacks is troubleshooting parameter settings
 
 **Note 2**: M should not be 1 (diploid data) but also should not be very high since it will begin to stack paralogs. 
 
-**Note 3**: n will depend on how divergent our individuals/populations are. IT should not be zero, since that would essentially create zero SNPs, but 1 also seems unrealistically low (only a single difference between individuals in any given locus), so in these kinds of datasets we should start permutations starting from 2.  If you use n 1 it is likely to oversplit loci among populations that are more divergent. 
+**Note 3**: n will depend on how divergent our individuals/populations are. It should not be zero, since that would essentially create zero SNPs, but 1 also seems unrealistically low (only a single difference between individuals in any given locus), so in these kinds of datasets we should start permutations starting from 2.  If you use n 1 it is likely to oversplit loci among populations that are more divergent. 
+
+The same paper that discussed the issues with *ref_map.pl* that I mentioned previously, also mentions some tips for picking the ideal parameter settings for stacks... but, in general my recommendation would be: explore your dataset!!! Some general suggestions from it: 
+
+- Setting the value of *m* in essence is choosing how much "error" you will include/exclude from your dataset. This parameter creates a trade-off between including error and excluding actual alleles/polymorphism. Higher values of *m* increase the average sample coverage, but decreases the number of assembled loci. After m=3 loci number is more stable.
+- Setting the value *M* is a trade-off between overmerging (paralogs) and undermerging (splitting) loci.  it is **VERY dataset-specific** since it depends on polymorphism in the species/populations and in the amount of error (library prep and sequencing). 
+- Setting the value *n* is also critical when it comes to overmerging and undermerging loci. There seems to be an unlimited number of loci that can be merged with the catalog wiht increasing n!! 
+- Finally, authors suggest to use a general rule of parameter settings is n=M, n=M-1, or n=M+1, and that M is the main parameter that needs to be explored for each dataset. 
 
 
+
+However, given that these methods are still very new and that we still don't know how to "Easily" and properly assess error, the more permutations you do with the parameter settings, the more you will understand what your dataset is like, and the better/more "real" your loci/alleles will be. Here are some recommended permutations to run wiht your dataset:
 
 Permutations | -m | -M | -n | --max_locus_stacks 
 ------------ | ------------- | ------------ | ------------- | ------------ |
@@ -119,5 +128,12 @@ i | 3 | 2 | 5 | 3 |
 j | 3 | 2 | 2 | 4 |
 k | 3 | 2 | 2 | 5 |
 
+Now we can start setting up denovo_map runs. Here is the general code for doing that. 
 
+	mkdir ./path/to/denovo-map/denovo-test-1/
 
+	denovo_map.pl -T 8 -m 2 -M 3 -n 2 -S -b 2 -o ./path/to/denovo-map/denovo-test-1/ \
+	-s ./path/to/denovo-map/Ab_372.1.fq \
+	-s ./path/to/denovo-map/Ab_372.2.fq \
+
+Etc.... (as in, followed by all your other sequences). So, the final file should look like [this](). Thus, you need to build your denovo_map file with EVERY sequence that you will use separately.... **How do you want to do this?** 
