@@ -1,0 +1,12 @@
+---
+layout: default
+order: 5
+title:  "Lab protocol design"
+date:   2017-08-01
+time:   "All day"
+categories: main
+instructor: "Pati"
+materials: "https://docs.google.com/document/d/1pGltZIpuPgRUwpr-hUynISLXanJJY1Y0Ar62QhYRxWw/edit"
+material-type: "docx"
+---
+
