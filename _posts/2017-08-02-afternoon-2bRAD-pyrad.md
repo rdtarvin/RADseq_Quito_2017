@@ -328,7 +328,7 @@ TGCAG,                         ## [8] [restriction_overhang]: Restriction overha
 2                              ## [18] [max_alleles_consens]: Max alleles per site in consensus sequences
 5, 5                           ## [19] [max_Ns_consens]: Max N's (uncalled bases) in consensus (R1, R2)
 8, 8                           ## [20] [max_Hs_consens]: Max Hs (heterozygotes) in consensus (R1, R2)
-3                              ## [21] [min_samples_locus]: Min # samples per locus for output
+4                              ## [21] [min_samples_locus]: Min # samples per locus for output
 20, 20                         ## [22] [max_SNPs_locus]: Max # SNPs per locus (R1, R2)
 8, 8                           ## [23] [max_Indels_locus]: Max # of indels per locus (R1, R2)
 0.5                            ## [24] [max_shared_Hs_locus]: Max # heterozygous sites per locus (R1, R2)
@@ -353,11 +353,86 @@ ipyrad -p params-2brad-v1.txt -r
 Let's look at the intermediate and final files created by iPyrad.
 
 
+Step 2. 
+---
+
+This step filters the reads. Why were none apparently filtered here?
+
+```bash
+cd 2brad-v1_edits
+ls
+cat s2_rawedit_stats.txt 
+
+             reads_raw  trim_adapter_bp_read1  trim_quality_bp_read1  reads_filtered_by_Ns  reads_filtered_by_minlen  reads_passed_filter
+gen1_sp1-1a     476680                      0                      0                     0                         0               476680
+gen1_sp1-1b     305489                      0                      0                     0                         0               305489
+gen2_sp1-1      270185                      0                      0                     0                         0               270185
+gen3_sp1-1      307422                      0                      0                     0                         0               307422
+gen3_sp2-1      291732                      0                      0                     0                         0               291732
+gen3_sp3-1      324320                      0                      0                     0                         0               324320
+```
+
+**Challenge**
+<details> 
+  <summary>How many reads were filtered and removed from the analysis? Can you explain why? </summary>
+   No reads were removed! This is because `[16] [filter_adapters]` was set to 0.
+</details> 
+
+What do the files created in this step look like? 
+
+```bash
+zcat gen1_sp1-1a.trimmed_R1_.fastq.gz | head
+
+@K00179:73:HJCTJBBXX:7:1101:30878:1261 1:N:0:TGTTAG bcd=GTGA
+ACTCCCAGCAAGCGATGCTCGTGCATAGCACAGGCG
++
+FFJFJJJJA7FAJF-AJJA77F<77FJ<FJ-<FJJJ
+@K00179:73:HJCTJBBXX:7:1101:15828:1279 1:N:0:TGTTAG bcd=GTGA
+CGGTGCTAACCACGAGACCACTGCCGGTCTGAACTC
++
+FFJJJJJJJJJJJJJJJJJJJJJJFJJJJJJJJJJJ
+@K00179:73:HJCTJBBXX:7:1101:28940:1279 1:N:0:TGTTAG bcd=GTGA
+GAGCCTTACAAGGCACGTGTATCGCCTTGACCCGGT
+```
+
+They should be the same as the input files, but now they are in a place with names that iPyrad can recognize and use downstream.
+
 Step 3. 
 ---
 
+This step clusters reads within individuals.
+
+```bash
+cd ../2brad-v1_clust_0.85/
+ls
+cat s3_cluster_stats.txt
+
+            clusters_total  hidepth_min clusters_hidepth avg_depth_total avg_depth_mj avg_depth_stat sd_depth_total sd_depth_mj sd_depth_stat filtered_bad_align
+gen1_sp1-1a         150131          2.0            81028            3.16         5.00          16.97           9.70       12.92         27.05                  0
+gen1_sp1-1b         107801          2.0            45137            2.82         5.36          16.57           8.76       13.12         25.54                  0
+gen2_sp1-1          100326          2.0            50419            2.69         4.36          16.39           7.54       10.36         23.66                  0
+gen3_sp1-1           98206          2.0            53835            3.11         4.85          18.21           9.81       13.00         28.95                  0
+gen3_sp2-1          111136          2.0            49989            2.62         4.60          17.15           8.18       11.90         26.98                  0
+gen3_sp3-1          117753          2.0            60484            2.74         4.39          16.97           8.37       11.43         26.95                  0
+
+```
+You can use this file to see the coverage of your sequences. `avg_depth_total` shows us that the coverage is between 2x and 3x for the samples,
+but that when we remove clusters with coverage less than 4 (the value we set for `[21] [min_samples_locus]`), average coverage is 4-5x.
+
 Step 4.
 ---
+
+```bash
+cat s4_joint_estimate.txt
+
+              hetero_est  error_est
+gen1_sp1-1a    0.054254   0.034079
+gen1_sp1-1b    0.047668   0.035110
+gen2_sp1-1     0.051664   0.033068
+gen3_sp1-1     0.056408   0.033520
+gen3_sp2-1     0.066856   0.033735
+gen3_sp3-1     0.053274   0.033962
+```
 
 Step 5.
 ---
