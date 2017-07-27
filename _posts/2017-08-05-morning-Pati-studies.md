@@ -1,11 +1,11 @@
 ---
 layout: default
-order: 12
-title:  "AftrRAD and Treemix"
-date:   2017-08-03
+order: 16
+title:  "Case Studies with RADseq"
+date:   2017-08-05
 time:   "Morning"
 categories: main
-instructor: "David"
+instructor: "Pati"
 materials: ""
 material-type: ""
 ---
