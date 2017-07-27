@@ -1,9 +1,9 @@
 ---
 layout: default
-order: 11
+order: 12
 title:  "ddRAD data in stacks"
 date:   2017-08-03
-time:   "Morning"
+time:   "Afternoon"
 categories: main
 instructor: "Pati"
 materials: files/fakefile.txt
