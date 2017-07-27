@@ -1,7 +1,7 @@
 ---
 layout: default
-order: 6
-title:  "RADseq Drylab Overview"
+order: 7
+title:  "RADseq Pipelines Overview"
 date:   2017-08-02
 time:   "Morning"
 categories: main

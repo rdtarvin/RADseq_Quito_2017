@@ -1,4 +1,4 @@
-gen3_sp3-1	TGGT
+gen3_sp3-1	GTGT
 gen3_sp3-2	AGAC
 gen3_sp2-1	ACCA
 gen3_sp2-2a	AGTG
