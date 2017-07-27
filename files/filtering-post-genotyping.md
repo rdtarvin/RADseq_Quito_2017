@@ -1,4 +1,6 @@
 
+Now, let's finish the stacks pipeline, run basic yet stringent filters, and then get our population data! 
+
 First output from stacks *populations*
 -------
 Run populations on the mapped dataset using the following code: 
@@ -8,25 +10,25 @@ Run populations on the mapped dataset using the following code:
 and we use the .ped and .map files from the output.
 
 
-After that, filter in plink and then back to stacks.
+After that, we will filter in plink.
 
 
 Filtering in plink
 ----
 
-same filters as Pseudacris/Xantusia
 
-1. filter loci with less than 60% sequenced
+
+1. First, we filter loci with less than 60% loci sequenced
 
 		./plink --file filename --geno 0.4 --recode --out filename_a --noweb
 
 
-2. filter individuals that have less than 50% data
+2. Second, we filter individuals that have less than 50% data
 
 		./plink --file filename_a --mind 0.5 --recode --out filename_b --noweb
 
 
-3. filter loci with MAF < 0.02 in remaining individuals
+3. Third, we filter loci with MAF < 0.02 in remaining individuals
 
 		/.plink --file filename_b --maf 0.02 --recode --out filename_c --noweb
 
