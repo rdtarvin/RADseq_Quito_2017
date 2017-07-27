@@ -21,7 +21,8 @@ left corner, then click the light switch icon ("All Settings"). Scroll down and 
 then Manage Groups. Scroll down and select vboxsf and then click Properties. Make sure the box for 
 "Biocomputing User 1" is checked. Click OK, enter your password ("password"), and then shut down the VM 
 and restart it.
-7. Click on the black box in the upper left corner ("Terminal Emulator"). Once the program opens, install the Atom text editor by copying the following text into the terminal:
+7. Click on the black box in the upper left corner ("Terminal Emulator"). 
+Once the program opens, install the Atom text editor by copying the following text into the terminal, one line at a time:
 ```bash
 sudo add-apt-repository ppa:webupd8team/atom
 sudo apt update
