@@ -34,8 +34,14 @@ If the installation worked, the text you saved to the file should print to the s
 
 One note - on the VM, copy is Ctrl+Shift+C and paste is Ctrl+Shift+V
 
-Stacks, iPyrad, dDocent, R, cd-hit-est, fastx-toolkit, and fastqc are all installed in $HOME/Applications/BioBuilds and should be accessible via $PATH. AftrRAD is installed in $HOME/Applications/AftrRADv5.0. 
-
+**TROUBLESHOOTING**
+If when starting your VM, you get a black box with an underscore and the machine doesn't ever start, you may need to enable hardware virtualization technology (VT-x).
+This is probably the case if you have a 64-bit Windows operating system. To make this change, follow these steps:
+1. Start BIOS at boot up by holding F10 during start-up (the specific F key may be different for your computer).
+2. Go to Advanced Settings then Device Configurations, then click the box next to VTx
+3. Click Save, then Exit. Save changes.
+4. Once the computer starts, open Virtual Box, click on Settings. Under the General menu, change the Version to Ubuntu (64-bit).
+5. Start the VM, it should be working fine!
 
 ---
 If you have a Mac computer, everything we are doing in this workshop you can install at a later date to your root system (Mac OS). Windows users will always require a linux VM to run these programs. For Mac OS text editors, we recommend [Text Wrangler](http://www.barebones.com/products/textwrangler/), [Sublime Text](http://www.sublimetext.com/2), or [Atom](https://atom.io/). If you do want to use a text editor on Windows outside of the ubuntu environment, we recommend [Notepad++](https://notepad-plus-plus.org/).
