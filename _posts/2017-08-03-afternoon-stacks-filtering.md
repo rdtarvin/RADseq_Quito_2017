@@ -1,6 +1,6 @@
 ---
 layout: default
-order: 11
+order: 12
 title:  "Stacks, filtering, and missing data"
 date:   2017-08-03
 time:   "Afternoon"

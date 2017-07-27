@@ -1,6 +1,6 @@
 ---
 layout: default
-order: 5
+order: 6
 title:  "RADseq Wetlab Protocol"
 date:   2017-07-31
 time:   "Afternoon"

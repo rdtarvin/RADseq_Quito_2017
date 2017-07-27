@@ -1,6 +1,6 @@
 ---
 layout: default
-order: 7
+order: 8
 title:  "Getting started in shell"
 date:   2017-08-02
 time:   "Morning"

@@ -1,6 +1,6 @@
 ---
 layout: default
-order: 8
+order: 9
 title:  "2bRAD data pipeline"
 date:   2017-08-02
 time:   "Afternoon"

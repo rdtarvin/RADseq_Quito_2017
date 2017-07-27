@@ -1,6 +1,6 @@
 ---
 layout: default
-order: 6
+order: 7
 title:  "RADseq Drylab Overview"
 date:   2017-08-02
 time:   "Morning"
