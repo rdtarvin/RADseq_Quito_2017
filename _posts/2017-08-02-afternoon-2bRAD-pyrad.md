@@ -266,9 +266,9 @@ for i in *.trim; do gzip ${i}; done
 Now we have our 2bRAD reads separated by barcode and trimmed (steps 1 & 2)!<br>
 
 
-**TASK**: <mark>The files need to be renamed for each species. 
+**TASK**: The files need to be renamed for each species. 
 Using the barcode file [here](https://raw.githubusercontent.com/rdtarvin/RADseq_Quito_2017/master/files/2bRAD-ipyrad_barcodes.txt) and the command `mv`, 
-rename all .gz files to have the format `genX_spX-X_R1_.fastq.gz`.</mark><br>
+rename all .gz files to have the format `genX_spX-X_R1_.fastq.gz`.<br>
 
 
 
@@ -298,7 +298,7 @@ Make a few changes to the params file.
 - `[21] [min_samples_locus]`: change to 3; lower number means more missing data but more loci recovered
 - `[27] [output_formats]`: add ', u'; this will provide an output selecting single SNPs from each locus randomly
 
-**TASK**: <mark>Make these changes in the params file using the atom text editor.</mark>
+**TASK**: Make these changes in the params file using the atom text editor.
 ```bash
 atom params-2brad-v1.txt
 ```
@@ -564,9 +564,20 @@ gen3_sp3-1      CTGCACGTCGACAGCGCTGCAGCCAATCCGTG
 
 ```
 The `.loci` format is unique to iPyrad and is a nice visualization of the final loci.
-`-` denotes variable sites; `*` denotes phylogenetically informative sites. The full results
-file, `2brad-v1_stats.txt`, has more information on the assembly.
+`-` denotes variable sites; `*` denotes phylogenetically informative sites. 
 
+Let's look at another output file.
+```bash
+# complete SNP matrix
+less -S 2brad-v1.snps.phy # use -S to prevent line wrapping, scroll to the right
+# press 'q' to leave the file
+
+# SNP matrix with only one SNP per locus
+less -S 2brad-v1.u.snps.phy # notice the difference in the number of characters in the file
+
+```
+
+The full results file, `2brad-v1_stats.txt`, has more information on the assembly.
 
 <br><br><br>
 ## Downstream phylogenetic analyses
@@ -587,6 +598,7 @@ import toytree
 rax = ipa.raxml(data='2brad-v1.phy',name='2brad-v1',workdir='analysis-raxml')
 print rax.command
 rax.run(force=True)
+quit() # to leave python environment
 ```
 
 Estimate a quartets-based tree in **tetrad**, an iPyrad version of [SVDquartets](http://evomics.org/learning/phylogenetics/svdquartets/)
@@ -628,6 +640,8 @@ This is the expected topology and estimated divergence timing.
 Do we see the correct tree in our results?
 
 
+### Further exercise
+
 iPyrad offers the option to branch your pipeline with argument -b. This allows you to access results from previous steps and use them in different downstream analyses.
 One of the most convenient uses of this function is testing the effect of missing data on your downstream analyses.
 So, let's execute some reiterations of Step 7, the step that generates the final SNP matrices.
@@ -645,18 +659,19 @@ ipyrad -p params-2brad-v1.txt -b 2brad-v2-6min
 ## provide new, informative prefix
 ```
 
-Then you would need to open the new params file (`params-2brad-v2-6min.txt`) and manually edit parameter [21]. Below I have included code to automate this task.
+Then you would need to open the new params file (`params-2brad-v2-6min.txt`) and manually edit parameter [21]. 
 
+If you had more samples, you could automate this process as such.
 ```bash
 for i in 4 6 8 10 12; do ipyrad -p params-2brad-v1.txt -b 2brad-v2-${i}l; do sed -i s/".*\[21\].*"/"${i}$(printf '\t')$(printf '\t')$(printf '\t')$(printf '\t') \#\# \[21\] \[min_samples_locus\]: Min \# samples per locus for output"/ params-2brad-v2-${i}l.txt;  done
 # for i in 4 6 8 10 12; do ipyrad -p params-2brad-v2-${i}l.txt -s 7 -f; done
 
 ## use the '-f' option when you have already run that step, to force it to rerun
 ```
-**TASK**: <mark>Choose one params file that is different from your neighbor and run it so we can compare results as a class.</mark>
+**TASK**: Choose one params file that is different from your neighbor and run it so we can compare results as a class.
 
-**TASK**: <mark>It's a good idea to run iPyrad using both a range of [21] missing data (as above)
-and of [14] clustering threshold. Choose one value lower and one value higher than 0.85 for parameter [21], create two new branches, and run these analyses using the -b option in iPyrad.</mark><br>
+**TASK**: It's a good idea to run iPyrad using both a range of [21] missing data (as above)
+and of [14] clustering threshold. Choose one value lower and one value higher than 0.85 for parameter [21], create two new branches, and run these analyses using the -b option in iPyrad.<br>
 **Hint**: First, be sure to check when the clustering threshold was incorporated into the analysis before deciding where to restart the pipeline.
 
 

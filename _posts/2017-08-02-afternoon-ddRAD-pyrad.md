@@ -178,7 +178,7 @@ ddrad-v1        ## [0] [assembly_name]: Assembly name. Used to name output direc
 ./                             ## [1] [project_dir]: Project dir (made in curdir if not present)
                                ## [2] [raw_fastq_path]: Location of raw non-demultiplexed fastq files
 ./ddRAD-ipyrad_barcodes.txt        ## [3] [barcodes_path]: Location of barcodes file
-./*.gz                 ## [4] [sorted_fastq_path]: Location of demultiplexed/sorted fastq files
+./*-1*.gz                 ## [4] [sorted_fastq_path]: Location of demultiplexed/sorted fastq files
 denovo                         ## [5] [assembly_method]: Assembly method (denovo, reference, denovo+reference, denovo-reference)
                                ## [6] [reference_sequence]: Location of reference sequence file
 pairddrad                            ## [7] [datatype]: Datatype (see docs): rad, gbs, ddrad, etc.
@@ -273,15 +273,13 @@ sp5_ind1     1000000                  25260                  24428              
 sp5_ind2     1000000                  25906                  24379                 667064                2410386                    31                      4422               995547
 ```
 
-Let's take a 30-min break while the next few steps run and then come back and check on the run.
+Because these loci are long, we can't finish this lesson in class. Instead, you can download the files from 
+a finished run [here](). 
 
 **Note**: If you need to rerun a step of iPyrad, you will have to add the force flag to your command, as such: `ipyard -p params-ddrad-v1.txt -s 1 -f`
 <br>
-[][][][][][] (activity of some kind?)
 
 Let's look at the intermediate and final files created by iPyrad.
-23:28
-
 
 Step 3. 
 ---
@@ -304,29 +302,33 @@ Step 7.
 
 
 Estimate a **RAxML** tree with concatenated loci
-```
+```bash
 # conda install raxml -c bioconda # already done
 python
+```
+```python
 import ipyrad.analysis as ipa
 rax = ipa.raxml(data='ddrad-v1.phy',name='ddrad-v1',workdir='analysis-raxml')
-
+```
+```bash
 # Or run it straight from the command line
-/home1/02576/rdtarvin/raxml-ng --msa epi-dd-july14-subsample-lm15-s7_outfiles/epi-dd-july14-subsample-lm15-s7.u.snps.phy --model GTR+G+ASC_LEWIS --search
+/home1/02576/rdtarvin/raxml-ng --msa ddrad-v1_outfiles/ddrad-v1.u.snps.phy --model GTR+G+ASC_LEWIS --search
 ```
 
 Estimate a quartets-based tree in **tetrad**, an ipython version of [SVDquartets](http://evomics.org/learning/phylogenetics/svdquartets/)
 
-```
->>> import ipyrad.analysis as ipa
->>> import ipyparallel as ipp
->>> import toytree
+```python
+import ipyrad.analysis as ipa
+import toytree
 
-tet = ipa.tetrad(name='epi-dd-july15',seqfile='epi-dd-july14-trimloci.snps.phy',mapfile='epi-dd-july14-trimloci.snps.map',nboots=100)
+tet = ipa.tetrad(name='ddrad-v1',seqfile='ddrad-v1.snps.phy',mapfile='ddrad-v1.snps.map',nboots=100)
 loading seq array [12 taxa x 77966 bp]
 max unlinked SNPs per quartet (nloci): 5183
+```
 
+```bash
 # from command line
-tetrad -n epi-dd-july14-subsample-trim15 -s epi-dd-july14-subsample-trim15.snps.phy -b 100 -l epi-dd-july14-subsample-trim15.snps.map -o analysis-tetrad -c 24
+tetrad -n ddrad-v1 -s ddrad-v1.snps.phy -b 100 -l ddrad-v1.snps.map -o analysis-tetrad -c 24
 ```
 
 
@@ -335,25 +337,26 @@ tetrad -n epi-dd-july14-subsample-trim15 -s epi-dd-july14-subsample-trim15.snps.
 This is the expected topology and estimated divergence timing.
 
 ```
-        ___________________sp1
+        ___________________gen1_sp1
        |   
--25my--|          _________sp2
+-25my--|          _________gen2_sp1
        |____15my_|
-                 |      ___sp3
+                 |      ___gen3_sp1
                  |_5my_|  
-                       |  _sp4
+                       |  _gen3_sp2
                        |_|
-                         |_sp5
-                         
+                         |_gen3_sp3
+                                                  
 ```
    
-
-Whats different between the expected tree and the tree we obtained? 
-
-Why do you think that is? 
-How can we fix it?
-
-but there is a ton of missing data, especially in sp1
+**Challenge**
+<details> 
+  <summary>What's different between the expected tree and the tree we obtained? Why do you think that is?</summary>
+   The branches in genus 3 are way longer than they should be. This is because there are relatively more
+   loci recovered in these closely related lineages.
+</details> 
+ 
+How can we fix this issue?
 
 
 
