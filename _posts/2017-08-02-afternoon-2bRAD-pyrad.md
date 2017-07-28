@@ -353,10 +353,8 @@ ipyrad -p params-2brad-v1.txt -r
 Let's look at the intermediate and final files created by iPyrad.
 
 
-Step 2. 
+Step 2. This step filters the reads.
 ---
-
-This step filters the reads. Why were none apparently filtered here?
 
 ```bash
 cd 2brad-v1_edits
@@ -397,10 +395,8 @@ GAGCCTTACAAGGCACGTGTATCGCCTTGACCCGGT
 
 They should be the same as the input files, but now they are in a place with names that iPyrad can recognize and use downstream.
 
-Step 3. 
+Step 3. This step clusters reads within individuals.
 ---
-
-This step clusters reads within individuals.
 
 ```bash
 cd ../2brad-v1_clust_0.85/
@@ -420,10 +416,8 @@ You can use this file to see the coverage of your sequences. `avg_depth_total` s
 but that when we remove clusters with coverage less than 4 (the value we set for `[21] [min_samples_locus]`), average coverage is 4-5x.
 <br><br>
 
-Step 4.
+Step 4. This step jointly estimates heterozygosity and error in the clusters from step 3.
 ---
-
-This step jointly estimates heterozygosity and error in the clusters from step 3.
 
 ```bash
 cat s4_joint_estimate.txt
@@ -477,10 +471,8 @@ The first cluster looks like a heterozygote. The second cluster here has a ton o
 is likely to be paralogous. The third cluster could be either a heterozygote or a homozygote with a sequencing error.
 The '+' and '-' indicate whether the reads are reverse complemented.
 <br><br>
-Step 5.
+Step 5. This step uses the estimates from step 4 and filters the clusters.
 ---
-
-This step uses the estimates from step 4 and filters the clusters.
 
 ```bash
 cd ../2brad-v1_consens/
@@ -499,10 +491,8 @@ Here we get a more accurate measurement of heterozygosity (i.e., with errors rem
 clusters were removed from having too many Ns, which are sites that could not be called with statistical confidence.
 <br><br>
 
-Step 6.
+Step 6. This step is responsible for clustering loci among individuals.
 ---
-
-This step is responsible for clustering loci among individuals.
 
 ```bash
 cat s6_cluster_stats.txt 
@@ -538,10 +528,8 @@ There are a number of other files produced during this step as part of the clust
 - 2brad-v1.utemp.sort is a table used to sort the reads
 <br><br>
 
-Step 7.
+Step 7. This step filters the data and creates all the final output files.
 ---
-
-This step creates all the final output files.
 
 ```bash
 cd ../2brad-v1_outfiles/
