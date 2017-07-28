@@ -5,7 +5,7 @@ title:  "Getting started in shell"
 date:   2017-08-02
 time:   "Morning"
 categories: main
-instructor: "Becca and Pati"
+instructor: "Becca"
 materials: files/fakefile.txt
 material-type: ""
 ---
