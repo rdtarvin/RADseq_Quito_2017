@@ -1,7 +1,7 @@
 ---
 layout: default
 order: 10
-title:  "ddRAD data in ipyrad"
+title:  "ddRAD Data in iPyrad"
 date:   2017-08-02
 time:   "Afternoon"
 categories: main
