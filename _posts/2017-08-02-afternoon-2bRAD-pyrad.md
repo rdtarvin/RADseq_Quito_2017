@@ -499,13 +499,85 @@ Here we get a more accurate measurement of heterozygosity (i.e., with errors rem
 clusters were removed from having too many Ns, which are sites that could not be called with statistical confidence.
 <br><br>
 
-
 Step 6.
 ---
+
+This step is responsible for clustering loci among individuals.
+
+```bash
+cat s6_cluster_stats.txt 
+vsearch v2.0.3_linux_x86_64, 3.9GB RAM, 1 cores
+/home/user1/Applications/BioBuilds/lib/python2.7/site-packages/bin/vsearch-linux-x86_64 -cluster_smallmem /home/user1/workshop-test/2bRAD/2brad-v1_consens/2brad-v1_catshuf.tmp -strand both -query_cov 0.6 -minsl 0.5 -id 0.85 -userout /home/user1/workshop-test/2bRAD/2brad-v1_consens/2brad-v1.utemp -notmatched /home/user1/workshop-test/2bRAD/2brad-v1_consens/2brad-v1.htemp -userfields query+target+qstrand -maxaccepts 1 -maxrejects 0 -fasta_width 0 -threads 0 -fulldp -usersort -log /home/user1/workshop-test/2bRAD/2brad-v1_consens/s6_cluster_stats.txt 
+Started  Thu Jul 27 16:23:07 201712095606 nt in 334938 seqs, min 32, max 44, avg 36
+
+
+      Alphabet  nt
+    Word width  8
+     Word ones  8
+        Spaced  No
+        Hashed  No
+         Coded  No
+       Stepped  No
+         Slots  65536 (65.5k)
+       DBAccel  100%
+
+Clusters: 230503 Size min 1, max 119, avg 1.5
+Singletons: 165189, 49.3% of seqs, 71.7% of clusters
+
+
+Finished Thu Jul 27 16:25:18 2017
+Elapsed time 02:11
+Max memory 172.5MB
+```
+
+Of all this output, probably the only thing we are interested in is the number of clusters and singletons (i.e., clusters with only one read).
+There are a number of other files produced during this step as part of the clustering process:
+- *.consens.gz are consensus reads for each individual
+- 2brad-v1_catclust.gz contains the clusters created across individuals.
+- *.catg are arrays used to estimate the clusters
+- 2brad-v1.utemp.sort is a table used to sort the reads
+<br><br>
 
 Step 7.
 ---
 
+This step creates all the final output files.
+
+```bash
+cd ../2brad-v1_outfiles/
+ls
+head -30 2brad-v1.loci 
+gen1_sp1-1a     TACATGAGCACTGAGCTCGGTGRCTGGGTAA
+gen1_sp1-1b     TACATGAGCACTGAGCTCGGTGRCTGGGTAA
+gen3_sp1-1      TACATGAGCACTGAGCTCGGCG-CTGTGTGC
+gen3_sp2-1      TACATGAGCACTGAGCTCGGTAACTGGCTAG
+//                                  --*   -- --|11|
+gen1_sp1-1a     TGCTCTTGCAGTGGGATCGGCTGGTGACTTG
+gen3_sp1-1      AGCTCTTGCAGTGGGATCGGCTGGTGACTTG
+gen3_sp2-1      AGCTTTTGCAGTGGGATCGGCTGGTGACTTG
+//              -   -                          |36|
+gen1_sp1-1a     GGGACACGCAAGAGTCTCGTYTGGTGGTTAC
+gen3_sp1-1      NGGACANGCAAGAGTCTCGTNTGGTGGTTAC
+gen3_sp2-1      GGGACANGCAAGAGNCTCGTNTGGTGGTTAC
+gen3_sp3-1      GGGACACGCAAGAGTCTCGTCTGGTGGTTAC
+//                                  -          |92|
+gen1_sp1-1a     CCTCAATGCAGCAAATTCGGCYTGTWCCTTT
+gen1_sp1-1b     CCTCAATGCAGMAAAGTCGGCCTGTACCTTT
+gen3_sp2-1      CCTCAATGCAGCAAAGTCGGYCTGTACMTTT
+//                         -   -    --   - -   |109|
+gen1_sp1-1a     CATCCAAGCACCTGAMTCGRTGGGTYGAAAG
+gen1_sp1-1b     CATCCAAGCACCTGACTCGGTGGK-CGAAAA
+gen2_sp1-1      CATCCAAGCAACCGCATCGGTGGGTCGAAAG
+//                        - - -*   -   - -    -|185|
+gen1_sp1-1a     CTGCACGTCGACAGCGCTGCAGCCAATAACGG
+gen1_sp1-1b     CTG-ACGTCGACAGCGCTGCAGCCAATAACGG
+gen2_sp1-1      CTG-ACGTCGACAGCGCTGCAGCCATTAACGG
+gen3_sp3-1      CTGCACGTCGACAGCGCTGCAGCCAATCCGTG
+
+```
+The `.loci` format is unique to iPyrad and is a nice visualization of the final loci.
+`-` denotes variable sites; `*` denotes phylogenetically informative sites. The full results
+file, `2brad-v1_stats.txt`, has more information on the assembly.
 
 
 <br><br><br>
@@ -516,9 +588,10 @@ Step 7.
 
 Estimate a **RAxML** tree with concatenated loci
 ```bash
-conda install raxml -c bioconda
+conda install -p "$HOME/Applications/BioBuilds" -y raxml -c bioconda
 python # start python
 ```
+
 ```python
 import ipyrad.analysis as ipa
 rax = ipa.raxml(data='2brad-epi-july17.phy',name='2brad-epi-july17',workdir='analysis-raxml')
