@@ -7,7 +7,7 @@ time:   "Afternoon"
 categories: main
 instructor: "Pati, Becca, David"
 materials: ""
-material-type: ""
+material-type: "no-link"
 lesson-type: Discussion
 ---
 
