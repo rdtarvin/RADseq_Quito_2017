@@ -37,6 +37,7 @@ title: {{ site.name }}
                 <th>Day</th> 
                 <th>Time</th>
                 <th>Topic</th>
+                <th>Lesson Type</th>
                 <th>Instructor(s)</th>
             </tr>
 	{% assign sorted_posts = site.posts | sort:"order" %}
@@ -51,6 +52,7 @@ title: {{ site.name }}
                  {% else %}
                  	<td align="left"> <a href="{{ site.baseurl }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a> </td>
                  {% endif %}
+                 <td> {{ post.lesson-type }} </td>
                  <td> {{ post.instructor }} </td> 
      </tr>   
     {% endfor %}
