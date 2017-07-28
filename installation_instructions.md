@@ -11,7 +11,7 @@ Virtual Machine Installation and Setup Instructions
 So we are all working in the same computing environment, please follow these instructions:
 1. Download and install [VirtualBox 5.1.24 and VirtualBox 5.1.24 Oracle VM VirtualBox Extension Pack](https://www.virtualbox.org/wiki/Downloads) for your operating system.
 2. Download the [virtual machine image](http://download.lab7.io/UT-BioComputing-RADSeq.ova) with RADseq software. **This file is 4.7GB, so make sure you have space on your hard drive and a good internet connection before downloading.** Back-up Download Link [Here](https://my.pcloud.com/publink/show?code=XZuFGrZQiTiVzhKRTbaj4E6LHBetSQj6wjy)
-3. Make sure both the box and the extension are installed, then double-click on the .ova file to import it into the virtual machine. (This may take a few minutes)
+3. Install both the box and the extension pack, then double-click on the .ova file to import it into the virtual machine. (This may take a few minutes)
 4. When Virtual Machine program opens, select "UT Biocomputing RADSeq" and click Import. (This can take >1hr). The login user and password are "user1" and "password", respectively.
 5. Click Settings, then Shared Folders. Click on the New Folder symbol, click "Auto-mount" and add a path 
 to your Applications/Programs folder and then to your Documents (and to anything else you may want to access 
@@ -33,7 +33,7 @@ sudo apt install atom
 touch testfile # creates an empty file in the directory where you are
 atom testfile # opens the file in atom
 ```
-Add some text to the file, save it, and then exit atom. Go back to the Terminal and type
+Add some text to the file, save it (from within the VM), and then exit atom. Go back to the Terminal and type
 ```bash
 cat testfile
 ```
