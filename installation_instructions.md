@@ -37,7 +37,7 @@ Add some text to the file, save it (from within the VM), and then exit atom. Go 
 ```bash
 cat testfile
 ```
-If the installation worked, the text you saved to the file should print to the screen.
+If the installation worked, the text you saved to the file should print to the screen. If you want to remove the file, type `rm testfile`.
 
 One note - on the VM, copy is Ctrl+Shift+C and paste is Ctrl+Shift+V<br> 
 
