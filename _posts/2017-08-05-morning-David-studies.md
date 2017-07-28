@@ -8,6 +8,7 @@ categories: main
 instructor: "David"
 materials: ""
 material-type: ""
+lesson-type: Lecture
 ---
 
 

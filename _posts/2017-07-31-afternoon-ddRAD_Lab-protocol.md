@@ -8,5 +8,6 @@ categories: main
 instructor: "Pati"
 materials: "insert-link"
 material-type: "ppt"
+lesson-type: Lecture
 ---
 

@@ -8,5 +8,6 @@ categories: main
 instructor: "Becca and Pati"
 materials: ""
 material-type: "no-link"
+lesson-type: Discussion
 ---
 

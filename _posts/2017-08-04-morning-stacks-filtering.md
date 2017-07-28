@@ -8,6 +8,7 @@ categories: main
 instructor: "Pati"
 materials: "https://drive.google.com/open?id=1uZe_31SOzKZQqldZaBryO_2-J27J2gR-MtBdS6iHvMQ"
 material-type: "ppt"
+lesson-type: Lecture
 ---
 
 

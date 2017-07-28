@@ -8,6 +8,7 @@ categories: main
 instructor: "Pati"
 materials: files/fakefile.txt
 material-type: ""
+lesson-type: Interactive
 ---
 
 WORKSHOP QUITO - DAY 4 

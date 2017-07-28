@@ -8,6 +8,7 @@ categories: main
 instructor: "Pati, Becca, David"
 materials: ""
 material-type: ""
+lesson-type: Discussion
 ---
 
 

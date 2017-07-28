@@ -8,6 +8,7 @@ categories: main
 instructor: "Pati"
 materials: ""
 material-type: ""
+lesson-type: Interactive
 ---
 
 

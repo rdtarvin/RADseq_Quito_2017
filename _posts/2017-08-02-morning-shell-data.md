@@ -8,6 +8,7 @@ categories: main
 instructor: "Becca"
 materials: files/fakefile.txt
 material-type: ""
+lesson-type: Interactive
 ---
 
 
