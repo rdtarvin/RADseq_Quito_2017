@@ -422,6 +422,8 @@ but that when we remove clusters with coverage less than 4 (the value we set for
 Step 4.
 ---
 
+This step jointly estimates heterozygosity and error in the clusters from step 3.
+
 ```bash
 cat s4_joint_estimate.txt
 
@@ -434,8 +436,49 @@ gen3_sp2-1     0.066856   0.033735
 gen3_sp3-1     0.053274   0.033962
 ```
 
+What do the files from this step look like?
+
+```bash
+zcat gen1_sp1-1a.clustS.gz | head -30
+
+0005cdf7c5669643589bf3c1aed198e0;size=2;*
+TTGGAGCTGTTTGCACCGATGTCGGACCACGTCGCA
+3a67e9aa131e2212644c4aa08de728bb;size=2;-
+TTGGAGCTGTTTGCACCGAAGTCGGACCACATTTCA
+//
+//
+0006a5dc14fa85f33625de53cf1f282c;size=2;*
+AAAAGAATGCACCGAGTTGTCTGCGCTGCTGGATCT
+963fc159360acaffb21ec45e3261c5c7;size=2;+
+AAAAGAATGCACCGATTTGTCTGCGCTGCTGGATCT
+d009cdfd6a5daee4f9d6533af22b3ec1;size=2;-
+AAAAGAATGCACCGAATTGTATGCGCTGCTGGATCT
+04886c38d49d997edd3dc2bd040a9289;size=1;-
+AAAAGAATGCACCGAGTTGTCTGCACTGCTGGATCT
+af95f304ca97a521f58ef4e330ae7c78;size=1;+
+AAAAGAATGCACCGAGTTGTCTGCGCTGCTAGATCT
+9ff8b5a8d90afe70c722a4840bae1bef;size=1;+
+AGAAGAATGCACCGATTTGTCTGCGCTGCTGGATCT
+37d392c265eb57c543a5ee5340d0d849;size=1;-
+AAAAGAATGCACCGAATTGTCTGCGCTGCTGGATCT
+//
+//
+000758a24010cc268176cd61ea7270e5;size=2;*
+CTGAGTTGTCACCGAGTCCAATGCAGACTCTGCAAT
+02d3f761b88391dc4b6f25fe7d560d57;size=1;-
+CCAAGTTGTCACCGAGTCCAATGCAGACTCTGCAAT
+//
+//
+
+```
+
+The first cluster looks like a heterozygote. The second cluster here has a ton of different reads and 
+is likely to be paralogous. The third cluster could be either a heterozygote or a homozygote with a sequencing error.
+
 Step 5.
 ---
+
+
 
 Step 6.
 ---
