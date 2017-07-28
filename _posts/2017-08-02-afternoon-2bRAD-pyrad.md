@@ -311,7 +311,7 @@ Your final params file should look like this:
 ./                             ## [1] [project_dir]: Project dir (made in curdir if not present)
                                ## [2] [raw_fastq_path]: Location of raw non-demultiplexed fastq files
                                ## [3] [barcodes_path]: Location of barcodes file
-./*.gz                         ## [4] [sorted_fastq_path]: Location of demultiplexed/sorted fastq files
+./*-1*.gz                         ## [4] [sorted_fastq_path]: Location of demultiplexed/sorted fastq files
 denovo                         ## [5] [assembly_method]: Assembly method (denovo, reference, denovo+reference, denovo-reference)
                                ## [6] [reference_sequence]: Location of reference sequence file
 gbs                            ## [7] [datatype]: Datatype (see docs): rad, gbs, ddrad, etc.
@@ -418,6 +418,7 @@ gen3_sp3-1          117753          2.0            60484            2.74        
 ```
 You can use this file to see the coverage of your sequences. `avg_depth_total` shows us that the coverage is between 2x and 3x for the samples,
 but that when we remove clusters with coverage less than 4 (the value we set for `[21] [min_samples_locus]`), average coverage is 4-5x.
+<br><br>
 
 Step 4.
 ---
@@ -474,10 +475,29 @@ CCAAGTTGTCACCGAGTCCAATGCAGACTCTGCAAT
 
 The first cluster looks like a heterozygote. The second cluster here has a ton of different reads and 
 is likely to be paralogous. The third cluster could be either a heterozygote or a homozygote with a sequencing error.
-
+The '+' and '-' indicate whether the reads are reverse complemented.
+<br><br>
 Step 5.
 ---
 
+This step uses the estimates from step 4 and filters the clusters.
+
+```bash
+cd ../2brad-v1_consens/
+ls
+cat s5_consens_stats.txt 
+            clusters_total filtered_by_depth filtered_by_maxH filtered_by_maxN reads_consens  nsites nhetero heterozygosity
+gen1_sp1-1a         150131             69103               20             1445         79563 2874663   43055        0.01498
+gen1_sp1-1b         107801             62664               23             1029         44085 1595020   31945        0.02003
+gen2_sp1-1          100326             49907               17              795         49607 1790170   24390        0.01362
+gen3_sp1-1           98206             44371               10              854         52971 1911651   26765        0.01400
+gen3_sp2-1          111136             61147                4              861         49124 1773568   29865        0.01684
+gen3_sp3-1          117753             57269               19              877         59588 2150534   29350        0.01365
+```
+
+Here we get a more accurate measurement of heterozygosity (i.e., with errors removed). You can note that many 
+clusters were removed from having too many Ns, which are sites that could not be called with statistical confidence.
+<br><br>
 
 
 Step 6.
