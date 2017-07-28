@@ -40,7 +40,7 @@ cat testfile
 If the installation worked, the text you saved to the file should print to the screen. If you want to remove the file, type `rm testfile`.
 
 One note - on the VM, copy is Ctrl+Shift+C and paste is Ctrl+Shift+V<br> 
-
+<br>
 **TROUBLESHOOTING**<br>
 If when starting your VM, you get a black box with an underscore and the machine doesn't ever start, you may need to enable hardware virtualization technology (VT-x).
 This is probably the case if you have a 64-bit Windows operating system. To make this change, follow these steps:
