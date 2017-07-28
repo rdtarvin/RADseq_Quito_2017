@@ -589,12 +589,16 @@ file, `2brad-v1_stats.txt`, has more information on the assembly.
 Estimate a **RAxML** tree with concatenated loci
 ```bash
 conda install -p "$HOME/Applications/BioBuilds" -y raxml -c bioconda
+conda install -p "$HOME/Applications/BioBuilds" -y toytree -c eaton-lab
 python # start python
 ```
 
 ```python
 import ipyrad.analysis as ipa
-rax = ipa.raxml(data='2brad-epi-july17.phy',name='2brad-epi-july17',workdir='analysis-raxml')
+import toytree
+rax = ipa.raxml(data='2brad-v1.phy',name='2brad-v1',workdir='analysis-raxml')
+print rax.command
+rax.run(force=True)
 ```
 
 Estimate a quartets-based tree in **tetrad**, an iPyrad version of [SVDquartets](http://evomics.org/learning/phylogenetics/svdquartets/)
@@ -604,16 +608,16 @@ tetrad -s 2brad-epi-july17.snps.phy -l 2brad-epi-july17.snps.map -m all -n tetra
 
 Estimate a tree based on a SNP matrix, using one SNP from each locus, in **[RAxML-ng]**(raxml snps - https://github.com/amkozlov/raxml-ng).
 ```bash
-cd
+cd ~/Applications
 wget https://github.com/amkozlov/raxml-ng/releases/download/0.4.0/raxml-ng_v0.4.0b_linux_x86_64.zip
 unzip raxml-ng_v0.4.0b_linux_x86_64.zip
-/home1/02576/rdtarvin/raxml-ng -h
+raxml-ng -h
 
 .
 .
 .
 
-/home1/02576/rdtarvin/raxml-ng --msa ../2brad-epi-july17.u.snps.phy --model GTR+G+ASC_LEWIS --search
+/home1/02576/rdtarvin/raxml-ng --msa ../2brad-v1.u.snps.phy --model GTR+G+ASC_LEWIS --search
 ```
 Note that there are three options for ascertainment bias correction. 
 
@@ -621,15 +625,15 @@ Note that there are three options for ascertainment bias correction.
 This is the expected topology and estimated divergence timing. 
 
 ```
-        ___________________sp1
+        ___________________gen1_sp1
        |   
--25my--|          _________sp2
+-25my--|          _________gen2_sp1
        |____15my_|
-                 |      ___sp3
+                 |      ___gen3_sp1
                  |_5my_|  
-                       |  _sp4
+                       |  _gen3_sp2
                        |_|
-                         |_sp5
+                         |_gen3_sp3
                          
 ```
    
