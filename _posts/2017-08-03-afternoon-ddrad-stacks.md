@@ -28,7 +28,7 @@ Demultiplexing your sequencing pools is always the first step in any pipeline. I
 
 - process_radtags code (shell program from stacks)
 
-We had a total of two libraries for this project, and they both used the same adapters but different illumina primers. Let's take a look at the Stacks Manual for [process_radtags](http://catchenlab.life.illinois.edu/stacks/comp/process_radtags.php) to see how to set up our barcodes file. 
+First, let's take a look at the Stacks Manual for [process_radtags](http://catchenlab.life.illinois.edu/stacks/comp/process_radtags.php) to see how to set up our barcodes file. 
 
 So, let's build the barcodes file for demultiplexing, where the first column will be the unique adapter sequence using this [text file](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/files/STACKS/demultiplexing/Pool_1_barcodes.txt), the second column is the index primer sequence (in this case, ATCACG), and the third column is the individual sample names, found [here](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/files/STACKS/demultiplexing/Pool_1_sample_names.txt).The sample names occur in the same order as the barcodes in the example file.
 
@@ -49,7 +49,7 @@ To triple-check your barcode layout, look into your **gzipped** file to see how 
 The general code we will use for process_radtags, running it from within the raw-data folder, is the following: 
 
 
-	process_radtags -P -p . -b ./path/to/folder/barcodes.txt -o ./path/to/folder/process_rads/  -c -q -r -D --inline_index --renz_1 sphI --renz_2 mspI -i gzfastq 
+	process_radtags -p . -b ./barcodes_pool1.txt -o ./demultiplexing-test -c -q -r -D --inline_index --renz_1 sphI --renz_2 mspI -i gzfastq
 
 
 
