@@ -597,7 +597,7 @@ python # start python
 ```
 
 ```python
-import ipyrad.analysis as ipa
+import ipyrad.analysis as ipa 
 import toytree
 rax = ipa.raxml(data='2brad-v1.phy',name='2brad-v1',workdir='analysis-raxml')
 # rax = ipa.raxml(data='2brad-v2-6min.phy',name='2brad-v2-6min',workdir='analysis-raxml')
