@@ -590,6 +590,9 @@ Estimate a **RAxML** tree with concatenated loci
 ```bash
 conda install -p "$HOME/Applications/BioBuilds" -y raxml -c bioconda
 conda install -p "$HOME/Applications/BioBuilds" -y toytree -c eaton-lab
+conda install -p "$HOME/Applications/BioBuilds" -y -c etetoolkit ete3 ete3_external_apps
+conda install -p "$HOME/Applications/BioBuilds" -y -c anaconda biopython
+conda install -p "$HOME/Applications/BioBuilds" -y -c conda-forge matplotlib
 python # start python
 ```
 
@@ -597,9 +600,18 @@ python # start python
 import ipyrad.analysis as ipa
 import toytree
 rax = ipa.raxml(data='2brad-v1.phy',name='2brad-v1',workdir='analysis-raxml')
+# rax = ipa.raxml(data='2brad-v2-6min.phy',name='2brad-v2-6min',workdir='analysis-raxml')
 print rax.command
 rax.run(force=True)
 quit() # to leave python environment
+```
+Print a tree in python. Type python to enter the python environment, then type
+```python
+from Bio import Phylo
+tree = Phylo.read('RAxML_bestTree.2brad-v1', 'newick')
+tree.root_at_midpoint()
+Phylo.draw(tree)
+
 ```
 
 Estimate a quartets-based tree in **tetrad**, an iPyrad version of [SVDquartets](http://evomics.org/learning/phylogenetics/svdquartets/)
@@ -657,10 +669,14 @@ Great, so we can just redo Step 7 with new values for [21]. The basic command to
 
 ```bash
 ipyrad -p params-2brad-v1.txt -b 2brad-v2-6min
-## provide new, informative prefix
+# provide new, informative prefix
 ```
 
-Then you would need to open the new params file (`params-2brad-v2-6min.txt`) and manually edit parameter [21]. 
+Then you would need to open the new params file (`params-2brad-v2-6min.txt`) and manually edit parameter [21] to be 6. 
+```bash
+atom params-2brad-v2-6min.txt
+```
+
 
 If you had more samples, you could automate this process as such.
 ```bash
