@@ -52,9 +52,9 @@ The general code we will use for process_radtags, running it from within the raw
 	process_radtags -p . -b ./barcodes_pool1.txt -o ./demultiplexing-test -c -q -r -D --inline_index --renz_1 sphI --renz_2 mspI -i gzfastq
 
 
-What do our demultiplexed files look like...?
+**What do our demultiplexed files look like...?**
 
-LEt's make a directory of the "removed" files and move them there:
+Let's make a directory of the "removed" files and move them there:
 
 	mkdir bad_rads
 	mv *rem*
@@ -88,11 +88,9 @@ A recent paper that came out, [Lost in Parameter Space: a roadmap for STACKS](ht
 Genotyping with denovo_map.pl
 ---
 
-First, let's grab five additional  sequences that we had demultiplexed from another sequencing pool; they had the same barcodes, but different Illumina index primers so were demultiplexed separately. Let's fetch the sequences with *wget* from your demultiplexed directory: 
+First, let's grab five additional  sequences that we had demultiplexed from another sequencing pool; they had the same barcodes, but different Illumina index primers so were demultiplexed separately. 
 
-	wget <<add url here>>
-
-We should have five more individuals for the third population for which we only had one before. Also, notice how these individuals had a different Illumina index primer... 
+We should now have five additional individuals for the third population for which we only had one before. Also, notice how these individuals had a different Illumina index primer... 
 
 Let's make a list of the filenames that have sequences in them:
 
