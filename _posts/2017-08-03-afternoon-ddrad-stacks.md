@@ -52,6 +52,14 @@ The general code we will use for process_radtags, running it from within the raw
 	process_radtags -p . -b ./barcodes_pool1.txt -o ./demultiplexing-test -c -q -r -D --inline_index --renz_1 sphI --renz_2 mspI -i gzfastq
 
 
+What do our demultiplexed files look like...?
+
+LEt's make a directory of the "removed" files and move them there:
+
+	mkdir bad_rads
+	mv *rem*
+
+
 
 Genotyping in stacks
 ----
