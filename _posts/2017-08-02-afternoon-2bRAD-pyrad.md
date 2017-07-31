@@ -618,6 +618,14 @@ Estimate a quartets-based tree in **tetrad**, an iPyrad version of [SVDquartets]
 tetrad -s 2brad-v1.snps.phy -l 2brad-v1.snps.map -m all -n 2brad-v1
 ```
 
+Start python to view the tree by typing `python`, then type:
+```python
+from Bio import Phylo
+tree = Phylo.read('analysis-tetrad/2brad-v1.tree', 'newick')
+Phylo.draw(tree) # is ultrametric
+quit()
+```
+
 Estimate a tree based on a SNP matrix, using one SNP from each locus, in **[RAxML-ng]**(https://github.com/amkozlov/raxml-ng).
 ```bash
 cd ~/Applications
@@ -628,11 +636,18 @@ raxml-ng -h
 .
 .
 .
-
-/home1/02576/rdtarvin/raxml-ng --msa ../2brad-v1.u.snps.phy --model GTR+G+ASC_LEWIS --search
+cd ../workshop/2brad/2brad-v1_outfiles/
+$HOME/Applications/raxml-ng --msa 2brad-v1.u.snps.phy --model GTR+G+ASC_LEWIS --search
 ```
 Note that there are three options for ascertainment bias correction. 
 
+Start python to view the tree by typing `python`, then type:
+```python
+from Bio import Phylo
+tree = Phylo.read('2brad-v1.u.snps.phy.raxml.bestTree', 'newick')
+Phylo.draw(tree) # is ultrametric
+quit()
+```
 
 This is the expected topology and estimated divergence timing. 
 
