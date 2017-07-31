@@ -6,7 +6,7 @@ date:   2017-07-31
 time:   "Morning"
 categories: main
 instructor: "Becca and Pati"
-materials: "files/intro_slide_all.pdf"
+materials: "files/intro_slide_all_sm.pdf"
 material-type: "ppt"
 lesson-type: Discussion
 ---
