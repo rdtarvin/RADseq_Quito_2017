@@ -611,12 +611,11 @@ from Bio import Phylo
 tree = Phylo.read('RAxML_bestTree.2brad-v1', 'newick')
 tree.root_at_midpoint()
 Phylo.draw(tree)
-
 ```
 
 Estimate a quartets-based tree in **tetrad**, an iPyrad version of [SVDquartets](http://evomics.org/learning/phylogenetics/svdquartets/)
 ```bash
-tetrad -s 2brad-epi-july17.snps.phy -l 2brad-epi-july17.snps.map -m all -n tetrad-test
+tetrad -s 2brad-v1.snps.phy -l 2brad-v1.snps.map -m all -n tetrad-test
 ```
 
 Estimate a tree based on a SNP matrix, using one SNP from each locus, in **[RAxML-ng]**(https://github.com/amkozlov/raxml-ng).
