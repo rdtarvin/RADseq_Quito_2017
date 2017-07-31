@@ -615,7 +615,7 @@ Phylo.draw(tree)
 
 Estimate a quartets-based tree in **tetrad**, an iPyrad version of [SVDquartets](http://evomics.org/learning/phylogenetics/svdquartets/)
 ```bash
-tetrad -s 2brad-v1.snps.phy -l 2brad-v1.snps.map -m all -n tetrad-test
+tetrad -s 2brad-v1.snps.phy -l 2brad-v1.snps.map -m all -n 2brad-v1
 ```
 
 Estimate a tree based on a SNP matrix, using one SNP from each locus, in **[RAxML-ng]**(https://github.com/amkozlov/raxml-ng).
