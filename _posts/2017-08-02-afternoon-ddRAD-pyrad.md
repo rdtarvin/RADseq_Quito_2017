@@ -138,6 +138,7 @@ iPyrad has a very nice explanation of how to identify the restriction overhang s
 
 The barcode file has a very simple layout. See the one I used [here](https://raw.githubusercontent.com/rdtarvin/RADseq_Quito_2017/master/files/ddRAD-ipyrad_barcodes.txt).
 <br>
+
 **TASK**: Copy this file (directly via wget or create a new file and insert the text). Save it as ddRAD-ipyrad_barcodes.txt
 
 I subsampled my original dataset to provide 1000000 reads per sample for you. Let's take a look.
@@ -172,7 +173,7 @@ Aside from the changes I made to the params file previously, make the following 
 
 
 The finalized params file should look like this: <br>
-You may need to right click in order to paste
+
 ```bash
 ------- ipyrad params file (v.0.7.1)--------------------------------------------
 ddrad-v1        ## [0] [assembly_name]: Assembly name. Used to name output directories for assembly steps
@@ -565,7 +566,7 @@ This is the expected topology and estimated divergence timing.
 
 
 
-<a href="https://rdtarvin.github.io/RADseq_Quito_2017/"><button>Home</button></a>    <a href="https://rdtarvin.github.io/RADseq_Quito_2017/main/2017/08/03/morning-ddrad-stacks.html"><button>Next Lesson</button></a>
+<a href="https://rdtarvin.github.io/RADseq_Quito_2017/"><button>Home</button></a>    <a href="https://rdtarvin.github.io/RADseq_Quito_2017/main/2017/08/03/morning-AftrRAD.html"><button>Next Lesson</button></a>
 
 
 
