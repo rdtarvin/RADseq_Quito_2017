@@ -292,7 +292,7 @@ CATGCATACTGAGGATGGGAGATAAATGGGCCATGCATACTGGGAATGAGGGATGAAGGGGTCTTGCATACTGGGATTAG
 ```
 
 Because these loci are long, we can't finish this lesson in class. Instead, you can download the files from 
-a finished run [here](). 
+a finished run [here](https://www.dropbox.com/s/tqr7gusl6godhkt/ddRAD-ipyrad-full-run.zip?dl=1). 
 
 **Note**: If you need to rerun a step of iPyrad, you will have to add the force flag to your command, as such: `ipyard -p params-ddrad-v1.txt -s 1 -f`
 <br>
