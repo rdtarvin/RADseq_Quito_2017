@@ -387,6 +387,7 @@ error, where the Taq slipped. It could also be a region of the genome that occur
 transposon or repeat region). The second cluster looks like it is homozygous with two erroneous reads. The third
 and fourth clusters don't have enough information to judge. The '+' and '-' indicate whether the reads are reverse complemented.
 <br><br>
+
 iPyrad: Step 5. Uses the estimates from step 4 and filters the clusters.
 ---
 
@@ -395,12 +396,96 @@ cd ../ddrad-v1_consens/
 ls
 cat s5_consens_stats.txt 
 
+            clusters_total filtered_by_depth filtered_by_maxH filtered_by_maxN reads_consens  nsites nhetero heterozygosity
+gen1_sp1-1a         323186            290146             2233             2951         27856 8018867   26210        0.00327
+gen1_sp1-1b         342560            310379             2228             2994         26959 7760839   25176        0.00324
+gen2_sp1-1          288330            256333             1529             2199         28269 8140290   24631        0.00303
+gen3_sp1-1          262801            230284             1560             2298         28659 8257072   33638        0.00407
+gen3_sp2-1          312096            278820             1629             2579         29068 8388447   42020        0.00501
+gen3_sp3-1          304184            272713             1595             2300         27576 7953497   33488        0.00421
 ```
-Step 6.
+
+Here we get a more accurate measurement of heterozygosity (i.e., with errors removed). You can note that many 
+clusters were removed from having too many Ns or too many heterozygous sites. Also note the number of clusters - 
+~300,000 - pretty close to our estimated number of sites in 1% of a 9GB genome! Do you recall the calculation? 
+[(9,000,000,000 x 0.001)/275]
+<br><br>
+
+iPyrad: Step 6. Cluster loci among individuals.
 ---
 
-Step 7.
+```bash
+cat s6_cluster_stats.txt  
+vsearch v2.0.3_linux_x86_64, 3.9GB RAM, 1 cores
+/home/user1/Applications/BioBuilds/lib/python2.7/site-packages/bin/vsearch-linux-x86_64 -cluster_smallmem /home/user1/workshop-test/ddrad-v1_consens/ddrad-v1_catshuf.tmp -strand plus -query_cov 0.75 -minsl 0.5 -id 0.85 -userout /home/user1/workshop-test/ddrad-v1_consens/ddrad-v1.utemp -notmatched /home/user1/workshop-test/ddrad-v1_consens/ddrad-v1.htemp -userfields query+target+qstrand -maxaccepts 1 -maxrejects 0 -fasta_width 0 -threads 0 -fulldp -usersort -log /home/user1/workshop-test/ddrad-v1_consens/s6_cluster_stats.txt 
+Started  Sat Jul 29 09:45:25 201748519012 nt in 168387 seqs, min 35, max 327, avg 288
+
+
+      Alphabet  nt
+    Word width  8
+     Word ones  8
+        Spaced  No
+        Hashed  No
+         Coded  No
+       Stepped  No
+         Slots  65536 (65.5k)
+       DBAccel  100%
+
+Clusters: 129233 Size min 1, max 17, avg 1.3
+Singletons: 95553, 56.7% of seqs, 73.9% of clusters
+
+
+Finished Sat Jul 29 10:02:32 2017
+Elapsed time 17:07
+Max memory 256.2MB
+```
+
+
+Of all this output, probably the only thing we are interested in is the number of clusters and singletons (i.e., clusters with only one read).
+There are a number of other files produced during this step as part of the clustering process:
+- *.consens.gz are consensus reads for each individual
+- ddrad-v1_catclust.gz contains the clusters created across individuals.
+- *.catg are arrays used to estimate the clusters
+- ddrad-v1.utemp.sort is a table used to sort the reads
+<br><br>
+
+iPyrad: Step 7. Filters the data and creates all the final output files.
 ---
+
+```bash
+cd ../ddrad-v1_outfiles/
+ls
+head -30 ddrad-v1.loci | cut -c -150 # cut shows only the first 150 characters of the locus
+gen1_sp1-1a     CTTGAAGACCAGGTGGACCTTGAGCACCATTTGGACCAGTTGGGCCACCAGCACCCTACAAGGCATATACATGATACATAACTAAAAAGTTCAAACATTTTGTTAGGCCATGCATACTGACATCTCTAGAAATA
+gen1_sp1-1b     CTTGAAGACCAGGTGGACCTTGAGCACCATTTGGACCAGTTGGGCCACCAGCACCCTACAAGGCATATACATGATACATAACTAAAAAGTTCAAACATTTTGTTAGGCCATGCATACTGACATCTCTAGAAATA
+gen2_sp1-1      CTTGAAGACCAGGTGGACCTTGAGCACCATTTGGACCAGATGGGCCACCAGCACCCTACAAAGCGTATRCATGACACATAACCAAAAAGTTCAAACACATTGTTAGGCCWTGCATACCGGCATCTCTAGAAATA
+gen3_sp1-1      CTTGAAGACCAGGTGGACCTTGAGCACCATTTGGACCAGATGGGCCACCAGCACCCTACAAAGCATATGCATGACACATAACCAAAAAGTTCAAACACATTGTTAGGCCATGCATACTGGCATCTCTAGAAATA
+gen3_sp3-1      CTTGAAGACCAGGTGGACCTTGAGCACCATTTGGACCAGATGGGCCACCAGCACCCTACAAAGCGTATACATGACACATAACCAAAAAGTTCAAACACATTGTTGGGCCATGCATACCGGCATCTCTAGAAATA
+//                                                     *                     *  *   *     *       *              **     -    -       * *              
+gen1_sp1-1a     TGTACAGAGGTAATGGAGGCAGCAGATACTGGGGTTGGTGCTTGCTGAATATGTATAGGCTGGAGGGTTGGTGTAGCAGGCTGCAAGGCCTGGGGAATAGCTCCGGCTGGGAAGTTCTTCACTTGCTTGGCTAG
+gen1_sp1-1b     TGTACAGAGGTAATGGAGGCAGCAGATACTGGGGTTGGTGCTTGCTGAATATGTATAGGCTGGAGGGTTGGTGTAGCAGGCTGCAAGGCCTGGGGAATAGCTCCGGCTGGGAAGTTCTTCACTTGCTTGGCTAG
+gen2_sp1-1      TGTACAGTGGTAATGGAGGCAGCAGATACTGGAGTTGGAGCTTGCTGAATATGTATAGGCTGCAGGGTTTGTGTAACAGGCTGCAATGCTTGGGGGATAAGTCCGGCTGGGAAGTTCTTAACTTGTTTGGCTAG
+gen3_sp1-1      TGTACAGTGGTAATGGAGGCAGCAGATACTGGAGTTGGAGCTTGCTGAATATGTATAGGCTGCAGGGTTGGTGTAATAGGCTGCAGGGCTTGGGGGATAGCTCCAGCTGGGAAGTTCTTAACTTGCTTGGCTAG
+gen3_sp2-1      TGTACAGTGGTAATGGAGGCAGCAGATACTGGAGTTGGAGCTTGCTGAATATGTATAGGCTGCAGGGTTTGTGTAACAGGCTGCAGGGCTTGGGGGATAGCTCCGGCTGGGAAGTTCTTAACTTGCTTGGCTAG
+gen3_sp3-1      TGTACAGTGGTAATGGAGGCAGCAGATACTGGAGTTGGAGCTTGCTGAATATGTATAGGCTGCAGGGTTGGTGTAACAGGCTGCAGGGCTTGGGGGATAGCTCCGGCTGGGAAGTTCTTAACTTGCTTGGCTAG
+//                     *                        *     *                       *      *     *-        *-  *     *   --   -              *     -        
+gen1_sp1-1a     CTCCGAATCTGCAAGTTTCACATTTTTANCTGTTTCTAGGAGGTCGTCTCCATCACAATCGATNGTGATGGCATCTTCAGCCTGGAGTGTGACAGATACATTGTCGTCCTCTACTTTCTTCAGANAAGTGCTAG
+gen1_sp1-1b     CTCCGAATCTGCAAGTTTCACATTTTTACCTGTTTCTAGGAGGTCGTCTCCATCACAATCGATAGTGATGGCATCTTCAGCCTGGAGTGTGACAGATACATNGTCGTCCTCTACTTTCTTCAGAGAAGTGCTAG
+gen3_sp1-1      CTCCGAATCTGCAAGTTTCATATTTTTACCTGTTTCTAGGAGGTCGTCTCCATCACAATCGATAGTGATGGCATCTTCAGCCTGGAGTGTGACAGATACGTTATCATCCTCTACTTCTTTCAGAGAACTGCTAG
+gen3_sp2-1      CTCCGAATCTGCAAGTTTCATATTTTTACCTGTTTCTAGGAGGTCGTCTCCATCACAATCGATAGTGATGGCATCTTCAGCCTGGAGTGTGACAGATACGTTATCGTCCTCTACTTCTTTCAGAGAAGTGCTAG
+gen3_sp3-1      CTCCGAATCTGCAAGTTTCATATTTTTACCTGTTTCTAGGAGGTCGTCTCCATCACAATCGATAGTGATGGCATCTTCAGCCTGGAGTGTGACAGATACGTTATCGTCCTCTACTTCTTTCAGAGAAGTGCTAG
+//                                  *                                                                              *  *  -          **         -      
+gen1_sp1-1a     AGGAAGGAGAAGTGGCTACGAGGGGNATAGGTATTGTAGTCAGTCAATCATGATTAGAGCAGAGGGATTATCAAGGGAAGTATTTGAAGACCAGGTTATAGACGTAACAAAGGCCAACATGATAAAATGATGCA
+gen1_sp1-1b     AGGAAGGAGAAGTGGCTACGAGGGGCATAGGTATTGTAGTCAGTCAATCATGATTAGAGCAGAGGGATTATCAAGGGAAGTATTTGAAGACCAGGTTATAGACGTAACAAAGGCCAACATGATAAAATGATGCA
+gen3_sp1-1      AGGAAGGAGTGGTGGCTACGAGGAGGATAGGTATTGT----AGTCAATCATGATTAGAGCAGAGGGATTATCAAGGGAAGCATTTGAAGACCAGGTTATAGAAGTAGCAAAGGCCAATATGATAAAATAATGCA
+gen3_sp2-1      AGGAAGGAGAGGTGGCTACGAGGAGGATAGGTATTGT----AGTCAATCATGATTAGAGCAGAGGGATTATCAAGGGAAGCATTTGAAGACCAGGTTATAGAAGTAGCAAAGGCCAACATGATAAAATGATGCA
+gen3_sp3-1      AGGAAGGAGAGGTGGCTACGAGGAGGATAGGTATTGT----AGTCAATCATGATTAGAGCAGAGGGATTATCAAGGGAAGCATTTGAAGACCAGGCTATAGAAGTAGCAAAGGCCAACATGATAAAATGATGCA
+//                       -*            * -                                                      *              -      *   *          -          -     
+```
+
+The `.loci` format is unique to iPyrad and is a nice visualization of the final loci.
+`-` denotes variable sites; `*` denotes phylogenetically informative sites. Here you can see
+that in the fourth locus there was an insertion og AGTC in genus 1 (or a deletion in genus 3).
 
 
 <br><br><br>
