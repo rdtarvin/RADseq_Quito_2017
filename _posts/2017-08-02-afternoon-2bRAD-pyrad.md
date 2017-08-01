@@ -6,7 +6,7 @@ date:   2017-08-02
 time:   "Afternoon"
 categories: main
 instructor: "Becca"
-materials: files/fakefile.txt
+materials: 
 material-type: ""
 lesson-type: Interactive
 ---
@@ -600,11 +600,10 @@ python # start python
 import ipyrad.analysis as ipa 
 import toytree
 rax = ipa.raxml(data='2brad-v1.phy',name='2brad-v1',workdir='analysis-raxml')
-# rax = ipa.raxml(data='2brad-v2-6min.phy',name='2brad-v2-6min',workdir='analysis-raxml')
 print rax.command
 rax.run(force=True)
-quit() # to leave python environment
 ```
+To leave the python environment (>>>) at any point, type `quit()`.
 Print a tree in python. Type python to enter the python environment, then type
 ```python
 from Bio import Phylo
@@ -632,7 +631,7 @@ cd ~/Applications
 wget https://github.com/amkozlov/raxml-ng/releases/download/0.4.0/raxml-ng_v0.4.0b_linux_x86_64.zip
 unzip raxml-ng_v0.4.0b_linux_x86_64.zip
 raxml-ng -h
-
+rm raxml-ng_v0.4.0b_linux_x86_64.zip
 .
 .
 .
@@ -706,7 +705,7 @@ and of [14] clustering threshold. Choose one value lower and one value higher th
 **Hint**: First, be sure to check when the clustering threshold was incorporated into the analysis before deciding where to restart the pipeline.
 
 
-
+A full run of these analyses can be downloaded [here](https://www.dropbox.com/s/w9o7diw6h6lib1m/2brad-ipyrad-full-run.zip?dl=1)
 
 
 
