@@ -88,7 +88,7 @@ A recent paper that came out, [Lost in Parameter Space: a roadmap for STACKS](ht
 Genotyping with denovo_map.pl
 ---
 
-First, let's grab five additional  sequences that we had demultiplexed from another sequencing pool; they had the same barcodes, but different Illumina index primers so were demultiplexed separately. 
+First, let's grab five [additional sequences](https://my.pcloud.com/publink/show?code=kZYoScZyhvt7h2OCCbB0SteaI7KNfFIKVqk) that we had demultiplexed from another sequencing pool; they had the same barcodes, but different Illumina index primers so were demultiplexed separately. Make sure these sequences end up in your working directory.
 
 We should now have five additional individuals for the third population for which we only had one before. Also, notice how these individuals had a different Illumina index primer... 
 
