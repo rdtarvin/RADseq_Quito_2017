@@ -88,7 +88,7 @@ A recent paper that came out, [Lost in Parameter Space: a roadmap for STACKS](ht
 Genotyping with denovo_map.pl
 ---
 
-First, let's grab five [additional sequences](https://my.pcloud.com/publink/show?code=kZYoScZyhvt7h2OCCbB0SteaI7KNfFIKVqk) that we had demultiplexed from another sequencing pool; they had the same barcodes, but different Illumina index primers so were demultiplexed separately. Make sure these sequences end up in your working directory.
+First, let's grab four [additional sequences](https://my.pcloud.com/publink/show?code=kZYoScZyhvt7h2OCCbB0SteaI7KNfFIKVqk) that we had demultiplexed from another sequencing pool; they had the same barcodes, but different Illumina index primers so were demultiplexed separately. Make sure these sequences end up in your working directory.
 
 We should now have five additional individuals for the third population for which we only had one before. Also, notice how these individuals had a different Illumina index primer... 
 
@@ -96,7 +96,7 @@ Let's make a list of the filenames that have sequences in them:
 
 	ls | awk '/fq/' > sequence_files.txt
 
-This list of filenames will be a part of the input for running *denovo_map.pl*, since you have to list all of the equence files that will be used for input, rather than a directory. 
+This list of filenames will be a part of the input for running *denovo_map.pl*, since you have to list all of the sequence files that will be used for input, rather than a directory containing them. 
 
 One thing that is very important in stacks is troubleshooting parameter settings. The defaults in STACKS are **NOT GOOD** to use, and depending on the specifics of the dataset (divergence, number of populations, samples, etc) these parameters will vary a lot from one study to the other. The main parameters to mess with are: 
 
@@ -144,3 +144,28 @@ Now we can start setting up denovo_map runs. Here is the general code for doing 
 	-s ./path/to/denovo-map/Ab_372.2.fq \
 
 Etc.... (as in, followed by all your other sequences). So, the final file should look like [this](). Thus, you need to build your denovo_map file with EVERY sequence that you will use separately.... **How do you want to do this?** 
+
+OK, let's start denovo_map!!! Look at the terminal window as it runs.... what's happening currently...? 
+
+Hm, it seems to have failed.... what do you think happened? Let's find the logfile for denovo. First, navigate into denovo output directory, then do: 
+
+	ls -ltr 
+	tail denovo_map.log
+
+What does the logfile say....? Why did the run fail??  
+
+Let's go back and eliminate all individuals that failed to recover RADtags, and [get over](https://giphy.com/gifs/movie-crying-johnny-depp-hAt4kMHnaVeNO) the fact that we lost those individuals. We need to re-make our script for **denovo_map.pl** excluding them. You can either move them to a different directory AND esclude them from the script, or simply exclude them from the script (either works!). 
+
+Now we have our new denovo_map script ready to go.... let's set it up and see if it doesn't fail! 
+
+
+
+
+
+
+
+
+
+
+
+
