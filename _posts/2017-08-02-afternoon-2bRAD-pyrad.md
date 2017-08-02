@@ -154,7 +154,7 @@ fastqc produces a nice .html file that can be viewed in any browser.
 Since we are trying to get comfortable with the command line, let's open the file directly.
 
 ```bash
-sensible-browser T36R59_I93_S27_L006_R1_sub12M.fastq
+sensible-browser T36R59_I93_S27_L006_R1_sub12M_fastqc.html
 ```
 
 Sequencing quality scores, "Q", run from 20 to 40. In the fastq file, these are seen as ASCII characters. 
@@ -193,7 +193,7 @@ First we need to concatenate data that were run on multiple lanes.
 - pattern "T36R59_I93_S27_L00" is common to both read files; program concatenates into one file with (.+) saved as file name
 
 ```bash
-~/Applications/2bRAD_denovo/ngs_concat.pl fastq "(.+)_S27_L00" # this takes a few minutes so let's take a quick break while it does its thing.
+perl ~/Applications/2bRAD_denovo/ngs_concat.pl fastq "(.+)_S27_L00" # this takes a few minutes so let's take a quick break while it does its thing.
 head T36R59_I93.fq
 
 @K00179:73:HJCTJBBXX:7:1101:28006:1209 1:N:0:TGTTAG
