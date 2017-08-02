@@ -14,7 +14,7 @@ lesson-type: Interactive
 WORKSHOP QUITO - DAY 4 
 STACKS WITH ddRAD
 ===
-
+**DOWNLOAD THE RAW DATA FOR THIS LESSON [HERE](https://my.pcloud.com/publink/show?code=XZxojcZzaPwbwoStDk7Do00Rhezeu7w3Xey)**
 
 The first thing to know about stacks is that the online manual is very useful but not completely straighforward to navigate, so let's get familiar with their [manual](http://catchenlab.life.illinois.edu/stacks/) first and the program in general. 
 
@@ -98,6 +98,33 @@ Let's make a list of the filenames that have sequences in them:
 
 This list of filenames will be a part of the input for running *denovo_map.pl*, since you have to list all of the sequence files that will be used for input, rather than a directory containing them. 
 
+
+Let's start setting up denovo_map runs. Here is the general code for doing that. 
+
+
+	denovo_map.pl -T 8 -m 2 -M 3 -n 2 -S -b 2 -o ./path/to/denovo-map/denovo-test-1/ \
+	-s ./path/to/denovo-map/Ab_372.1.fq \
+	-s ./path/to/denovo-map/Ab_372.2.fq \
+
+Etc.... (as in, followed by all your other sequences). So, the final file should look like [this](). Thus, you need to build your denovo_map file with EVERY sequence that you will use separately.... **How do you want to do this?** 
+
+OK, let's start denovo_map!!! Look at the terminal window as it runs.... what's happening currently...? 
+
+Hm, it seems to have failed.... what do you think happened? Let's find the logfile for denovo. First, navigate into denovo output directory, then do: 
+
+	ls -ltr 
+	tail denovo_map.log
+
+What does the logfile say....? Why did the run fail??  
+
+Let's go back and eliminate all individuals that failed to recover RADtags, and [get over](https://giphy.com/gifs/movie-crying-johnny-depp-hAt4kMHnaVeNO) the fact that we lost those individuals. We need to re-make our script for **denovo_map.pl** excluding them. You can either move them to a different directory AND exclude them from the script, or simply exclude them from the script (either works!). 
+
+Now we have our new denovo_map script ready to go.... let's set it up and see if it doesn't fail! But while we wait, let's look more into the STACKS manual. 
+
+#####
+#####
+#####
+
 One thing that is very important in stacks is troubleshooting parameter settings. The defaults in STACKS are **NOT GOOD** to use, and depending on the specifics of the dataset (divergence, number of populations, samples, etc) these parameters will vary a lot from one study to the other. The main parameters to mess with are: 
 
 	m — specify a minimum number of identical, raw reads required to create a stack.
@@ -134,30 +161,6 @@ h | 3 | 2 | 4 | 3 |
 i | 3 | 2 | 5 | 3 |
 j | 3 | 2 | 2 | 4 |
 k | 3 | 2 | 2 | 5 |
-
-Now we can start setting up denovo_map runs. Here is the general code for doing that. 
-
-	mkdir ./path/to/denovo-map/denovo-test-1/
-
-	denovo_map.pl -T 8 -m 2 -M 3 -n 2 -S -b 2 -o ./path/to/denovo-map/denovo-test-1/ \
-	-s ./path/to/denovo-map/Ab_372.1.fq \
-	-s ./path/to/denovo-map/Ab_372.2.fq \
-
-Etc.... (as in, followed by all your other sequences). So, the final file should look like [this](). Thus, you need to build your denovo_map file with EVERY sequence that you will use separately.... **How do you want to do this?** 
-
-OK, let's start denovo_map!!! Look at the terminal window as it runs.... what's happening currently...? 
-
-Hm, it seems to have failed.... what do you think happened? Let's find the logfile for denovo. First, navigate into denovo output directory, then do: 
-
-	ls -ltr 
-	tail denovo_map.log
-
-What does the logfile say....? Why did the run fail??  
-
-Let's go back and eliminate all individuals that failed to recover RADtags, and [get over](https://giphy.com/gifs/movie-crying-johnny-depp-hAt4kMHnaVeNO) the fact that we lost those individuals. We need to re-make our script for **denovo_map.pl** excluding them. You can either move them to a different directory AND esclude them from the script, or simply exclude them from the script (either works!). 
-
-Now we have our new denovo_map script ready to go.... let's set it up and see if it doesn't fail! 
-
 
 
 
