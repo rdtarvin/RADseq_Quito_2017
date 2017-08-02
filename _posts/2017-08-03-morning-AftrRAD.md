@@ -1,7 +1,7 @@
 ---
 layout: default
 order: 12
-title:  "AftrRAD and Treemix"
+title:  "ddRAD Data in AftrRAD"
 date:   2017-08-03
 time:   "Morning"
 categories: main
