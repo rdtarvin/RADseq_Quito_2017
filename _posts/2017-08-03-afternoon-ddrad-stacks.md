@@ -22,6 +22,9 @@ STACKS WITH ddRAD data
 The first thing to know about stacks is that the online manual is very useful but not completely straighforward to navigate, so let's get familiar with their [manual](http://catchenlab.life.illinois.edu/stacks/) first and the program in general. 
 
 
+![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/basic-assembly-steps.png?raw=true)<br>
+
+
 Demultiplexing in STACKS (process_radtags)
 ----
 
@@ -179,7 +182,7 @@ We need to re-make our denovo_map shell script, eliminating all individuals that
 Now we have our new **denovo_map** script ready to go.... let's set it up and see if it doesn't fail!
 
 
-populations in stacks
+Getting the output with **populations**
 ----
 
 The final step in the stacks pipeline is to run the program **populations**. Similar to step 7 in ipyrad, it outputs/summarizes your data into formats you specify. However, another super nice thing about this program is that it runs populations stats for you and puts them in a nice excel-readable output!! :D yay easy pogen stats!!  
@@ -193,6 +196,81 @@ Now, let's run **populations** using the following command:
 	populations -b 2 -P . -M ./popmap.txt -k -p 1 -r 0.2 -t 36 --structure --genepop --vcf --write_random_snp
 
 
+Before we move on to the next steps.... let's [talk a bit](https://docs.google.com/presentation/d/1ZfCd0jIuNm4MwdCTw0MOXtyLBBlpRB3Xt_jHWhOcQhk/pub?start=false&loop=false&delayms=60000) about post-genotyping filters and the nature of RADseq datasets and SNP matrices... 
+
+
+Filtering in **plink**
+----
+We are now going to filter our matrix to reduce biases in missing data and by Minor Allele Frequency. 
+
+
+1. First, we filter loci with less than 60% loci sequenced
+
+		./plink --file filename --geno 0.4 --recode --out filename_a --noweb
+
+
+2. Second, we filter individuals that have less than 50% data
+
+		./plink --file filename_a --mind 0.5 --recode --out filename_b --noweb
+
+
+3. Third, we filter loci with MAF < 0.02 in remaining individuals
+
+		/.plink --file filename_b --maf 0.02 --recode --out filename_c --noweb
+
+
+Second output from stacks *populations*
+----
+
+Make a ***whitelist*** file, which is a list of the loci to include based on the plink results (i.e. on amount of missing data in locus). The whitelist file is ordered as a simple file containing one catalog locus per line: 
+
+		% more whitelist
+		3
+		7
+		521
+		11
+		46
+		103
+		972
+		2653
+		22
+In order to get from the .map file to the whitelist file format, open *_c.map file in Text Wrangler, and do find and replace arguments using **grep**:
+
+	search for \d\t(\d*)_\d*\t\d\t\d*$
+	replace with \1
+
+
+
+Using the **.irem** file from the second iteration of *plink* (in our example named with termination **"_b"**), remove individuals from old popmap so that they are excluded from the analysis (i.e. individuals with too much missing data). 
+
+
+Run populations again using the whitelist of loci and the updated popmap file for loci and individuals to retain based on the plink filters. Also, make sure your popmap has each island as a single population.
+
+	populations -b 1 -P ./ -M ./popmap.txt  -p 1 -r 0.5 -W Pr-whitelist --write_random_snp --structure --plink --vcf --genepop --fstats --phylip
+	
+
+We will use many of these outputs for downstream analyses. Outputs are: 
+
+	batch_2.hapstats.tsv
+	batch_2.phistats.tsv
+	batch_2.phistats_1-2.tsv
+	batch_2.phistats_1-3.tsv
+	batch_2.phistats_2-3.tsv
+	batch_2.sumstats.tsv
+	batch_2.sumstats_summary.tsv
+	batch_2.haplotypes.tsv
+	batch_2.genepop
+	batch_2.structure.tsv
+	batch_2.plink.map
+	batch_2.plink.ped
+	batch_2.phylip
+	batch_2.phylip.log
+	batch_2.vcf
+	batch_2.fst_1-2.tsv
+	batch_2.fst_1-3.tsv
+	batch_2.populations.log
+	batch_2.fst_summary.tsv
+	batch_2.fst_2-3.tsv
 
 
 
