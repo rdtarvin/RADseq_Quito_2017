@@ -117,7 +117,7 @@ OK, let's start **denovo_map**!!! Look at the terminal window as it runs.... wha
 
 #####
 #####
-#####
+
 
 One thing that is very important in stacks is troubleshooting parameter settings. The defaults in STACKS are **NOT GOOD** to use, and depending on the specifics of the dataset (divergence, number of populations, samples, etc) these parameters will vary a lot from one study to the other. The main parameters to mess with are: 
 
@@ -158,11 +158,14 @@ k | 3 | 2 | 2 | 5 |
 
 You can evaluate the number of loci, SNPs, and Fsts that you get from these parameters to assess "stability" of genotyping and pick optimal parameter settings. 
 
-##
-##
-##
-
 **NOW BACK TO OUR GENOTYPING IN STACKS....**
+
+#####
+
+#####
+
+
+
 
 Uh oh.... our denovo run seems to have failed!! What do you think happened? Let's find the logfile for denovo. First, navigate into your **denovo** output directory, then do: 
 
