@@ -16,7 +16,6 @@ AftrRAD WITH ddRAD
 ===
 
 
-The first thing to know about stacks is that the online manual is very useful but not completely straighforward to navigate, so let's get familiar with their [manual](http://catchenlab.life.illinois.edu/stacks/) first and the program in general. 
 AftrRAD (align from total reads) is a bioinformatic pipeline for the de novo assembly and genotyping of RADseq data. You can get the program and documentation as a zip file [here](https://u.osu.edu/sovic.1/downloads/). The paper describing the program can be accessed [here](https://u.osu.edu/sovic.1/downloads/).
 
 STEP 1 Getting ready for AftrRAD
