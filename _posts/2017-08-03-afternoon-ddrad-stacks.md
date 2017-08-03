@@ -12,8 +12,11 @@ lesson-type: Interactive
 ---
 
 WORKSHOP QUITO - DAY 4 
-STACKS WITH ddRAD
+
+
+STACKS WITH ddRAD data
 ===
+
 **DOWNLOAD THE RAW DATA FOR THIS LESSON [HERE](https://my.pcloud.com/publink/show?code=XZxojcZzaPwbwoStDk7Do00Rhezeu7w3Xey)**
 
 The first thing to know about stacks is that the online manual is very useful but not completely straighforward to navigate, so let's get familiar with their [manual](http://catchenlab.life.illinois.edu/stacks/) first and the program in general. 
@@ -57,7 +60,7 @@ The general code we will use for process_radtags, running it from within the raw
 Let's make a directory of the "removed" files and move them there:
 
 	mkdir bad_rads
-	mv *rem*
+	mv *rem* bad_rads
 
 
 
@@ -82,44 +85,35 @@ A recent paper that came out, [Lost in Parameter Space: a roadmap for STACKS](ht
 	integrate_alignments.py #integrate alignment information back into denovo ouput
 	populations
 
-
+So many steps!! 
 	
 
 Genotyping with denovo_map.pl
 ---
 
-First, let's grab four [additional sequences](https://my.pcloud.com/publink/show?code=kZYoScZyhvt7h2OCCbB0SteaI7KNfFIKVqk) that we had demultiplexed from another sequencing pool; they had the same barcodes, but different Illumina index primers so were demultiplexed separately. Make sure these sequences end up in your working directory.
+First, let's grab four [additional sequences](https://my.pcloud.com/publink/show?code=kZYoScZyhvt7h2OCCbB0SteaI7KNfFIKVqk) that we had demultiplexed from another sequencing library; they had the same barcodes, but different Illumina index primers so were demultiplexed separately. Make sure these sequences end up in your working directory. > can you tell what the index primer was?
 
-We should now have five additional individuals for the third population for which we only had one before. Also, notice how these individuals had a different Illumina index primer... 
+We should now have five additional individuals for the third population for which we only had one before. 
 
-Let's make a list of the filenames that have sequences in them:
+Let's make a list of the filenames that have sequences in them using the following command:
 
 	ls | awk '/fq/' > sequence_files.txt
 
 This list of filenames will be a part of the input for running *denovo_map.pl*, since you have to list all of the sequence files that will be used for input, rather than a directory containing them. 
 
 
-Let's start setting up denovo_map runs. Here is the general code for doing that. 
+Let's start setting up denovo_map runs. Here is the general code we will use:
 
 
-	denovo_map.pl -T 8 -m 2 -M 3 -n 2 -S -b 2 -o ./path/to/denovo-map/denovo-test-1/ \
-	-s ./path/to/denovo-map/Ab_372.1.fq \
-	-s ./path/to/denovo-map/Ab_372.2.fq \
+	denovo_map.pl -T 8 -m 2 -M 3 -n 2 -S -b 2 -o ./path/to/denovo-map/denovo/ \
+	-s ./path/to/denovo-map/filename.fq \
+	-s ./path/to/denovo-map/filename.fq \
 
-Etc.... (as in, followed by all your other sequences). So, the final file should look like [this](). Thus, you need to build your denovo_map file with EVERY sequence that you will use separately.... **How do you want to do this?** 
+**Q: what does the backslash '\' mean here?**
 
-OK, let's start denovo_map!!! Look at the terminal window as it runs.... what's happening currently...? 
+The denovo code needs to have every single sequence that you will genotype listed in a single line. Thus, you need to build your **denovo_map** file with EVERY sequence that you will use separately.... **How should we do this?** 
 
-Hm, it seems to have failed.... what do you think happened? Let's find the logfile for denovo. First, navigate into denovo output directory, then do: 
-
-	ls -ltr 
-	tail denovo_map.log
-
-What does the logfile say....? Why did the run fail??  
-
-Let's go back and eliminate all individuals that failed to recover RADtags, and [get over](https://giphy.com/gifs/movie-crying-johnny-depp-hAt4kMHnaVeNO) the fact that we lost those individuals. We need to re-make our script for **denovo_map.pl** excluding them. You can either move them to a different directory AND exclude them from the script, or simply exclude them from the script (either works!). 
-
-Now we have our new denovo_map script ready to go.... let's set it up and see if it doesn't fail! But while we wait, let's look more into the STACKS manual. 
+OK, let's start **denovo_map**!!! Look at the terminal window as it runs.... what's happening currently...? While we wait, let's look more into the **STACKS** manual.
 
 #####
 #####
@@ -128,21 +122,21 @@ Now we have our new denovo_map script ready to go.... let's set it up and see if
 One thing that is very important in stacks is troubleshooting parameter settings. The defaults in STACKS are **NOT GOOD** to use, and depending on the specifics of the dataset (divergence, number of populations, samples, etc) these parameters will vary a lot from one study to the other. The main parameters to mess with are: 
 
 	m — specify a minimum number of identical, raw reads required to create a stack.
-	M — specify the number of mismatches allowed between loci when processing a single individual (default 2).
-	n — specify the number of mismatches allowed between loci when building the catalog (default 1).
+	M — specify the number of mismatches allowed between reads when processing a single individual (default 2).
+	n — specify the number of mismatches allowed between reads (among inds.) when building the catalog (default 1).
 
 **Note 1**: The higher the coverage, the higher the m parameter can be. 
 
 **Note 2**: M should not be 1 (diploid data) but also should not be very high since it will begin to stack paralogs. 
 
-**Note 3**: n will depend on how divergent our individuals/populations are. It should not be zero, since that would essentially create zero SNPs, but 1 also seems unrealistically low (only a single difference between individuals in any given locus), so in these kinds of datasets we should start permutations starting from 2.  If you use n 1 it is likely to oversplit loci among populations that are more divergent. 
+**Note 3**: n will depend on how divergent our individuals/populations are. It should not be zero, since that would essentially allow zero SNPs, but 1 also seems unrealistically low (only a single difference between individuals in any given locus), so in these kinds of datasets we should have permutations that start from 2.  If you use n 1 it is likely to oversplit loci among populations that are more divergent. 
 
 The same paper that discussed the issues with *ref_map.pl* that I mentioned previously, also mentions some tips for picking the ideal parameter settings for stacks... but, in general my recommendation would be: explore your dataset!!! Some general suggestions from it: 
 
 - Setting the value of *m* in essence is choosing how much "error" you will include/exclude from your dataset. This parameter creates a trade-off between including error and excluding actual alleles/polymorphism. Higher values of *m* increase the average sample coverage, but decreases the number of assembled loci. After m=3 loci number is more stable.
-- Setting the value *M* is a trade-off between overmerging (paralogs) and undermerging (splitting) loci.  it is **VERY dataset-specific** since it depends on polymorphism in the species/populations and in the amount of error (library prep and sequencing). 
+- Setting the value *M* is a trade-off between overmerging (paralogs) and undermerging (splitting) loci.  It is **VERY dataset-specific** since it depends on polymorphism in the species/populations and in the amount of error (library prep and sequencing). 
 - Setting the value *n* is also critical when it comes to overmerging and undermerging loci. There seems to be an unlimited number of loci that can be merged with the catalog wiht increasing n!! 
-- Finally, authors suggest to use a general rule of parameter settings is n=M, n=M-1, or n=M+1, and that M is the main parameter that needs to be explored for each dataset. 
+- Finally, authors suggest that a general rule for setting parameters is n=M, n=M-1, or n=M+1, and that M is the main parameter that needs to be explored for each dataset. 
 
 
 
@@ -162,11 +156,38 @@ i | 3 | 2 | 5 | 3 |
 j | 3 | 2 | 2 | 4 |
 k | 3 | 2 | 2 | 5 |
 
+You can evaluate the number of loci, SNPs, and Fsts that you get from these parameters to assess "stability" of genotyping and pick optimal parameter settings. 
+
+##
+##
+##
+
+**NOW BACK TO OUR GENOTYPING IN STACKS....**
+
+Uh oh.... our denovo run seems to have failed!! What do you think happened? Let's find the logfile for denovo. First, navigate into your **denovo** output directory, then do: 
+
+	ls -ltrh 
+	tail denovo_map.log
+
+What does the logfile say....? Why did the run fail??  
+
+We need to re-make our denovo_map shell script, eliminating all individuals that failed to recover RADtags, and [get over](https://giphy.com/gifs/movie-crying-johnny-depp-hAt4kMHnaVeNO) the fact that we lost those individuals. You can either move the failed individuals to a different directory AND exclude them from the script, or simply exclude them from the script (either works!).
+
+Now we have our new **denovo_map** script ready to go.... let's set it up and see if it doesn't fail!
 
 
+populations in stacks
+----
 
+The final step in the stacks pipeline is to run the program **populations**. Similar to step 7 in ipyrad, it outputs/summarizes your data into formats you specify. However, another super nice thing about this program is that it runs populations stats for you and puts them in a nice excel-readable output!! :D yay easy pogen stats!!  
 
+To run **populations**, we first need to develop a popmap file, which simply contains names of sequences (first column)and some population code (second column)that they belong to, tab delimited. Our sample/file names alrady contain the population information, so try to build it yourself.... how do you want to do it???
 
+ 
+
+Now, let's run **populations** using the following command:
+
+	populations -b 2 -P . -M ./popmap.txt -k -p 1 -r 0.2 -t 36 --structure --genepop --vcf --write_random_snp
 
 
 
