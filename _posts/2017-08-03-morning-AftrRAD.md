@@ -32,11 +32,11 @@ PART 1 Formatting data and steps 1, 2 and 3* (AftrRAD.pl)
 
 Download data for this lesson
 ```
-wget -O RAD105_10M.txt.gz 'https://www.dropbox.com/s/tqctvehvbjk0qgt/RAD105_10M.txt.gz?dl=1'
-gzip RAD105_10M.txt.gz
-mv RAD105_10M.txt ~/Applications/AftrRADv5.0/Data/
 cd ~/Applications/AftrRADv5.0/Data/
+wget -O RAD105_10M.txt.gz 'https://www.dropbox.com/s/tqctvehvbjk0qgt/RAD105_10M.txt.gz?dl=1'
+gunzip RAD105_10M.txt.gz
 ls
+rm RAD105_10M.txt.gz
 ```
 
 PART 2 Steps 4 and 5* (Genotype.pl)
