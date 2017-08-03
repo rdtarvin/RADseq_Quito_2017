@@ -39,4 +39,8 @@ cd ~/Applications/AftrRADv5.0/Data/
 ls
 ```
 
+PART 2 Steps 4 and 5* (Genotype.pl)
+----
 
+PART 3 Steps 6 and 7* (FilterSNPs.pl and different formatting scripts for downstream analyses)
+----
