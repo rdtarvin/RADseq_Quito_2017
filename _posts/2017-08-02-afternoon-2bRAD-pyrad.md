@@ -472,6 +472,7 @@ The first cluster looks like a heterozygote. The second cluster here has a ton o
 is likely to be paralogous. The third cluster could be either a heterozygote or a homozygote with a sequencing error.
 The '+' and '-' indicate whether the reads are reverse complemented.
 <br><br>
+
 iPyrad: Step 5. Uses the estimates from step 4 and filters the clusters.
 ---
 
