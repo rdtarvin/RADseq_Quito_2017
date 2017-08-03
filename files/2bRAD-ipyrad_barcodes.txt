@@ -8,5 +8,5 @@ TCAG	gen1_sp1-1b
 GCTT	gen1_sp1-2
 CTAC	gen3_sp1-1
 TGTC	gen3_sp1-2
-TCAC	gen3_sp1-1
-GACT	gen3_sp1-2
+TCAC	gen2_sp1-1
+GACT	gen2_sp1-2
