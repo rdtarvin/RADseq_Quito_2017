@@ -38,6 +38,46 @@ gunzip RAD105_10M.txt.gz
 ls
 rm RAD105_10M.txt.gz
 ```
+```
+re The restriction enzyme recognition sequence that occurs in your reads.
+In Figure 1 above, this is TGCAGG, which corresponds to a digestion
+with the enzyme SbfI. This is the default value. If there is no restriction
+enzyme recognition site in your reads, enter 0.
+minQual The minimum quality (Phred) score for retaining reads. Reads that
+contain bases with scores below this value are removed from the analysis.
+The default value is 20.
+minDepth The minimum mean nonzero read depth to retain a read. For each unique
+read in the dataset, the counts of that read will be obtained for each
+sample. The average of the nonzero counts will be obtained, and checked
+against the value entered here. Any reads with values less than this
+threshold are assumed to be error and are eliminated from the dataset.
+Default value is 5. See Figs S2 and 5 in MER paper for more details.
+minIden The minimum percent identity (after alignment) to consider two reads
+to be alternative alleles from the same locus. The default is 90%.
+numIndels The maximum number of indels allowed between any two reads to
+consider them alternative alleles from the same locus. The default is 3.
+P2 The beginning of the P2 adaptor sequence. Reads containing this string
+are removed from the analysis. If you don’t want to search for the P2
+adaptor, you can enter “noP2” here, or any other string of characters that
+will not be found in any of your reads. The default is ATTAGATC.
+minParalog The minimum number of reads that must occur at a third allele in an
+individual to flag a locus as paralogous. Default is 5.
+Phred The quality score methodology used in the sequencing. Most often
+Phred33, which is the default. An alternative is Phred64.
+dplexedData If data are demultiplexed prior to the AftrRAD run, set this to ‘1’. In this
+case, the data files must be stored in a folder named ‘DemultiplexedFiles’.
+If running demultiplexed data, use the default for “DataPath”.
+stringLength Reads containing strings of homopolymers of this length will be removed.
+Default is 15.
+DataPath Path to directory containing fastq data files for the run. Default is the Data
+directory in the AftrRAD working directory.
+BarcodePath Path to directory containing barcode files. Default is the Barcodes
+directory in the AftrRAD working directory.
+MaxH Maximum proportion of samples allowed to be heterozygous at a locus.
+Loci for which heterozygosity exceeds this value will be flagged as
+paralogous. Default is 90%.
+maxProcesses The maximum number of processors to use in a parallel run.
+```
 
 PART 2 Steps 4 and 5* (Genotype.pl)
 ----
