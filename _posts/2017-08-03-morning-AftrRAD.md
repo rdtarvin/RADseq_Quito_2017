@@ -40,7 +40,6 @@ rm RAD105_10M.txt.gz
 ```
 
 Arguments for this perl script are:
-```
 re  Restriction enzyme recognition sequence. Default: TGCAGG (corresponds to SbfI). If no restriction enzyme recognition site, enter 0.
 minQual Minimum quality (Phred) score for retaining reads. Default: 20.
 minDepth  Minimum mean nonzero read depth to retain read. Default: 5.
@@ -69,7 +68,6 @@ MaxH Maximum proportion of samples allowed to be heterozygous at a locus.
 Loci for which heterozygosity exceeds this value will be flagged as
 paralogous. Default is 90%.
 maxProcesses The maximum number of processors to use in a parallel run.
-```
 
 PART 2 Steps 4 and 5* (Genotype.pl)
 ----
