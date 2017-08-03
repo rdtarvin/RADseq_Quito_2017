@@ -199,9 +199,9 @@ Now, let's run **populations** using the following command:
 Before we move on to the next steps.... let's [talk a bit](https://docs.google.com/presentation/d/1ZfCd0jIuNm4MwdCTw0MOXtyLBBlpRB3Xt_jHWhOcQhk/pub?start=false&loop=false&delayms=60000) about post-genotyping filters and the nature of RADseq datasets and SNP matrices... 
 
 
-Filtering in **plink**
+Post-filtering in **plink**
 ----
-We are now going to filter our matrix to reduce biases in missing data and by Minor Allele Frequency. 
+We are now going to filter our matrix to reduce biases and incorrect inferences due to missing data (in individuals and SNPs)and by Minor Allele Frequency. 
 
 
 1. First, we filter loci with less than 60% loci sequenced
@@ -222,7 +222,9 @@ We are now going to filter our matrix to reduce biases in missing data and by Mi
 Second output from stacks *populations*
 ----
 
-Make a ***whitelist*** file, which is a list of the loci to include based on the plink results (i.e. on amount of missing data in locus). The whitelist file is ordered as a simple file containing one catalog locus per line: 
+Now we are going to re-run the last step of the **STACKS** pipeline, so that we can get the nice population stats with out cleaner matrix. 
+
+We need to make a ***whitelist*** file, which is a list of the loci to include based on the plink results (i.e. on amount of missing data in locus). The whitelist file format is ordered as a simple text file containing one catalog locus per line: 
 
 		% more whitelist
 		3
@@ -241,10 +243,10 @@ In order to get from the .map file to the whitelist file format, open *_c.map fi
 
 
 
-Using the **.irem** file from the second iteration of *plink* (in our example named with termination **"_b"**), remove individuals from old popmap so that they are excluded from the analysis (i.e. individuals with too much missing data). 
+Using the **.irem** file from the second iteration of *plink* (in our example named with termination **"_b"**), remove any individuals from the first popmap if they did not pass **plink** filters so that they are excluded from the analysis (i.e. individuals with too much missing data). 
 
 
-Run populations again using the whitelist of loci and the updated popmap file for loci and individuals to retain based on the plink filters. Also, make sure your popmap has each island as a single population.
+Now we can run populations again using the whitelist of loci and the updated popmap file for loci and individuals to retain based on the plink filters.
 
 	populations -b 1 -P ./ -M ./popmap.txt  -p 1 -r 0.5 -W Pr-whitelist --write_random_snp --structure --plink --vcf --genepop --fstats --phylip
 	
