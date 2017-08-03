@@ -21,4 +21,13 @@ AftrRAD (align from total reads) is a bioinformatic pipeline for the de novo ass
 STEP 1 Getting ready for AftrRAD
 ----
 
+Download data for this lesson
+```
+wget -O RAD105_10M.txt.zip 'https://www.dropbox.com/s/zt3zdjgus7tmw0u/RAD105_10M.txt.zip?dl=1'
+unzip RAD105_10M.txt.zip
+mv RAD105_10M.txt ~/Applications/AftrRADv5.0/Data/
+cd ~/Applications/AftrRADv5.0/Data/
+ls
+```
+
 
