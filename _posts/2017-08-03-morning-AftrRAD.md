@@ -32,8 +32,8 @@ PART 1 Formatting data and steps 1, 2 and 3* (AftrRAD.pl)
 
 Download data for this lesson
 ```
-wget -O RAD105_10M.txt.zip 'https://www.dropbox.com/s/zt3zdjgus7tmw0u/RAD105_10M.txt.zip?dl=1'
-unzip RAD105_10M.txt.zip
+wget -O RAD105_10M.txt.gz 'https://www.dropbox.com/s/tqctvehvbjk0qgt/RAD105_10M.txt.gz?dl=1'
+gzip RAD105_10M.txt.gz
 mv RAD105_10M.txt ~/Applications/AftrRADv5.0/Data/
 cd ~/Applications/AftrRADv5.0/Data/
 ls
