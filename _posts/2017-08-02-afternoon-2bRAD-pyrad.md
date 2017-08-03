@@ -604,7 +604,7 @@ rax = ipa.raxml(data='2brad-v1.phy',name='2brad-v1',workdir='analysis-raxml')
 print rax.command
 rax.run(force=True)
 ```
-To leave the python environment (>>>) at any point, type `quit()`.
+To leave the python environment (`>>>`) at any point, type `quit()`.
 Print a tree in python. Type python to enter the python environment, then type
 ```python
 from Bio import Phylo
