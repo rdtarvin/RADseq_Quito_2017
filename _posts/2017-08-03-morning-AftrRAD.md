@@ -38,20 +38,12 @@ gunzip RAD105_10M.txt.gz
 ls
 rm RAD105_10M.txt.gz
 ```
+
+Arguments for this perl script are:
 ```
-re The restriction enzyme recognition sequence that occurs in your reads.
-In Figure 1 above, this is TGCAGG, which corresponds to a digestion
-with the enzyme SbfI. This is the default value. If there is no restriction
-enzyme recognition site in your reads, enter 0.
-minQual The minimum quality (Phred) score for retaining reads. Reads that
-contain bases with scores below this value are removed from the analysis.
-The default value is 20.
-minDepth The minimum mean nonzero read depth to retain a read. For each unique
-read in the dataset, the counts of that read will be obtained for each
-sample. The average of the nonzero counts will be obtained, and checked
-against the value entered here. Any reads with values less than this
-threshold are assumed to be error and are eliminated from the dataset.
-Default value is 5. See Figs S2 and 5 in MER paper for more details.
+re  Restriction enzyme recognition sequence. Default: TGCAGG (corresponds to SbfI). If no restriction enzyme recognition site, enter 0.
+minQual Minimum quality (Phred) score for retaining reads. Default: 20.
+minDepth  Minimum mean nonzero read depth to retain read. Default: 5.
 minIden The minimum percent identity (after alignment) to consider two reads
 to be alternative alleles from the same locus. The default is 90%.
 numIndels The maximum number of indels allowed between any two reads to
