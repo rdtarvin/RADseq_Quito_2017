@@ -626,7 +626,7 @@ Phylo.draw(tree) # is ultrametric
 quit()
 ```
 
-Estimate a tree based on a SNP matrix, using one SNP from each locus, in **[RAxML-ng]**(https://github.com/amkozlov/raxml-ng).
+Estimate a tree based on a SNP matrix, using one SNP from each locus, in [RAxML-ng](https://github.com/amkozlov/raxml-ng).
 ```bash
 cd ~/Applications
 wget https://github.com/amkozlov/raxml-ng/releases/download/0.4.0/raxml-ng_v0.4.0b_linux_x86_64.zip
