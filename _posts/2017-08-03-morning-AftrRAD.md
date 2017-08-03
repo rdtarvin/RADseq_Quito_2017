@@ -1,9 +1,9 @@
 ---
 layout: default
-order: 12
+order: 14
 title:  "ddRAD Data in AftrRAD"
-date:   2017-08-03
-time:   "Morning"
+date:   2017-08-04
+time:   "Afternoon"
 categories: main
 instructor: "David"
 materials: ""

@@ -1,9 +1,9 @@
 ---
 layout: default
-order: 14
+order: 13
 title:  "Population genomics with Adegenet"
 date:   2017-08-04
-time:   "Afternoon"
+time:   "Morning"
 categories: main
 instructor: "Pati"
 materials: ""
