@@ -36,7 +36,6 @@ cd ~/Applications/AftrRADv5.0/Data/
 wget -O RAD105_10M.txt.gz 'https://www.dropbox.com/s/tqctvehvbjk0qgt/RAD105_10M.txt.gz?dl=1'
 gunzip RAD105_10M.txt.gz
 ls
-rm RAD105_10M.txt.gz
 ```
 
 Create a text file containing the barcode and sample name information for each individual. Include the file in a folder called Barcodes.
