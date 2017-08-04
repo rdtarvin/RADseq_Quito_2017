@@ -30,7 +30,7 @@ In order to run AftrRAD you need to unzip the file downloaded before and make su
 PART 1 Formatting data and steps 1, 2 and 3* (AftrRAD.pl)
 ----
 
-Download data for this lesson
+Download data for this lesson and include the file in a folder called Data.
 ```
 cd ~/Applications/AftrRADv5.0/Data/
 wget -O RAD105_10M.txt.gz 'https://www.dropbox.com/s/tqctvehvbjk0qgt/RAD105_10M.txt.gz?dl=1'
@@ -38,6 +38,11 @@ gunzip RAD105_10M.txt.gz
 ls
 rm RAD105_10M.txt.gz
 ```
+
+Create a text file containing the barcode and sample name information for each individual. Include the file in a folder called Barcodes.
+
+Before running the first perl script make sure your working directory looks like this:
+
 
 Arguments for this perl script are:
 
