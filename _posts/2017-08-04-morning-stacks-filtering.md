@@ -6,7 +6,7 @@ date:   2017-08-04
 time:   "Morning"
 categories: main
 instructor: "Pati"
-materials: "https://drive.google.com/open?id=1uZe_31SOzKZQqldZaBryO_2-J27J2gR-MtBdS6iHvMQ"
+materials: "https://docs.google.com/presentation/d/1ZfCd0jIuNm4MwdCTw0MOXtyLBBlpRB3Xt_jHWhOcQhk/pub?start=false&loop=false&delayms=60000"
 material-type: "ppt"
 lesson-type: Lecture
 ---

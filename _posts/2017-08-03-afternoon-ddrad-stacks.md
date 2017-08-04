@@ -60,11 +60,6 @@ The general code we will use for process_radtags, running it from within the raw
 
 **What do our demultiplexed files look like...?**
 
-Let's make a directory of the "removed" files and move them there:
-
-	mkdir bad_rads
-	mv *rem* bad_rads
-
 
 
 Genotyping in stacks
@@ -102,8 +97,7 @@ Let's make a list of the filenames that have sequences in them using the followi
 
 	ls | awk '/fq/' > sequence_files.txt
 
-This list of filenames will be a part of the input for running *denovo_map.pl*, since you have to list all of the sequence files that will be used for input, rather than a directory containing them. 
-
+This list of filenames will be a part of the input for running *denovo_map.pl*, since you have to list all of the sequence files that will be used for input, rather than a directory containing them. To learn more about **awk** basics, a very powerful tool for editing/rewriting text files, you can [start here](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/files/AWK-cheatsheet.md).
 
 Let's start setting up denovo_map runs. Here is the general code we will use:
 
