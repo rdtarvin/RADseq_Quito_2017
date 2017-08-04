@@ -43,7 +43,7 @@ Create a text file containing the barcode and sample name information for each i
 
 Before running the first perl script make sure your working directory looks like this:
 
-![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/AftrRAD%20working%20directory.jpg?raw=true)<br>
+![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/AftrRAD%20working%20directory.png?raw=true)<br>
 
 Start running AftrRAD by typing perl AftrRAD.pl followed by any arguments you want to modify. Argumentes and their values should be separated by a dash.
 
