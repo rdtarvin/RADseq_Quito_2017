@@ -98,5 +98,7 @@ Arguments for this perl script are:
 
 **maxProcesses**	Maximum number of processors to use in a parallel run.
 
+This script will ask whether to eliminate specific samples based on the amount of missing data at polymorphic loci in each of the samples. Name of samples provided as "bad samples" are suggestions and to make a decision check the "MissingDataProportions.txt" and "MissingDataCounts" files present in the "Output/RunInfo" directory.
+
 PART 3 Steps 6 and 7* (FilterSNPs.pl and different formatting scripts for downstream analyses)
 ----
