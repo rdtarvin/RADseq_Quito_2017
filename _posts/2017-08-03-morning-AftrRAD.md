@@ -45,7 +45,7 @@ Before running the first perl script make sure your working directory contains t
 
 ![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/AftrRAD%20working%20directory.png?raw=true)<br>
 
-Start running AftrRAD by typing perl AftrRAD.pl followed by any arguments you want to modify. Argumentes and their values should be separated by a dash.
+Start running AftrRAD by typing perl AftrRAD.pl followed by any arguments you want to modify. Arguments and their values should be separated by a dash.
 
 Arguments for this perl script are:
 
