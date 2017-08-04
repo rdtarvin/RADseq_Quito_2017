@@ -84,5 +84,19 @@ For the next step in AftrRAD you will need to type perl Genotype.pl followed by 
 
 Arguments for this perl script are:
 
+**MinReads**	Minimum coverage required at a locus in an individual to apply a binomial test and call a genotype. Default: 10.
+
+**pvalLow**	For each locus in each individual, a binomial test is applied to score the sample as heterozygous or homozygous (assumption: two alleles in a heterozygote will be sequenced in equal frequencies). So, for a locus at which an individual has read counts of 35 and 50 for two alleles, respectively, a binomial test with a probability of success of 0.5 gives a p-value of 0.064. If this value is greater than pvalLow, the locus is scored as heterozygous. Default: 0.0001.
+
+**pvalHigh**	Same as pvalLow, but allows for a different p-value threshold for loci that have relatively high total counts. Default: 0.00001.
+
+**pvalThresh** Threshold number of reads at a locus in each binomial test that determines whether pvalLow or pvalHigh is used as the critical p-value. Default: 100.
+
+**subset** Option to genotype only a subset of the individuals in dataset. Default: ‘0’, and includes all samples. If set to '1', a text file must be provided with the names of the samples to include. Default name for this file is 'SamplesForSubset.txt', and it should be located in the main AftrRAD directory.
+
+**subsetfile** File name/path containing file with sample names to include in genotyping. Only applies if ‘1’ is set above. Default: file 'SamplesForSubset.txt', in the main AftrRAD directory.
+
+**maxProcesses**	Maximum number of processors to use in a parallel run.
+
 PART 3 Steps 6 and 7* (FilterSNPs.pl and different formatting scripts for downstream analyses)
 ----
