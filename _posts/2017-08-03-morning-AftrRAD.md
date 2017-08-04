@@ -39,6 +39,36 @@ ls
 rm RAD105_10M.txt.gz
 ```
 
+Arguments for this perl script are:
+
+**re**  Restriction enzyme recognition sequence. Default: TGCAGG (corresponds to SbfI). If no restriction enzyme recognition site, enter 0.
+
+**minQual** Minimum quality (Phred) score for retaining reads. Default: 20.
+
+**minDepth**  Minimum mean nonzero read depth to retain read. Default: 5.
+
+**minIden**	Minimum percent identity to consider two reads alternative alleles from same locus. Default: 90%.
+
+**numIndels**	Maximum number indels allowed between any two reads to consider them alternative alleles from the same locus. Default: 3.
+
+**P2**	Beginning of P2 adaptor sequence. Reads containing this are removed. Default: ATTAGATC.
+
+**minParalog**	Minimum number reads that must occur at a third allele in an individual to flag a locus as paralogous. Default: 5.
+
+**Phred**	Quality score methodology used in sequencing. Default: Phred33.
+
+**dplexedData**	If data are demultiplexed prior to run, set to ‘1’.
+
+**stringLength**	Reads containing strings of homopolymers of this length will be removed. Default: 15.
+
+**DataPath**	Path to directory containing fastq data files for the run. Default: Data directory in AftrRAD working directory.
+
+**BarcodePath**	Path to directory containing barcode files. Default: Barcodes directory in AftrRAD working directory.
+
+**MaxH**	Maximum proportion of samples allowed to be heterozygous at a locus. Default: 90%.
+
+**maxProcesses**	Maximum number of processors to use in a parallel run.
+
 PART 2 Steps 4 and 5* (Genotype.pl)
 ----
 
