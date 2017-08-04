@@ -41,7 +41,7 @@ rm RAD105_10M.txt.gz
 
 Create a text file containing the barcode and sample name information for each individual. Include the file in a folder called Barcodes.
 
-Before running the first perl script make sure your working directory looks like this:
+Before running the first perl script make sure your working directory contain the following elements:
 
 ![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/AftrRAD%20working%20directory.png?raw=true)<br>
 
