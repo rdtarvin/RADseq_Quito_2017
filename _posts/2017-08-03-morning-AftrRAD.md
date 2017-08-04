@@ -80,5 +80,9 @@ Arguments for this perl script are:
 PART 2 Steps 4 and 5* (Genotype.pl)
 ----
 
+For the next step in AftrRAD you will need to type perl Genotype.pl followed by any arguments you want to modify. As above, arguments and their values should be separated by a dash.
+
+Arguments for this perl script are:
+
 PART 3 Steps 6 and 7* (FilterSNPs.pl and different formatting scripts for downstream analyses)
 ----
