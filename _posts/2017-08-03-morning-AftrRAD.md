@@ -21,7 +21,7 @@ PART 0 Getting ready for AftrRAD
 
 AftrRAD is a good alternative when you have single-end RADseq data and no access to multicore computing resources (i.e. you can perform these analyses efficiently on a personal laptop).
 
-In order to run AftrRAD you need to unzip the file downloaded before and make sure the three dependencies (i.e. R, ACANA, and Mafft) mentioned in the manual are installed and working correctly. Also, if running AftrRAD version 5.0 or greater you can reduce run times by doing parallel analyses by installing the Perl module Parallel:ForkManager.
+In order to run AftrRAD you need to unzip the file downloaded before and make sure the three dependencies (i.e. R, ACANA, and Mafft) mentioned in the manual are installed and working correctly. Also, if running AftrRAD version 5.0 or greater you can reduce run times with  parallel analyses by installing the Perl module Parallel:ForkManager.
 
 **NOTE**: All of the steps mentioned above have already been taken care of when installing the Virtual Machine for this workshop.
 
