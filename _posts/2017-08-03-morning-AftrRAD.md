@@ -85,7 +85,7 @@ Arguments for this perl script are:
 
 **MinReads**	Minimum coverage required at a locus in an individual to apply a binomial test and call a genotype. Default: 10.
 
-**pvalLow**	For each locus in each individual, a binomial test is applied to score the sample as heterozygous or homozygous (assumption: two alleles in a heterozygote will be sequenced in equal frequencies). So, for a locus at which an individual has read counts of 35 and 50 for two alleles, respectively, a binomial test with a probability of success of 0.5 gives a p-value of 0.064. If this value is greater than pvalLow, the locus is scored as heterozygous. Default: 0.0001.
+**pvalLow**	For each locus in each individual, a binomial test is applied to score the sample as heterozygous or homozygous (assumption: two alleles in a heterozygote will be sequenced in equal frequencies). Default: 0.0001.
 
 **pvalHigh**	Same as pvalLow, but allows for a different p-value threshold for loci that have relatively high total counts. Default: 0.00001.
 
