@@ -102,7 +102,7 @@ This script will ask whether to eliminate specific samples based on the amount o
 PART 3 Steps 6 and 7* (FilterSNPs.pl and formatting scripts for downstream analyses)
 ----
 
-Finally, you will need to type perl FIlterSNPs.pl followed by any arguments you want to modify.
+Finally, you will need to type perl FilterSNPs.pl followed by any arguments you want to modify.
 
 Arguments for this perl script are:
 
