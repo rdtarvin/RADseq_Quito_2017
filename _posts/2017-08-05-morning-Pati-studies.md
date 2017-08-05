@@ -7,7 +7,7 @@ time:   "Morning"
 categories: main
 instructor: "Pati"
 materials: "https://docs.google.com/presentation/d/1ylj8dFUHWyiiTTBZXRFBKAKSyxlev4uc0mHW63ZKhk0/pub?start=false&loop=false&delayms=60000"
-material-type: ""
+material-type: "ppt"
 lesson-type: Lecture
 ---
 
