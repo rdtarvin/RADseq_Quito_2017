@@ -13,3 +13,4 @@ lesson-type: Lecture
 
 
 ![](https://github.com/rdtarvin/RADseq_Quito_2017/blob/master/images/David-abstract.png?raw=true)
+ 
