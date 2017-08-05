@@ -99,7 +99,7 @@ Arguments for this perl script are:
 
 This script will ask whether to eliminate specific samples based on the amount of missing data at polymorphic loci in each of the samples. Name of samples provided as "bad samples" are suggestions and to make a decision check the "MissingDataProportions.txt" and "MissingDataCounts" files present in the "Output/RunInfo" directory.
 
-PART 3 Steps 6 and 7* (FilterSNPs.pl and different formatting scripts for downstream analyses)
+PART 3 Steps 6 and 7* (FilterSNPs.pl and formatting scripts for downstream analyses)
 ----
 
 Finally, you will need to type perl FIlterSNPs.pl followed by any arguments you want to modify.
@@ -111,3 +111,5 @@ Arguments for this perl script are:
 **maxSNP**	Maximum location along the reads to score SNPs. Value should be chosen based on the file Output/RunInfo/SNPLocations.pdf. Default:0, which prints all SNPs.
 
 **MinReads**	Minimum coverage required at a locus in an individual to score a genotype. Default is to use the value used in the most recent run of Genotypes.pl.
+
+In AftrRAD, you can find different perl scripts to prepare input files for phylogenetic and population genetic analyses. Go to the Formatting folder located in the main AftrRAD directory and type perl ScriptNameThatYouAreInterested.pl.
