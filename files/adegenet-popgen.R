@@ -7,9 +7,12 @@ library("hierfstat")
 
 
 
-myFile <- import2genind("Pr-03-22-6c.stru") ##XXX SNPs and XX inds
+myFile <- import2genind("guppies.stru") ##12406 SNPs and 86 inds
+myFile <- import2genind("Pr-03-22-6c.stru") ##1150 SNPs and 102 inds
+myFile <- import2genind("Msi_GP_in.gen")
 
-##QUESTIONS:
+
+##QUESTIONS FOR STRUCTURE FILES:
 ### Which column contains the population factor ('0' if absent)? 
 ###answer:2
 ###Which other optional columns should be read (press 'return' when done)? 
@@ -20,15 +23,17 @@ myFile
 
 
 ########################
-
-X <- scaleGen(myFile, NA.method="mean")
+help(scaleGen)
+X <- scaleGen(myFile, NA.method="asis")
+X <- scaleGen(myFile, NA.method="zero")
 X[1:5,1:5]
 
 
 
 pca1<-dudi.pca(X,cent=FALSE,scale=FALSE,scannf=FALSE,nf=3)
 
-
+s.class(pca1$li,pop(myFile))
+add.scatter.eig(pca1$eig[1:20], 3,1,2)
 ############################################
 #####   to find names of outliers    #######
 ############################################
@@ -42,7 +47,6 @@ s.label(pca1$li)
 ################################################
 library(ape)
 tre<-nj(dist(as.matrix(X)))
-tre
 plot(tre,typ="fan",cex=0.7)
 
 
@@ -56,21 +60,6 @@ tiplabels(pch=20,col=myCol,cex=2)
 
 
 
-########################################################
-###  DISCRIMINANT ANALYSIS OF PRINCIPAL COMPONENTS   ###
-########################################################
-grp<-find.clusters(X,max.n.clust=5)
-###keep 20 PCs
-###keep 3 clusters (original pops)
-names(grp)
-grp$size
-table(pop(myFile),grp$grp)
-dapc1<-dapc(X,grp$grp)
-dapc1
-scatter(dapc1)
-summary(dapc1)
-set.seed=(4)
-contrib<-loadingplot(dapc1$var.contr,axis=2,thres=.07,lab.jitter=1)
 ####################################
 #####   DAPC by original pops   ####
 ####################################
@@ -81,18 +70,6 @@ dapc2
 scatter(dapc2)
 summary(dapc2)
 contrib<-loadingplot(dapc2$var.contr,axis=2,thres=.07,lab.jitter=1)
-
-####################################################
-###   plotting DAPCs with ggplot and ellipses    ###
-####################################################
-plot_dapc<-as.data.frame(dapc2$ind.coord)
-plot_dapc$group=pop(myFile)
-
-ggplot(plot_dapc,aes(x=LD1,y=LD2,col=group))+geom_point()+
-stat_ellipse()+theme_bw()+xlab("LD1")+scale_colour_manual(values=c("grey", "red","pink", "darkgreen", "lightgreen", "royalblue4", "lightblue"))
-eig<-data.frame(eigs=dapc2$eig,LDs=1:6)
-ggplot(eig,aes(x=LDs,y=eigs))+geom_bar(stat='identity')+
-theme_bw()
 
 
 
@@ -132,54 +109,6 @@ bartlett.test(list(basicstat$Hs, basicstat $Ho)) ##this gives you a statistical
 
 library(diveRsity)
 divBasic(infile="Xr-03-22-2c-b.genepop.txt", outfile="Xr-03-22-diversity", gp=2, bootstraps=NULL, HWEexact=FALSE)
-
-##########################################
-###  PAIRWISE Fst WITH BOOTSTRAPPING   ###
-##########################################
-
-pairwise.fst(myFile)
-##replicate(10,pairwise.fst(myFile,pop=sample(pop(myFile))))
-##nuc.div(myFile2)
-
-##t.test(myFile$Hexp,myFile$Hobs,pair=T,var.equal=TRUE,alter="greater")
-
-
-
-
-###################################################
-###               STRATAG PACKAGE               ###
-###################################################
-library(strataG)
-##transform file from genind to gtypes
-myFile3<-genind2gtypes(myFile2)
-
-myFile3 ##summaries of heterozygosity per population/strata
-
-##snp.summary<-summary(myFile3)
-##snp.summary
-##str(snp.summary)
-
-##summarizeLoci(myFile3)
-
-###population structure###
-##statFst(myFile3)
-##statGst(myFile3, nrep=10, keep.null=TRUE)
-
-
-##nucleotideDiversity(myFile3)
-
-
-##strata.schemes
-##myFile3
-
-
-
-
-###################################################
-###               popGENOME PACKAGE               ###
-###################################################
-
-##library(PopGenome)
 
 
 
