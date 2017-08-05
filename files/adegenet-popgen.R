@@ -9,7 +9,7 @@ library("hierfstat")
 
 myFile <- import2genind("guppies.stru") ##12406 SNPs and 86 inds
 myFile <- import2genind("Pr-03-22-6c.stru") ##1150 SNPs and 102 inds
-myFile <- import2genind("Msi_GP_in.gen")
+myFile <- import2genind("Msi_GP_in.gen") ###6780 SNPs and 169 inds
 
 
 ##QUESTIONS FOR STRUCTURE FILES:
