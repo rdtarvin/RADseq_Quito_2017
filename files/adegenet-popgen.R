@@ -19,7 +19,7 @@ myFile <- import2genind("Msi_GP_in.gen")
 ###Which row contains the marker names ('0' if absent)? 
 ###Answer:1
 
-myFile
+myFile ##look at your transformed genind file
 
 
 ########################
@@ -87,7 +87,7 @@ compoplot(dapc2,posi="bottomright",lab="",
 
 library(hierfstat)
 ####load dataset with struture-informed populations
-myFile2 <- import2genind("Xr-03-22-2c-b.stru") ##1118 SNPs and 91 inds (After oulier removed)
+myFile2 <- import2genind(".stru") ##1118 SNPs and 91 inds (After oulier removed)
 
 basicstat<-basic.stats(myFile, diploid=TRUE)
 basicstat
@@ -108,7 +108,7 @@ bartlett.test(list(basicstat$Hs, basicstat $Ho)) ##this gives you a statistical
 
 
 library(diveRsity)
-divBasic(infile="Xr-03-22-2c-b.genepop.txt", outfile="Xr-03-22-diversity", gp=2, bootstraps=NULL, HWEexact=FALSE)
+divBasic(infile=".stru", outfile="", gp=2, bootstraps=NULL, HWEexact=FALSE)
 
 
 
