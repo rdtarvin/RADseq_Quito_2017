@@ -3,7 +3,7 @@ layout: default
 order: 10
 title:  "ddRAD Data in iPyrad"
 date:   2017-08-02
-time:   "Afternoon"
+time:   "Extra"
 categories: main
 instructor: "Becca"
 materials: files/fakefile.txt
@@ -563,10 +563,11 @@ This is the expected topology and estimated divergence timing.
 ```
 
 
+A full run of these analyses can be downloaded [here](https://www.dropbox.com/s/tqr7gusl6godhkt/ddRAD-ipyrad-full-run.zip?dl=1)
 
 
 
-<a href="https://rdtarvin.github.io/RADseq_Quito_2017/"><button>Home</button></a>    <a href="https://rdtarvin.github.io/RADseq_Quito_2017/main/2017/08/03/morning-AftrRAD.html"><button>Next Lesson</button></a>
+<a href="https://rdtarvin.github.io/RADseq_Quito_2017/"><button>Home</button></a>    <a href="https://rdtarvin.github.io/RADseq_Quito_2017/main/2017/08/03/afternoon-ddrad-stacks.html"><button>Next Lesson</button></a>
 
 
 
