@@ -79,7 +79,7 @@ contrib<-loadingplot(dapc2$var.contr,axis=2,thres=.07,lab.jitter=1)
 
 compoplot(dapc2,posi="bottomright",lab="",
 			ncol=1,xlab="individuals")
-
+help(hierfstat)
 
 ###################################################
 ###     DIVERSITY AND POPULATION MEASURES       ###
@@ -87,7 +87,7 @@ compoplot(dapc2,posi="bottomright",lab="",
 
 library(hierfstat)
 ####load dataset with struture-informed populations
-myFile2 <- import2genind(".stru") ##1118 SNPs and 91 inds (After oulier removed)
+
 
 basicstat<-basic.stats(myFile, diploid=TRUE)
 basicstat

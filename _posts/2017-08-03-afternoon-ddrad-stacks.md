@@ -198,7 +198,7 @@ Post-filtering in **plink**
 We are now going to filter our matrix to reduce biases and incorrect inferences due to missing data (in individuals and SNPs)and by Minor Allele Frequency. 
 
 
-1. First, we filter loci with less than 60% loci sequenced
+1. First, we filter loci with less than 60% individuals sequenced
 
 		./plink --file filename --geno 0.4 --recode --out filename_a --noweb
 
@@ -230,7 +230,10 @@ We need to make a ***whitelist*** file, which is a list of the loci to include b
 		972
 		2653
 		22
+		
+		
 In order to get from the .map file to the whitelist file format, open *_c.map file in Text Wrangler, and do find and replace arguments using **grep**:
+
 
 	search for \d\t(\d*)_\d*\t\d\t\d*$
 	replace with \1
