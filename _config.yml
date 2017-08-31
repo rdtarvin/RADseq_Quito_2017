@@ -15,7 +15,8 @@ author:
 gems:
   - jekyll-paginate
   
-
+# Google services
+google_analytics: UA-105631258-1
 
 #Others
 site:
